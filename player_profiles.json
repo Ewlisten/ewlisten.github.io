@@ -1,0 +1,1103 @@
+[
+    {
+        "name": "LeBron James",
+        "player_id": "2544",
+        "classification": "Playmaker",
+        "career_score": 486.38,
+        "per_game_stats": {
+            "PTS": 26.78,
+            "REB": 7.46,
+            "AST": 7.41,
+            "STL": 1.49,
+            "BLK": 0.73,
+            "TOV": 3.48,
+            "FG3M": 1.63,
+            "FG3A": 4.66
+        },
+        "awards_summary": {
+            "MVP": 4,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 4,
+            "All-Defensive": 6,
+            "Champ": 4,
+            "All-Star": 22,
+            "All-NBA 1st Team": 13,
+            "All-NBA 2nd Team": 4,
+            "All-NBA 3rd Team": 4
+        },
+        "games played": 1622
+    },
+    {
+        "name": "Damian Lillard",
+        "player_id": "203081",
+        "classification": "3PT Specialist",
+        "career_score": 149.8,
+        "per_game_stats": {
+            "PTS": 25.11,
+            "REB": 4.27,
+            "AST": 6.74,
+            "STL": 0.97,
+            "BLK": 0.3,
+            "TOV": 2.82,
+            "FG3M": 3.12,
+            "FG3A": 8.4
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 0,
+            "Champ": 0,
+            "All-Star": 9,
+            "All-NBA 1st Team": 1,
+            "All-NBA 2nd Team": 4,
+            "All-NBA 3rd Team": 2
+        },
+        "games played": 900
+    },
+    {
+        "name": "Magic Johnson",
+        "player_id": "77142",
+        "classification": "Playmaker",
+        "career_score": 298.38,
+        "per_game_stats": {
+            "PTS": 19.54,
+            "REB": 7.24,
+            "AST": 11.19,
+            "STL": 1.9,
+            "BLK": 0.41,
+            "TOV": 3.87,
+            "FG3M": 0.36,
+            "FG3A": 1.19
+        },
+        "awards_summary": {
+            "MVP": 3,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 3,
+            "All-Defensive": 0,
+            "Champ": 5,
+            "All-Star": 12,
+            "All-NBA 1st Team": 9,
+            "All-NBA 2nd Team": 1
+        },
+        "games played": 906
+    },
+    {
+        "name": "James Harden",
+        "player_id": "201935",
+        "classification": "3PT Specialist",
+        "career_score": 187.97,
+        "per_game_stats": {
+            "PTS": 23.93,
+            "REB": 5.71,
+            "AST": 7.55,
+            "STL": 1.43,
+            "BLK": 0.56,
+            "TOV": 3.72,
+            "FG3M": 2.77,
+            "FG3A": 7.63
+        },
+        "awards_summary": {
+            "MVP": 1,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 0,
+            "Champ": 0,
+            "All-Star": 11,
+            "All-NBA 1st Team": 6,
+            "All-NBA 3rd Team": 2
+        },
+        "games played": 1400
+    },
+    {
+        "name": "Shaquille O'Neal",
+        "player_id": "1628369",
+        "classification": "3PT Specialist",
+        "career_score": 132.25,
+        "per_game_stats": {
+            "PTS": 23.51,
+            "REB": 7.41,
+            "AST": 3.87,
+            "STL": 1.1,
+            "BLK": 0.64,
+            "TOV": 2.38,
+            "FG3M": 2.65,
+            "FG3A": 7.19
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 0,
+            "Champ": 1,
+            "All-Star": 6,
+            "All-NBA 1st Team": 4,
+            "All-NBA 3rd Team": 1
+        },
+        "games played": 601
+    },
+    {
+        "name": "Tracy McGrady",
+        "player_id": "1503",
+        "classification": "Position-Based",
+        "career_score": 123.87,
+        "per_game_stats": {
+            "PTS": 19.24,
+            "REB": 5.55,
+            "AST": 4.4,
+            "STL": 1.19,
+            "BLK": 0.85,
+            "TOV": 2.14,
+            "FG3M": 1.13,
+            "FG3A": 3.37
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 0,
+            "Champ": 0,
+            "All-Star": 7,
+            "All-NBA 1st Team": 2,
+            "All-NBA 2nd Team": 3,
+            "All-NBA 3rd Team": 2
+        },
+        "games played": 968
+    },
+    {
+        "name": "Victor Wembanyama",
+        "player_id": "1641705",
+        "classification": "Rim Protector",
+        "career_score": 81.15,
+        "per_game_stats": {
+            "PTS": 23.41,
+            "REB": 11.03,
+            "AST": 3.54,
+            "STL": 1.14,
+            "BLK": 3.46,
+            "TOV": 3.12,
+            "FG3M": 2.17,
+            "FG3A": 6.34
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 1,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 1,
+            "Champ": 0,
+            "All-Star": 2
+        },
+        "games played": 181
+    },
+    {
+        "name": "Karl-Anthony Towns",
+        "player_id": "1626157",
+        "classification": "Position-Based",
+        "career_score": 95.68,
+        "per_game_stats": {
+            "PTS": 22.76,
+            "REB": 11.15,
+            "AST": 3.14,
+            "STL": 0.82,
+            "BLK": 1.13,
+            "TOV": 2.68,
+            "FG3M": 1.71,
+            "FG3A": 4.3
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 0,
+            "Champ": 0,
+            "All-Star": 6,
+            "All-NBA 3rd Team": 3
+        },
+        "games played": 720
+    },
+    {
+        "name": "Shai Gilgeous-Alexander",
+        "player_id": "1628983",
+        "classification": "Position-Based",
+        "career_score": 122.07,
+        "per_game_stats": {
+            "PTS": 25.3,
+            "REB": 4.72,
+            "AST": 5.3,
+            "STL": 1.44,
+            "BLK": 0.8,
+            "TOV": 2.31,
+            "FG3M": 1.38,
+            "FG3A": 3.82
+        },
+        "awards_summary": {
+            "MVP": 1,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 1,
+            "All-Defensive": 0,
+            "Champ": 1,
+            "All-Star": 4,
+            "All-NBA 1st Team": 3
+        },
+        "games played": 530
+    },
+    {
+        "name": "Andre Iguodala",
+        "player_id": "2738",
+        "classification": "Position-Based",
+        "career_score": 88.75,
+        "per_game_stats": {
+            "PTS": 11.35,
+            "REB": 4.91,
+            "AST": 4.18,
+            "STL": 1.43,
+            "BLK": 0.51,
+            "TOV": 1.82,
+            "FG3M": 0.88,
+            "FG3A": 2.66
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 1,
+            "All-Defensive": 2,
+            "Champ": 4,
+            "All-Star": 1
+        },
+        "games played": 1231
+    },
+    {
+        "name": "Anthony Edwards",
+        "player_id": "1630162",
+        "classification": "3PT Specialist",
+        "career_score": 87.7,
+        "per_game_stats": {
+            "PTS": 24.56,
+            "REB": 5.25,
+            "AST": 4.13,
+            "STL": 1.33,
+            "BLK": 0.64,
+            "TOV": 2.88,
+            "FG3M": 2.97,
+            "FG3A": 8.05
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 0,
+            "Champ": 0,
+            "All-Star": 4,
+            "All-NBA 2nd Team": 2
+        },
+        "games played": 442
+    },
+    {
+        "name": "Dirk Nowitzki",
+        "player_id": "1717",
+        "classification": "Position-Based",
+        "career_score": 227.68,
+        "per_game_stats": {
+            "PTS": 20.74,
+            "REB": 7.55,
+            "AST": 2.4,
+            "STL": 0.8,
+            "BLK": 0.84,
+            "TOV": 1.64,
+            "FG3M": 1.3,
+            "FG3A": 3.42
+        },
+        "awards_summary": {
+            "MVP": 1,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 1,
+            "All-Defensive": 0,
+            "Champ": 1,
+            "All-Star": 14,
+            "All-NBA 1st Team": 4,
+            "All-NBA 2nd Team": 5,
+            "All-NBA 3rd Team": 3
+        },
+        "games played": 1522
+    },
+    {
+        "name": "Kareem Abdul-Jabbar",
+        "player_id": "76003",
+        "classification": "Rim Protector",
+        "career_score": 465.09,
+        "per_game_stats": {
+            "PTS": 24.61,
+            "REB": 11.18,
+            "AST": 3.63,
+            "STL": 0.74,
+            "BLK": 2.04,
+            "TOV": 1.62,
+            "FG3M": 0.0,
+            "FG3A": 0.01
+        },
+        "awards_summary": {
+            "MVP": 6,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 2,
+            "All-Defensive": 11,
+            "Champ": 6,
+            "All-Star": 19,
+            "All-NBA 1st Team": 10,
+            "All-NBA 2nd Team": 5
+        },
+        "games played": 1560
+    },
+    {
+        "name": "Marc Gasol",
+        "player_id": "201188",
+        "classification": "Position-Based",
+        "career_score": 83.22,
+        "per_game_stats": {
+            "PTS": 14.01,
+            "REB": 7.45,
+            "AST": 3.45,
+            "STL": 0.9,
+            "BLK": 1.38,
+            "TOV": 1.97,
+            "FG3M": 0.55,
+            "FG3A": 1.52
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 1,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 1,
+            "Champ": 1,
+            "All-Star": 3,
+            "All-NBA 1st Team": 1,
+            "All-NBA 2nd Team": 1
+        },
+        "games played": 970
+    },
+    {
+        "name": "Will Bynum",
+        "player_id": "101198",
+        "classification": "Position-Based",
+        "career_score": 16.45,
+        "per_game_stats": {
+            "PTS": 8.11,
+            "REB": 1.56,
+            "AST": 3.29,
+            "STL": 0.71,
+            "BLK": 0.08,
+            "TOV": 1.61,
+            "FG3M": 0.23,
+            "FG3A": 0.86
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 0,
+            "Champ": 0,
+            "All-Star": 0
+        },
+        "games played": 360
+    },
+    {
+        "name": "Kobe Bryant",
+        "player_id": "977",
+        "classification": "Position-Based",
+        "career_score": 406.29,
+        "per_game_stats": {
+            "PTS": 24.99,
+            "REB": 5.24,
+            "AST": 4.68,
+            "STL": 1.44,
+            "BLK": 0.48,
+            "TOV": 2.98,
+            "FG3M": 1.36,
+            "FG3A": 4.12
+        },
+        "awards_summary": {
+            "MVP": 1,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 2,
+            "All-Defensive": 12,
+            "Champ": 5,
+            "All-Star": 18,
+            "All-NBA 1st Team": 11,
+            "All-NBA 2nd Team": 2,
+            "All-NBA 3rd Team": 2
+        },
+        "games played": 1346
+    },
+    {
+        "name": "Dwyane Wade",
+        "player_id": "2548",
+        "classification": "Position-Based",
+        "career_score": 214.97,
+        "per_game_stats": {
+            "PTS": 21.35,
+            "REB": 4.63,
+            "AST": 5.29,
+            "STL": 1.5,
+            "BLK": 0.83,
+            "TOV": 3.09,
+            "FG3M": 0.52,
+            "FG3A": 1.77
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 1,
+            "All-Defensive": 3,
+            "Champ": 3,
+            "All-Star": 13,
+            "All-NBA 1st Team": 2,
+            "All-NBA 2nd Team": 3,
+            "All-NBA 3rd Team": 3
+        },
+        "games played": 1121
+    },
+    {
+        "name": "Kyle Lowry",
+        "player_id": "1629029",
+        "classification": "3PT Specialist",
+        "career_score": 143.1,
+        "per_game_stats": {
+            "PTS": 29.13,
+            "REB": 8.48,
+            "AST": 8.18,
+            "STL": 1.33,
+            "BLK": 0.46,
+            "TOV": 3.92,
+            "FG3M": 3.21,
+            "FG3A": 9.07
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 0,
+            "Champ": 0,
+            "All-Star": 6,
+            "All-NBA 1st Team": 5
+        },
+        "games played": 564
+    },
+    {
+        "name": "Joel Embiid",
+        "player_id": "203954",
+        "classification": "Position-Based",
+        "career_score": 152.69,
+        "per_game_stats": {
+            "PTS": 27.64,
+            "REB": 10.78,
+            "AST": 3.69,
+            "STL": 0.88,
+            "BLK": 1.6,
+            "TOV": 3.38,
+            "FG3M": 1.19,
+            "FG3A": 3.52
+        },
+        "awards_summary": {
+            "MVP": 1,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 3,
+            "Champ": 0,
+            "All-Star": 7,
+            "All-NBA 1st Team": 1,
+            "All-NBA 2nd Team": 4
+        },
+        "games played": 490
+    },
+    {
+        "name": "Derrick Rose",
+        "player_id": "201565",
+        "classification": "Position-Based",
+        "career_score": 65.84,
+        "per_game_stats": {
+            "PTS": 16.94,
+            "REB": 3.12,
+            "AST": 5.03,
+            "STL": 0.74,
+            "BLK": 0.33,
+            "TOV": 2.33,
+            "FG3M": 0.81,
+            "FG3A": 2.54
+        },
+        "awards_summary": {
+            "MVP": 1,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 0,
+            "Champ": 0,
+            "All-Star": 3,
+            "All-NBA 1st Team": 1
+        },
+        "games played": 798
+    },
+    {
+        "name": "Charles Barkley",
+        "player_id": "787",
+        "classification": "Position-Based",
+        "career_score": 196.66,
+        "per_game_stats": {
+            "PTS": 22.14,
+            "REB": 11.69,
+            "AST": 3.93,
+            "STL": 1.54,
+            "BLK": 0.83,
+            "TOV": 3.15,
+            "FG3M": 0.5,
+            "FG3A": 1.88
+        },
+        "awards_summary": {
+            "MVP": 1,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 0,
+            "Champ": 0,
+            "All-Star": 11,
+            "All-NBA 1st Team": 5,
+            "All-NBA 2nd Team": 5,
+            "All-NBA 3rd Team": 1
+        },
+        "games played": 1073
+    },
+    {
+        "name": "Stephen Curry",
+        "player_id": "201939",
+        "classification": "3PT Specialist",
+        "career_score": 265.84,
+        "per_game_stats": {
+            "PTS": 24.82,
+            "REB": 4.65,
+            "AST": 6.31,
+            "STL": 1.5,
+            "BLK": 0.26,
+            "TOV": 3.09,
+            "FG3M": 3.97,
+            "FG3A": 9.42
+        },
+        "awards_summary": {
+            "MVP": 2,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 1,
+            "All-Defensive": 0,
+            "Champ": 4,
+            "All-Star": 12,
+            "All-NBA 1st Team": 4,
+            "All-NBA 2nd Team": 5,
+            "All-NBA 3rd Team": 2
+        },
+        "games played": 1069
+    },
+    {
+        "name": "Larry Bird",
+        "player_id": "1449",
+        "classification": "Playmaker",
+        "career_score": 290.84,
+        "per_game_stats": {
+            "PTS": 24.29,
+            "REB": 10.0,
+            "AST": 6.35,
+            "STL": 1.73,
+            "BLK": 0.84,
+            "TOV": 3.14,
+            "FG3M": 0.72,
+            "FG3A": 1.93
+        },
+        "awards_summary": {
+            "MVP": 3,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 2,
+            "All-Defensive": 3,
+            "Champ": 3,
+            "All-Star": 12,
+            "All-NBA 1st Team": 9,
+            "All-NBA 2nd Team": 1
+        },
+        "games played": 897
+    },
+    {
+        "name": "Kawhi Leonard",
+        "player_id": "202695",
+        "classification": "Position-Based",
+        "career_score": 219.28,
+        "per_game_stats": {
+            "PTS": 20.73,
+            "REB": 6.36,
+            "AST": 3.1,
+            "STL": 1.73,
+            "BLK": 0.62,
+            "TOV": 1.69,
+            "FG3M": 1.7,
+            "FG3A": 4.35
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 2,
+            "6MOY": 0,
+            "Finals MVP": 2,
+            "All-Defensive": 7,
+            "Champ": 2,
+            "All-Star": 7,
+            "All-NBA 1st Team": 3,
+            "All-NBA 2nd Team": 3
+        },
+        "games played": 798
+    },
+    {
+        "name": "Giannis Antetokounmpo",
+        "player_id": "203507",
+        "classification": "Position-Based",
+        "career_score": 251.14,
+        "per_game_stats": {
+            "PTS": 24.06,
+            "REB": 9.92,
+            "AST": 5.01,
+            "STL": 1.11,
+            "BLK": 1.22,
+            "TOV": 3.02,
+            "FG3M": 0.62,
+            "FG3A": 2.18
+        },
+        "awards_summary": {
+            "MVP": 2,
+            "ROY": 0,
+            "DPOY": 1,
+            "6MOY": 0,
+            "Finals MVP": 1,
+            "All-Defensive": 5,
+            "Champ": 1,
+            "All-Star": 10,
+            "All-NBA 1st Team": 7,
+            "All-NBA 2nd Team": 2
+        },
+        "games played": 895
+    },
+    {
+        "name": "Michael Jordan",
+        "player_id": "893",
+        "classification": "Position-Based",
+        "career_score": 447.71,
+        "per_game_stats": {
+            "PTS": 30.12,
+            "REB": 6.22,
+            "AST": 5.25,
+            "STL": 2.35,
+            "BLK": 0.83,
+            "TOV": 2.73,
+            "FG3M": 0.54,
+            "FG3A": 1.66
+        },
+        "awards_summary": {
+            "MVP": 5,
+            "ROY": 0,
+            "DPOY": 1,
+            "6MOY": 0,
+            "Finals MVP": 6,
+            "All-Defensive": 9,
+            "Champ": 6,
+            "All-Star": 14,
+            "All-NBA 1st Team": 10,
+            "All-NBA 2nd Team": 1
+        },
+        "games played": 1072
+    },
+    {
+        "name": "Hakeem Olajuwon",
+        "player_id": "165",
+        "classification": "Rim Protector",
+        "career_score": 318.03,
+        "per_game_stats": {
+            "PTS": 21.77,
+            "REB": 11.11,
+            "AST": 2.47,
+            "STL": 1.75,
+            "BLK": 3.09,
+            "TOV": 2.96,
+            "FG3M": 0.02,
+            "FG3A": 0.1
+        },
+        "awards_summary": {
+            "MVP": 1,
+            "ROY": 0,
+            "DPOY": 2,
+            "6MOY": 0,
+            "Finals MVP": 2,
+            "All-Defensive": 9,
+            "Champ": 2,
+            "All-Star": 12,
+            "All-NBA 1st Team": 6,
+            "All-NBA 2nd Team": 3,
+            "All-NBA 3rd Team": 3
+        },
+        "games played": 1238
+    },
+    {
+        "name": "Kevin Garnett",
+        "player_id": "708",
+        "classification": "Position-Based",
+        "career_score": 277.37,
+        "per_game_stats": {
+            "PTS": 17.49,
+            "REB": 9.92,
+            "AST": 3.66,
+            "STL": 1.26,
+            "BLK": 1.36,
+            "TOV": 2.14,
+            "FG3M": 0.12,
+            "FG3A": 0.42
+        },
+        "awards_summary": {
+            "MVP": 1,
+            "ROY": 0,
+            "DPOY": 1,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 12,
+            "Champ": 1,
+            "All-Star": 15,
+            "All-NBA 1st Team": 4,
+            "All-NBA 2nd Team": 3,
+            "All-NBA 3rd Team": 2
+        },
+        "games played": 1509
+    },
+    {
+        "name": "Shane Battier",
+        "player_id": "2203",
+        "classification": "Position-Based",
+        "career_score": 49.97,
+        "per_game_stats": {
+            "PTS": 8.53,
+            "REB": 4.21,
+            "AST": 1.8,
+            "STL": 1.0,
+            "BLK": 0.93,
+            "TOV": 0.9,
+            "FG3M": 1.28,
+            "FG3A": 3.32
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 2,
+            "Champ": 2,
+            "All-Star": 0
+        },
+        "games played": 1059
+    },
+    {
+        "name": "Chris Paul",
+        "player_id": "101108",
+        "classification": "Position-Based",
+        "career_score": 236.86,
+        "per_game_stats": {
+            "PTS": 16.83,
+            "REB": 4.38,
+            "AST": 9.16,
+            "STL": 1.99,
+            "BLK": 0.16,
+            "TOV": 2.27,
+            "FG3M": 1.36,
+            "FG3A": 3.69
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 9,
+            "Champ": 0,
+            "All-Star": 12,
+            "All-NBA 1st Team": 4,
+            "All-NBA 2nd Team": 5,
+            "All-NBA 3rd Team": 2
+        },
+        "games played": 1370
+    },
+    {
+        "name": "Kevin Durant",
+        "player_id": "201142",
+        "classification": "Position-Based",
+        "career_score": 269.84,
+        "per_game_stats": {
+            "PTS": 27.21,
+            "REB": 6.86,
+            "AST": 4.42,
+            "STL": 1.02,
+            "BLK": 1.13,
+            "TOV": 3.17,
+            "FG3M": 1.98,
+            "FG3A": 5.05
+        },
+        "awards_summary": {
+            "MVP": 1,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 2,
+            "All-Defensive": 0,
+            "Champ": 2,
+            "All-Star": 16,
+            "All-NBA 1st Team": 6,
+            "All-NBA 2nd Team": 5
+        },
+        "games played": 1248
+    },
+    {
+        "name": "Chirs Kaman",
+        "player_id": "2549",
+        "classification": "Position-Based",
+        "career_score": 28.85,
+        "per_game_stats": {
+            "PTS": 11.17,
+            "REB": 7.59,
+            "AST": 1.25,
+            "STL": 0.44,
+            "BLK": 1.27,
+            "TOV": 2.1,
+            "FG3M": 0.0,
+            "FG3A": 0.03
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 0,
+            "Champ": 0,
+            "All-Star": 1
+        },
+        "games played": 735
+    },
+    {
+        "name": "Russell Westbrook",
+        "player_id": "201566",
+        "classification": "Playmaker",
+        "career_score": 163.44,
+        "per_game_stats": {
+            "PTS": 20.62,
+            "REB": 6.88,
+            "AST": 7.93,
+            "STL": 1.54,
+            "BLK": 0.33,
+            "TOV": 3.85,
+            "FG3M": 1.15,
+            "FG3A": 3.74
+        },
+        "awards_summary": {
+            "MVP": 1,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 0,
+            "Champ": 0,
+            "All-Star": 9,
+            "All-NBA 1st Team": 2,
+            "All-NBA 2nd Team": 5,
+            "All-NBA 3rd Team": 2
+        },
+        "games played": 1374
+    },
+    {
+        "name": "Tim Duncan",
+        "player_id": "1495",
+        "classification": "Rim Protector",
+        "career_score": 425.64,
+        "per_game_stats": {
+            "PTS": 19.03,
+            "REB": 10.84,
+            "AST": 3.04,
+            "STL": 0.74,
+            "BLK": 2.17,
+            "TOV": 2.43,
+            "FG3M": 0.02,
+            "FG3A": 0.12
+        },
+        "awards_summary": {
+            "MVP": 2,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 3,
+            "All-Defensive": 15,
+            "Champ": 5,
+            "All-Star": 15,
+            "All-NBA 1st Team": 10,
+            "All-NBA 2nd Team": 3,
+            "All-NBA 3rd Team": 2
+        },
+        "games played": 1392
+    },
+    {
+        "name": "Steve Nash",
+        "player_id": "959",
+        "classification": "Playmaker",
+        "career_score": 146.18,
+        "per_game_stats": {
+            "PTS": 14.29,
+            "REB": 2.99,
+            "AST": 8.49,
+            "STL": 0.74,
+            "BLK": 0.08,
+            "TOV": 2.86,
+            "FG3M": 1.38,
+            "FG3A": 3.24
+        },
+        "awards_summary": {
+            "MVP": 2,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 0,
+            "Champ": 0,
+            "All-Star": 8,
+            "All-NBA 1st Team": 3,
+            "All-NBA 2nd Team": 2,
+            "All-NBA 3rd Team": 2
+        },
+        "games played": 1217
+    },
+    {
+        "name": "Nikola Joki\u0107",
+        "player_id": "203999",
+        "classification": "Playmaker",
+        "career_score": 197.65,
+        "per_game_stats": {
+            "PTS": 22.23,
+            "REB": 11.08,
+            "AST": 7.51,
+            "STL": 1.29,
+            "BLK": 0.73,
+            "TOV": 2.99,
+            "FG3M": 1.14,
+            "FG3A": 3.16
+        },
+        "awards_summary": {
+            "MVP": 3,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 1,
+            "All-Defensive": 0,
+            "Champ": 1,
+            "All-Star": 8,
+            "All-NBA 1st Team": 5,
+            "All-NBA 2nd Team": 2
+        },
+        "games played": 810
+    },
+    {
+        "name": "Anthony Davis",
+        "player_id": "203076",
+        "classification": "Rim Protector",
+        "career_score": 179.47,
+        "per_game_stats": {
+            "PTS": 24.06,
+            "REB": 10.75,
+            "AST": 2.62,
+            "STL": 1.3,
+            "BLK": 2.28,
+            "TOV": 2.01,
+            "FG3M": 0.49,
+            "FG3A": 1.67
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 5,
+            "Champ": 1,
+            "All-Star": 10,
+            "All-NBA 1st Team": 4,
+            "All-NBA 2nd Team": 1
+        },
+        "games played": 858
+    },
+    {
+        "name": "Vince Carter",
+        "player_id": "1713",
+        "classification": "Position-Based",
+        "career_score": 86.09,
+        "per_game_stats": {
+            "PTS": 16.93,
+            "REB": 4.31,
+            "AST": 3.07,
+            "STL": 1.01,
+            "BLK": 0.57,
+            "TOV": 1.68,
+            "FG3M": 1.5,
+            "FG3A": 4.02
+        },
+        "awards_summary": {
+            "MVP": 0,
+            "ROY": 0,
+            "DPOY": 0,
+            "6MOY": 0,
+            "Finals MVP": 0,
+            "All-Defensive": 0,
+            "Champ": 0,
+            "All-Star": 8,
+            "All-NBA 2nd Team": 1,
+            "All-NBA 3rd Team": 1
+        },
+        "games played": 1691
+    }
+]
