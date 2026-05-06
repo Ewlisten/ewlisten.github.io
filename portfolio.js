@@ -965,201 +965,231 @@ function ccInit() {
     .catch(function(err) { console.warn('Career comparison: cannot load player_profiles.json', err); });
 }
 
-// ── LAP DELTA ANALYZER (F1) ──────────────────────────────────────────────────
+// ── MULTI-DRIVER TELEMETRY (LEC / STR / PIA — Canada / Jeddah / Miami) ────────
 
-var ldInited = false;
+var mltInited = false;
 
-var LD = {
-  canvas: null, ctx: null,
-  laps: [], maxDelta: 1,
-  revealCount: 0, timers: [],
-  hoveredBar: null,
+var MLT = {
+  canvas:  null,
+  ctx:     null,
+  race:    'canada',
+  channel: 'speed',
+  mode:    'speed',
+  drivers: { LEC: true, STR: true, PIA: true },
+  data:    { LEC: [], STR: [], PIA: [] },
+  colors:  { LEC: '#DC0000', STR: '#00A550', PIA: '#FF8000' },
+  maxTime: 0,
+  scrubT:  null,
+  hoverT:  null,
+  PAD:     { L: 48, R: 16, T: 18, B: 36 },
 };
 
-function ldGenerateLaps() {
-  var out = [];
-  for (var i = 1; i <= 78; i++) {
-    var d;
-    // Pit laps produce big swings — the pitting driver loses 25s+ on that lap
-    if (i === 24) { d = -3.1; }                    // VER pits — his lap time huge, LEC faster
-    else if (i === 28) { d = 2.9; }                // LEC pits
-    else if (i === 47) { d = -2.4; }               // VER 2nd stop
-    else if (i === 52) { d = 2.6; }                // LEC 2nd stop
-    else if (i === 22 || i === 23) { d = i === 22 ? -0.55 : 0.38; }  // VSC
-    else if (i <= 8)  { d = Math.sin(i * 0.55) * 0.12 - 0.06; }     // LEC managing gap
-    else if (i <= 21) { d = Math.sin(i * 0.42) * 0.11 - 0.03; }     // balanced
-    else if (i >= 25 && i <= 27) { d = 0.32 + Math.sin(i * 1.1) * 0.06; } // VER on fresh softs
-    else if (i >= 29 && i <= 46) { d = 0.07 + Math.sin(i * 0.66) * 0.07; }// VER edging
-    else if (i >= 48 && i <= 51) { d = 0.22 + Math.sin(i * 0.9) * 0.05; } // VER clear
-    else if (i >= 53 && i <= 78) { d = 0.04 + Math.sin(i * 0.53) * 0.06; }// settle
-    else { d = Math.sin(i * 0.37) * 0.09; }
+var MLT_CHANNEL_RANGE = {
+  speed:    { min: 0, max: 350, unit: 'km/h', label: 'SPEED' },
+  throttle: { min: 0, max: 100, unit: '%',    label: 'THROTTLE' },
+  brake:    { min: 0, max: 1,   unit: '',     label: 'BRAKE ON' },
+};
 
-    // Sectors: split delta across S1/S2/S3 with slight variance via sin
-    var s1 = d * 0.30 + Math.sin(i * 1.27) * 0.013;
-    var s2 = d * 0.43 + Math.sin(i * 1.81) * 0.011;
-    var s3 = d - s1 - s2;
-
-    var tyre = i <= 24 ? 'S' : (i <= 47 ? 'M' : 'H');
-    out.push({
-      lap: i,
-      delta: Math.round(d * 1000) / 1000,
-      s1: Math.round(s1 * 1000) / 1000,
-      s2: Math.round(s2 * 1000) / 1000,
-      s3: Math.round(s3 * 1000) / 1000,
-      tyre: tyre
-    });
-  }
-  return out;
+function mltInterp(data, t) {
+  if (!data || !data.length) return null;
+  if (t <= data[0].time) return data[0];
+  if (t >= data[data.length-1].time) return data[data.length-1];
+  var lo = 0, hi = data.length - 1;
+  while (hi - lo > 1) { var mid = (lo + hi) >> 1; if (data[mid].time <= t) lo = mid; else hi = mid; }
+  var p0 = data[lo], p1 = data[hi], frac = (t - p0.time) / (p1.time - p0.time);
+  return { time: t, speed: p0.speed + (p1.speed - p0.speed) * frac, throttle: p0.throttle + (p1.throttle - p0.throttle) * frac, brake: p0.brake + (p1.brake - p0.brake) * frac };
 }
 
-function ldDraw() {
-  var canvas = LD.canvas, ctx = LD.ctx;
-  if (!ctx || !canvas.width) return;
+function mltToX(t) {
+  var W = MLT.canvas.width, PAD = MLT.PAD;
+  return PAD.L + (t / MLT.maxTime) * (W - PAD.L - PAD.R);
+}
 
-  var W = canvas.width, H = canvas.height;
-  var PL = 50, PR = 16, PT = 18, PB = 34;
-  var chartW = W - PL - PR;
-  var zeroY  = PT + (H - PT - PB) / 2;
-  var maxBarH = (H - PT - PB) / 2 - 5;
-  var barW   = chartW / LD.laps.length;
+function mltToY(val) {
+  var H = MLT.canvas.height, PAD = MLT.PAD;
+  var rng = MLT_CHANNEL_RANGE[MLT.channel];
+  return PAD.T + (1 - (val - rng.min) / (rng.max - rng.min)) * (H - PAD.T - PAD.B);
+}
+
+function mltDraw() {
+  var canvas = MLT.canvas, ctx = MLT.ctx;
+  if (!ctx || !canvas.width || !MLT.maxTime) return;
+  var W = canvas.width, H = canvas.height, PAD = MLT.PAD;
+  var rng = MLT_CHANNEL_RANGE[MLT.channel];
+  var DRVS = ['LEC', 'STR', 'PIA'];
 
   ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#060608'; ctx.fillRect(0, 0, W, H);
 
-  // Background
-  ctx.fillStyle = '#080808';
-  ctx.fillRect(0, 0, W, H);
+  for (var g = 0; g <= 5; g++) {
+    var gv = g * rng.max / 5, gy = mltToY(gv);
+    ctx.strokeStyle = g === 0 ? 'rgba(255,255,255,.06)' : 'rgba(255,255,255,.025)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(PAD.L, gy); ctx.lineTo(W - PAD.R, gy); ctx.stroke();
+    ctx.fillStyle = 'rgba(255,255,255,.2)'; ctx.font = '8px "Roboto Mono",monospace'; ctx.textAlign = 'right';
+    var gl = MLT.channel === 'brake' ? (gv > 0.5 ? 'ON' : (gv < 0.1 ? 'OFF' : '')) : Math.round(gv) + (rng.unit ? ' ' + rng.unit : '');
+    ctx.fillText(gl, PAD.L - 4, gy + 3);
+  }
+  var tick = 10;
+  while (tick < MLT.maxTime) {
+    var tx = mltToX(tick);
+    ctx.strokeStyle = 'rgba(255,255,255,.04)'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(tx, PAD.T); ctx.lineTo(tx, H - PAD.B); ctx.stroke();
+    ctx.fillStyle = 'rgba(255,255,255,.18)'; ctx.font = '8px "Roboto Mono",monospace'; ctx.textAlign = 'center';
+    ctx.fillText(tick + 's', tx, H - PAD.B + 13); tick += 10;
+  }
+  ctx.save(); ctx.translate(10, H / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillStyle = 'rgba(255,255,255,.12)'; ctx.font = '8px "Roboto Mono",monospace'; ctx.textAlign = 'center';
+  ctx.fillText(rng.label, 0, 0); ctx.restore();
 
-  // Driver side labels
-  ctx.font = '700 9px Oswald,sans-serif'; ctx.textAlign = 'right';
-  ctx.fillStyle = 'rgba(245,132,38,.55)'; ctx.fillText('VER', PL - 7, zeroY - 6);
-  ctx.fillStyle = 'rgba(220,0,0,.55)';    ctx.fillText('LEC', PL - 7, zeroY + 17);
-
-  // Zero line
-  ctx.strokeStyle = '#1e1e14'; ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(PL, zeroY); ctx.lineTo(W - PR, zeroY); ctx.stroke();
-
-  // Bars
-  for (var i = 0; i < Math.min(LD.revealCount, LD.laps.length); i++) {
-    var lap  = LD.laps[i];
-    var x    = PL + i * barW;
-    var bh   = Math.min(Math.abs(lap.delta) / LD.maxDelta * maxBarH, maxBarH);
-    var isA  = lap.delta >= 0;  // VER faster
-    var isPit = Math.abs(lap.delta) > 2;
-    var isHov = i === LD.hoveredBar;
-
-    // Tyre rail at bottom
-    var tyreCol = lap.tyre === 'S' ? 'rgba(255,68,68,0.45)' : lap.tyre === 'M' ? 'rgba(255,238,68,0.45)' : 'rgba(220,220,220,0.35)';
-    ctx.fillStyle = tyreCol;
-    ctx.fillRect(x + 0.5, H - PB + 5, barW - 1, 3);
-
-    // Bar color
-    if (isA) {
-      ctx.fillStyle = isHov ? 'rgba(245,132,38,0.92)' : isPit ? 'rgba(245,132,38,0.2)' : 'rgba(245,132,38,0.65)';
-      ctx.fillRect(x + 0.5, zeroY - bh, barW - 1, bh);
-    } else {
-      ctx.fillStyle = isHov ? 'rgba(220,0,0,0.92)' : isPit ? 'rgba(220,0,0,0.2)' : 'rgba(220,0,0,0.65)';
-      ctx.fillRect(x + 0.5, zeroY, barW - 1, bh);
-    }
-
-    // Hover outline
-    if (isHov) {
-      ctx.strokeStyle = isA ? '#F58426' : '#DC0000';
-      ctx.lineWidth = 1;
-      if (isA) ctx.strokeRect(x + 0.5, zeroY - bh, barW - 1, bh);
-      else     ctx.strokeRect(x + 0.5, zeroY, barW - 1, bh);
-    }
-
-    // Lap number ticks every 10
-    if (lap.lap % 10 === 0) {
-      ctx.fillStyle = 'rgba(255,255,255,0.18)';
-      ctx.font = '8px "Roboto Mono",monospace'; ctx.textAlign = 'center';
-      ctx.fillText(lap.lap, x + barW / 2, H - PB + 16);
-    }
+  if (MLT.mode === 'delta') {
+    var steps = 200, dt = MLT.maxTime / steps;
+    DRVS.forEach(function(drv) {
+      if (!MLT.drivers[drv] || !MLT.data[drv].length) return;
+      var aCol = { LEC:'rgba(220,0,0,0.15)', STR:'rgba(0,165,80,0.15)', PIA:'rgba(255,128,0,0.15)' };
+      var topPts = [], botPts = [];
+      for (var s = 0; s <= steps; s++) {
+        var t2 = s * dt, myPt = mltInterp(MLT.data[drv], t2);
+        if (!myPt) continue;
+        var myV = myPt[MLT.channel], bestV = myV;
+        DRVS.forEach(function(d2) { if (!MLT.drivers[d2] || !MLT.data[d2].length) return; var p2 = mltInterp(MLT.data[d2], t2); if (p2) bestV = Math.max(bestV, p2[MLT.channel]); });
+        topPts.push({ x: mltToX(t2), y: mltToY(myV) }); botPts.push({ x: mltToX(t2), y: mltToY(bestV) });
+      }
+      if (!topPts.length) return;
+      ctx.beginPath(); ctx.moveTo(topPts[0].x, topPts[0].y);
+      topPts.forEach(function(p) { ctx.lineTo(p.x, p.y); });
+      for (var i = botPts.length - 1; i >= 0; i--) ctx.lineTo(botPts[i].x, botPts[i].y);
+      ctx.closePath(); ctx.fillStyle = aCol[drv] || 'rgba(255,255,255,.08)'; ctx.fill();
+    });
   }
 
-  // "LAP" axis label
-  ctx.fillStyle = 'rgba(255,255,255,0.1)';
-  ctx.font = '8px "Roboto Mono",monospace'; ctx.textAlign = 'center';
-  ctx.fillText('LAP', W / 2, H - 4);
-}
-
-function ldAnimate() {
-  LD.timers.forEach(function(t) { clearTimeout(t); });
-  LD.timers = [];
-  LD.revealCount = 0;
-  for (var i = 0; i <= LD.laps.length; i++) {
-    (function(n) {
-      var t = setTimeout(function() { LD.revealCount = n; ldDraw(); }, n * 16);
-      LD.timers.push(t);
-    })(i);
-  }
-}
-
-function ldReplay() { ldAnimate(); }
-
-function ldUpdateHoverPanel(lap) {
-  var panel = document.getElementById('ld-hover-panel');
-  if (!panel) return;
-  if (!lap) { panel.style.opacity = '0.3'; document.getElementById('ld-hp-lap').textContent = 'Hover a bar'; document.getElementById('ld-hp-delta').textContent = '—'; document.getElementById('ld-hp-s1').textContent = 'S1 —'; document.getElementById('ld-hp-s2').textContent = 'S2 —'; document.getElementById('ld-hp-s3').textContent = 'S3 —'; document.getElementById('ld-hp-tyre').textContent = '—'; return; }
-  panel.style.opacity = '1';
-  document.getElementById('ld-hp-lap').textContent = 'Lap ' + lap.lap;
-  var sign = lap.delta >= 0 ? 'VER +' : 'LEC +';
-  var dEl = document.getElementById('ld-hp-delta');
-  dEl.textContent = sign + Math.abs(lap.delta).toFixed(3) + 's';
-  dEl.style.color = lap.delta >= 0 ? '#F58426' : '#DC0000';
-  document.getElementById('ld-hp-s1').textContent = 'S1 ' + (lap.s1 >= 0 ? '+' : '') + lap.s1.toFixed(3) + 's';
-  document.getElementById('ld-hp-s2').textContent = 'S2 ' + (lap.s2 >= 0 ? '+' : '') + lap.s2.toFixed(3) + 's';
-  document.getElementById('ld-hp-s3').textContent = 'S3 ' + (lap.s3 >= 0 ? '+' : '') + lap.s3.toFixed(3) + 's';
-  var tyreNames = { S: '● Soft', M: '● Medium', H: '● Hard' };
-  var tyreColors = { S: '#FF4444', M: '#FFEE44', H: '#DDDDDD' };
-  var tyreEl = document.getElementById('ld-hp-tyre');
-  tyreEl.textContent = tyreNames[lap.tyre] || lap.tyre;
-  tyreEl.style.color = tyreColors[lap.tyre] || '#888';
-}
-
-function ldInit() {
-  LD.canvas = document.getElementById('ld-canvas');
-  if (!LD.canvas) return;
-  LD.ctx    = LD.canvas.getContext('2d');
-  LD.laps   = ldGenerateLaps();
-  LD.maxDelta = Math.max.apply(null, LD.laps.map(function(l) { return Math.abs(l.delta); }));
-
-  var stage = document.getElementById('ld-stage');
-  if (stage) { LD.canvas.width = stage.offsetWidth; LD.canvas.height = 190; }
-
-  LD.canvas.addEventListener('mousemove', function(e) {
-    var rect = LD.canvas.getBoundingClientRect();
-    var sc   = LD.canvas.width / rect.width;
-    var mx   = (e.clientX - rect.left) * sc;
-    var PL = 50, barW = (LD.canvas.width - PL - 16) / LD.laps.length;
-    var idx  = Math.floor((mx - PL) / barW);
-    if (idx >= 0 && idx < LD.laps.length && idx < LD.revealCount) {
-      LD.hoveredBar = idx;
-      LD.canvas.style.cursor = 'crosshair';
-      ldUpdateHoverPanel(LD.laps[idx]);
-    } else {
-      LD.hoveredBar = null;
-      LD.canvas.style.cursor = 'default';
-      ldUpdateHoverPanel(null);
-    }
-    ldDraw();
+  DRVS.forEach(function(drv) {
+    if (!MLT.drivers[drv] || !MLT.data[drv].length) return;
+    ctx.beginPath(); var first = true;
+    MLT.data[drv].forEach(function(pt) { var x = mltToX(pt.time), y = mltToY(pt[MLT.channel]); if (first) { ctx.moveTo(x, y); first = false; } else ctx.lineTo(x, y); });
+    ctx.strokeStyle = MLT.colors[drv]; ctx.lineWidth = MLT.mode === 'delta' ? 1.8 : 1.4; ctx.globalAlpha = 0.85; ctx.stroke(); ctx.globalAlpha = 1;
   });
 
-  LD.canvas.addEventListener('mouseleave', function() {
-    LD.hoveredBar = null;
-    ldUpdateHoverPanel(null);
-    ldDraw();
+  var activeT = MLT.hoverT !== null ? MLT.hoverT : MLT.scrubT;
+  if (activeT !== null && MLT.maxTime > 0) {
+    var lx = mltToX(activeT);
+    ctx.strokeStyle = 'rgba(255,255,255,.22)'; ctx.lineWidth = 1; ctx.setLineDash([3,3]);
+    ctx.beginPath(); ctx.moveTo(lx, PAD.T); ctx.lineTo(lx, H - PAD.B); ctx.stroke(); ctx.setLineDash([]);
+    DRVS.forEach(function(drv) {
+      if (!MLT.drivers[drv] || !MLT.data[drv].length) return;
+      var pt = mltInterp(MLT.data[drv], activeT); if (!pt) return;
+      var cy = mltToY(pt[MLT.channel]);
+      ctx.beginPath(); ctx.arc(lx, cy, 4, 0, Math.PI*2); ctx.fillStyle = '#060608'; ctx.fill();
+      ctx.strokeStyle = MLT.colors[drv]; ctx.lineWidth = 2; ctx.stroke();
+    });
+  }
+
+  var lx2 = W - PAD.R - 4, liA = 0;
+  DRVS.forEach(function(drv) {
+    if (!MLT.drivers[drv]) return;
+    var ly = PAD.T + 10 + liA * 18;
+    ctx.beginPath(); ctx.moveTo(lx2 - 20, ly); ctx.lineTo(lx2 - 6, ly);
+    ctx.strokeStyle = MLT.colors[drv]; ctx.lineWidth = 2; ctx.stroke();
+    ctx.fillStyle = MLT.colors[drv]; ctx.font = '700 9px Oswald,sans-serif'; ctx.textAlign = 'right';
+    ctx.fillText(drv, lx2 - 25, ly + 3.5); liA++;
+  });
+}
+
+function mltUpdateStatRow(t) {
+  var timeEl = document.getElementById('mlt-s-time'); if (timeEl) timeEl.textContent = t.toFixed(2) + 's';
+  var DRVS = ['LEC', 'STR', 'PIA'], rng = MLT_CHANNEL_RANGE[MLT.channel];
+  var best = -Infinity, leadDrv = null;
+  DRVS.forEach(function(drv) {
+    var el = document.getElementById('mlt-s-' + drv);
+    if (!MLT.data[drv].length) { if (el) el.textContent = '—'; return; }
+    var pt = mltInterp(MLT.data[drv], t); if (!pt) { if (el) el.textContent = '—'; return; }
+    var v = pt[MLT.channel];
+    var txt = MLT.channel === 'brake' ? (v > 0.5 ? 'ON' : 'OFF') : Math.round(v) + (rng.unit || '');
+    if (el) el.textContent = MLT.drivers[drv] ? txt : '—';
+    if (MLT.drivers[drv] && v > best) { best = v; leadDrv = drv; }
+  });
+  var leadEl = document.getElementById('mlt-s-lead');
+  if (leadEl) { leadEl.textContent = leadDrv || '—'; leadEl.style.color = leadDrv ? MLT.colors[leadDrv] : 'rgba(255,255,255,.7)'; }
+}
+
+function mltLoadRace(race) {
+  MLT.race = race; MLT.data = { LEC: [], STR: [], PIA: [] }; MLT.maxTime = 0;
+  var drivers = ['LEC', 'STR', 'PIA'], loaded = 0;
+  drivers.forEach(function(drv) {
+    fetch('telemetry_' + drv + '_' + race + '.json')
+      .then(function(r) { return r.json(); })
+      .then(function(d) {
+        MLT.data[drv] = d;
+        if (d.length) { var last = d[d.length-1].time; if (last > MLT.maxTime) MLT.maxTime = last; }
+        loaded++; if (loaded === drivers.length) { var sc = document.getElementById('mlt-scrubber'); if (sc) sc.max = Math.round(MLT.maxTime * 10); mltDraw(); }
+      }).catch(function() { loaded++; });
+  });
+}
+
+function mltSelectRace(race, btn) {
+  document.querySelectorAll('.mlt-race-btn').forEach(function(b) { b.classList.remove('active'); }); btn.classList.add('active');
+  MLT.scrubT = null; var sc = document.getElementById('mlt-scrubber'); if (sc) sc.value = 0;
+  mltLoadRace(race);
+  var cap = document.getElementById('mlt-caption'), rl = { canada:'Canada 2025', jeddah:'Jeddah 2025', miami:'Miami 2025' };
+  if (cap) cap.textContent = 'Fig 03 — Multi-driver telemetry \xb7 ' + (rl[race]||race) + ' \xb7 ' + MLT_CHANNEL_RANGE[MLT.channel].label + ' channel. Hover to scrub. Δ DELTA mode shows gain/loss regions.';
+}
+
+function mltToggleDriver(drv, btn) { MLT.drivers[drv] = !MLT.drivers[drv]; btn.classList.toggle('active', MLT.drivers[drv]); mltDraw(); }
+
+function mltSelectChannel(ch, btn) {
+  MLT.channel = ch;
+  document.querySelectorAll('.mlt-ch-btn').forEach(function(b) { b.classList.remove('active'); }); btn.classList.add('active'); mltDraw();
+}
+
+function mltToggleMode() {
+  MLT.mode = MLT.mode === 'speed' ? 'delta' : 'speed';
+  var mb = document.getElementById('mlt-mode-btn'); if (mb) mb.textContent = MLT.mode === 'delta' ? '— SPEED' : 'Δ DELTA'; mltDraw();
+}
+
+function mltScrub(val) {
+  if (!MLT.maxTime) return;
+  var sc = document.getElementById('mlt-scrubber'), maxVal = sc ? parseInt(sc.max) : 1000;
+  MLT.scrubT = (val / maxVal) * MLT.maxTime; mltUpdateStatRow(MLT.scrubT); mltDraw();
+}
+
+function mltInit() {
+  MLT.canvas = document.getElementById('mlt-canvas');
+  if (!MLT.canvas) return;
+  MLT.ctx = MLT.canvas.getContext('2d');
+  var stage = document.getElementById('mlt-stage');
+  if (stage) { MLT.canvas.width = stage.offsetWidth; MLT.canvas.height = 220; }
+
+  MLT.canvas.addEventListener('mousemove', function(e) {
+    var rect = MLT.canvas.getBoundingClientRect(), scaleX = MLT.canvas.width / rect.width;
+    var mx = (e.clientX - rect.left) * scaleX, PAD = MLT.PAD;
+    var t = ((mx - PAD.L) / (MLT.canvas.width - PAD.L - PAD.R)) * MLT.maxTime;
+    t = Math.max(0, Math.min(MLT.maxTime, t)); MLT.hoverT = t;
+    var stageEl = document.getElementById('mlt-stage'), tt = document.getElementById('mlt-tooltip');
+    if (tt && stageEl) {
+      var DRVS = ['LEC','STR','PIA'], rng = MLT_CHANNEL_RANGE[MLT.channel];
+      var lines = DRVS.filter(function(d) { return MLT.drivers[d] && MLT.data[d].length; }).map(function(d) {
+        var pt = mltInterp(MLT.data[d], t), v = pt ? pt[MLT.channel] : null;
+        var txt = v == null ? '—' : MLT.channel === 'brake' ? (v > 0.5 ? 'ON' : 'OFF') : Math.round(v) + rng.unit;
+        return '<span style="color:' + MLT.colors[d] + '">' + d + '</span> ' + txt;
+      });
+      tt.innerHTML = t.toFixed(2) + 's<br>' + lines.join('<br>');
+      var sr = stageEl.getBoundingClientRect();
+      tt.style.left = (e.clientX - sr.left + 14) + 'px'; tt.style.top = (e.clientY - sr.top - 12) + 'px'; tt.style.opacity = '1';
+    }
+    mltUpdateStatRow(t); mltDraw();
+  });
+
+  MLT.canvas.addEventListener('mouseleave', function() {
+    MLT.hoverT = null; var tt = document.getElementById('mlt-tooltip'); if (tt) tt.style.opacity = '0'; mltDraw();
   });
 
   window.addEventListener('resize', function() {
-    var stage = document.getElementById('ld-stage');
-    if (!stage || !LD.canvas) return;
-    LD.canvas.width = stage.offsetWidth;
-    ldDraw();
+    var stageEl = document.getElementById('mlt-stage'); if (!stageEl || !MLT.canvas) return;
+    MLT.canvas.width = stageEl.offsetWidth; mltDraw();
   });
 
-  setTimeout(ldAnimate, 350);
+  mltLoadRace('canada');
 }
+
 
 
 // ── SHOT TRAJECTORY VIEWER (CV) ───────────────────────────────────────────────
@@ -1459,19 +1489,17 @@ function trInit() {
 
 var tlmInited = false;
 
+// ── TEAMMATE FASTEST LAP COMPARISON: ANT vs RUS ──────────────────────────────
 var TLM = {
   canvas:  null,
   ctx:     null,
-  race:    'canada',
   channel: 'speed',
-  mode:    'speed',
-  drivers: { LEC: true, STR: true, PIA: true },
-  data:    { LEC: [], STR: [], PIA: [] },
-  colors:  { LEC: '#DC0000', STR: '#00A550', PIA: '#FF8000' },
+  data:    { ANT: [], RUS: [] },
+  colors:  { ANT: '#00D2BE', RUS: '#C6C6C6' },
   maxTime: 0,
   scrubT:  null,
   hoverT:  null,
-  PAD:     { L: 48, R: 16, T: 18, B: 36 },
+  PAD:     { L: 52, R: 16, T: 20, B: 36 },
 };
 
 var TLM_CHANNEL_RANGE = {
@@ -1518,13 +1546,14 @@ function tlmDraw() {
   var W = canvas.width, H = canvas.height;
   var PAD = TLM.PAD;
   var rng = TLM_CHANNEL_RANGE[TLM.channel];
-  var DRVS = ['LEC', 'STR', 'PIA'];
+  var DRVS = ['ANT', 'RUS'];
+  var hasData = TLM.data.ANT.length && TLM.data.RUS.length;
 
   ctx.clearRect(0, 0, W, H);
   ctx.fillStyle = '#060608';
   ctx.fillRect(0, 0, W, H);
 
-  // Horizontal grid lines
+  // Horizontal grid lines + Y-axis labels
   for (var g = 0; g <= 5; g++) {
     var gv = g * rng.max / 5;
     var gy = tlmToY(gv);
@@ -1533,7 +1562,9 @@ function tlmDraw() {
     ctx.beginPath(); ctx.moveTo(PAD.L, gy); ctx.lineTo(W - PAD.R, gy); ctx.stroke();
     ctx.fillStyle = 'rgba(255,255,255,.2)';
     ctx.font = '8px "Roboto Mono",monospace'; ctx.textAlign = 'right';
-    var glabel = TLM.channel === 'brake' ? (gv > 0.5 ? 'ON' : (gv < 0.1 ? 'OFF' : '')) : Math.round(gv) + (rng.unit ? ' ' + rng.unit : '');
+    var glabel = TLM.channel === 'brake'
+      ? (gv > 0.5 ? 'ON' : (gv < 0.1 ? 'OFF' : ''))
+      : Math.round(gv) + (rng.unit ? ' ' + rng.unit : '');
     ctx.fillText(glabel, PAD.L - 4, gy + 3);
   }
 
@@ -1548,7 +1579,7 @@ function tlmDraw() {
     tick += 10;
   }
 
-  // Axis channel label (rotated)
+  // Rotated Y-axis channel label
   ctx.save();
   ctx.translate(10, H / 2);
   ctx.rotate(-Math.PI / 2);
@@ -1556,42 +1587,58 @@ function tlmDraw() {
   ctx.fillText(rng.label, 0, 0);
   ctx.restore();
 
-  // Delta fill between fastest and each driver (delta mode)
-  if (TLM.mode === 'delta') {
-    var steps = 200;
-    var dt = TLM.maxTime / steps;
-    DRVS.forEach(function(drv) {
-      if (!TLM.drivers[drv] || !TLM.data[drv].length) return;
-      var alphaCol = { LEC:'rgba(220,0,0,0.15)', STR:'rgba(0,165,80,0.15)', PIA:'rgba(255,128,0,0.15)' };
-      var topPts = [], botPts = [];
-      for (var s = 0; s <= steps; s++) {
-        var t2 = s * dt;
-        var myPt = tlmInterp(TLM.data[drv], t2);
-        if (!myPt) continue;
-        var myVal = myPt[TLM.channel];
-        var bestVal = myVal;
-        DRVS.forEach(function(d2) {
-          if (!TLM.drivers[d2] || !TLM.data[d2].length) return;
-          var p2 = tlmInterp(TLM.data[d2], t2);
-          if (p2) bestVal = Math.max(bestVal, p2[TLM.channel]);
-        });
-        topPts.push({ x: tlmToX(t2), y: tlmToY(myVal) });
-        botPts.push({ x: tlmToX(t2), y: tlmToY(bestVal) });
+  // ── Delta fill: green where ANT is higher, red where RUS is higher ──
+  if (hasData) {
+    var STEPS = 400;
+    var dt    = TLM.maxTime / STEPS;
+
+    // Pre-sample both drivers
+    var pts = [];
+    for (var s = 0; s <= STEPS; s++) {
+      var t2  = s * dt;
+      var pA  = tlmInterp(TLM.data.ANT, t2);
+      var pR  = tlmInterp(TLM.data.RUS, t2);
+      if (pA && pR) pts.push({ t: t2, antV: pA[TLM.channel], rusV: pR[TLM.channel] });
+    }
+
+    // Draw segment-by-segment colored fill
+    for (var i = 0; i < pts.length - 1; i++) {
+      var p0 = pts[i], p1 = pts[i + 1];
+      var x0 = tlmToX(p0.t), x1 = tlmToX(p1.t);
+      var ayA0 = tlmToY(p0.antV), ayA1 = tlmToY(p1.antV);
+      var ayR0 = tlmToY(p0.rusV), ayR1 = tlmToY(p1.rusV);
+
+      // Determine crossing point within segment
+      var dA0 = p0.antV - p0.rusV, dA1 = p1.antV - p1.rusV;
+      var crossFrac = (dA0 !== dA1) ? dA0 / (dA0 - dA1) : -1;
+
+      var segments = [];
+      if (crossFrac > 0 && crossFrac < 1) {
+        var xc   = x0 + crossFrac * (x1 - x0);
+        var ycA  = ayA0 + crossFrac * (ayA1 - ayA0);
+        var ycR  = ayR0 + crossFrac * (ayR1 - ayR0);
+        segments.push({ x0:x0, yA0:ayA0, yR0:ayR0, x1:xc, yA1:ycA, yR1:ycR, ant: p0.antV >= p0.rusV });
+        segments.push({ x0:xc, yA0:ycA,  yR0:ycR,  x1:x1, yA1:ayA1, yR1:ayR1, ant: p1.antV >= p1.rusV });
+      } else {
+        segments.push({ x0:x0, yA0:ayA0, yR0:ayR0, x1:x1, yA1:ayA1, yR1:ayR1, ant: p0.antV >= p0.rusV });
       }
-      if (!topPts.length) return;
-      ctx.beginPath();
-      ctx.moveTo(topPts[0].x, topPts[0].y);
-      topPts.forEach(function(p) { ctx.lineTo(p.x, p.y); });
-      for (var i = botPts.length - 1; i >= 0; i--) ctx.lineTo(botPts[i].x, botPts[i].y);
-      ctx.closePath();
-      ctx.fillStyle = alphaCol[drv] || 'rgba(255,255,255,.08)';
-      ctx.fill();
-    });
+
+      segments.forEach(function(seg) {
+        ctx.beginPath();
+        ctx.moveTo(seg.x0, seg.yA0);
+        ctx.lineTo(seg.x1, seg.yA1);
+        ctx.lineTo(seg.x1, seg.yR1);
+        ctx.lineTo(seg.x0, seg.yR0);
+        ctx.closePath();
+        ctx.fillStyle = seg.ant ? 'rgba(0,210,130,0.18)' : 'rgba(210,50,50,0.18)';
+        ctx.fill();
+      });
+    }
   }
 
   // Driver lines
   DRVS.forEach(function(drv) {
-    if (!TLM.drivers[drv] || !TLM.data[drv].length) return;
+    if (!TLM.data[drv].length) return;
     var data = TLM.data[drv];
     ctx.beginPath();
     var first = true;
@@ -1600,25 +1647,25 @@ function tlmDraw() {
       if (first) { ctx.moveTo(x, y); first = false; } else ctx.lineTo(x, y);
     });
     ctx.strokeStyle = TLM.colors[drv];
-    ctx.lineWidth = TLM.mode === 'delta' ? 1.8 : 1.4;
-    ctx.globalAlpha = 0.85;
+    ctx.lineWidth = 1.8;
+    ctx.globalAlpha = 0.9;
     ctx.stroke();
     ctx.globalAlpha = 1;
   });
 
-  // Scrub/hover crosshair line + dots
+  // Scrub/hover crosshair + intersection dots
   var activeT = TLM.hoverT !== null ? TLM.hoverT : TLM.scrubT;
   if (activeT !== null && TLM.maxTime > 0) {
     var lx = tlmToX(activeT);
-    ctx.strokeStyle = 'rgba(255,255,255,.22)'; ctx.lineWidth = 1; ctx.setLineDash([3,3]);
+    ctx.strokeStyle = 'rgba(255,255,255,.22)'; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
     ctx.beginPath(); ctx.moveTo(lx, PAD.T); ctx.lineTo(lx, H - PAD.B); ctx.stroke();
     ctx.setLineDash([]);
     DRVS.forEach(function(drv) {
-      if (!TLM.drivers[drv] || !TLM.data[drv].length) return;
+      if (!TLM.data[drv].length) return;
       var pt = tlmInterp(TLM.data[drv], activeT);
       if (!pt) return;
       var cy = tlmToY(pt[TLM.channel]);
-      ctx.beginPath(); ctx.arc(lx, cy, 4, 0, Math.PI*2);
+      ctx.beginPath(); ctx.arc(lx, cy, 4.5, 0, Math.PI * 2);
       ctx.fillStyle = '#060608'; ctx.fill();
       ctx.strokeStyle = TLM.colors[drv]; ctx.lineWidth = 2; ctx.stroke();
     });
@@ -1626,53 +1673,60 @@ function tlmDraw() {
 
   // Legend (top-right)
   var lx2 = W - PAD.R - 4;
-  var liActive = 0;
-  DRVS.forEach(function(drv) {
-    if (!TLM.drivers[drv]) return;
-    var ly = PAD.T + 10 + liActive * 18;
-    ctx.beginPath(); ctx.moveTo(lx2 - 20, ly); ctx.lineTo(lx2 - 6, ly);
-    ctx.strokeStyle = TLM.colors[drv]; ctx.lineWidth = 2; ctx.stroke();
+  DRVS.forEach(function(drv, i) {
+    var ly = PAD.T + 12 + i * 18;
+    ctx.beginPath(); ctx.moveTo(lx2 - 22, ly); ctx.lineTo(lx2 - 6, ly);
+    ctx.strokeStyle = TLM.colors[drv]; ctx.lineWidth = 2.5; ctx.stroke();
     ctx.fillStyle = TLM.colors[drv]; ctx.font = '700 9px Oswald,sans-serif'; ctx.textAlign = 'right';
-    ctx.fillText(drv, lx2 - 25, ly + 3.5);
-    liActive++;
+    ctx.fillText(drv, lx2 - 27, ly + 3.5);
   });
+}
+
+function tlmFmtVal(v, channel) {
+  var rng = TLM_CHANNEL_RANGE[channel];
+  if (channel === 'brake') return v > 0.5 ? 'ON' : 'OFF';
+  return Math.round(v) + (rng.unit || '');
 }
 
 function tlmUpdateStatRow(t) {
   var timeEl = document.getElementById('tlm-s-time');
   if (timeEl) timeEl.textContent = t.toFixed(2) + 's';
-  var DRVS = ['LEC', 'STR', 'PIA'];
-  var rng = TLM_CHANNEL_RANGE[TLM.channel];
-  var best = -Infinity, leadDrv = null;
-  DRVS.forEach(function(drv) {
-    var el = document.getElementById('tlm-s-' + drv);
-    if (!TLM.data[drv].length) { if (el) el.textContent = '—'; return; }
-    var pt = tlmInterp(TLM.data[drv], t);
-    if (!pt) { if (el) el.textContent = '—'; return; }
-    var v   = pt[TLM.channel];
-    var txt = TLM.channel === 'brake' ? (v > 0.5 ? 'ON' : 'OFF') : Math.round(v) + (rng.unit || '');
-    if (el) el.textContent = TLM.drivers[drv] ? txt : '—';
-    if (TLM.drivers[drv] && v > best) { best = v; leadDrv = drv; }
-  });
-  var leadEl = document.getElementById('tlm-s-lead');
-  if (leadEl) {
-    leadEl.textContent = leadDrv || '—';
-    leadEl.style.color = leadDrv ? TLM.colors[leadDrv] : 'rgba(255,255,255,.7)';
+
+  var pA = TLM.data.ANT.length ? tlmInterp(TLM.data.ANT, t) : null;
+  var pR = TLM.data.RUS.length ? tlmInterp(TLM.data.RUS, t) : null;
+
+  var antEl = document.getElementById('tlm-s-ANT');
+  var rusEl = document.getElementById('tlm-s-RUS');
+  var dltEl = document.getElementById('tlm-s-delta');
+
+  if (antEl) antEl.textContent = pA ? tlmFmtVal(pA[TLM.channel], TLM.channel) : '—';
+  if (rusEl) rusEl.textContent = pR ? tlmFmtVal(pR[TLM.channel], TLM.channel) : '—';
+
+  if (dltEl && pA && pR && TLM.channel !== 'brake') {
+    var delta = pA[TLM.channel] - pR[TLM.channel];
+    var sign  = delta >= 0 ? '+' : '';
+    dltEl.textContent = sign + Math.round(delta) + (TLM_CHANNEL_RANGE[TLM.channel].unit || '');
+    dltEl.style.color = delta > 0 ? '#00D284' : (delta < 0 ? '#E04040' : 'rgba(255,255,255,.7)');
+  } else if (dltEl) {
+    dltEl.textContent = '—';
+    dltEl.style.color = 'rgba(255,255,255,.7)';
   }
 }
 
-function tlmLoadRace(race) {
-  TLM.race = race;
-  TLM.data = { LEC: [], STR: [], PIA: [] };
+function tlmLoad() {
+  TLM.data    = { ANT: [], RUS: [] };
   TLM.maxTime = 0;
-  var drivers = ['LEC', 'STR', 'PIA'];
   var loaded  = 0;
+  var drivers = ['ANT', 'RUS'];
   drivers.forEach(function(drv) {
-    fetch('telemetry_' + drv + '_' + race + '.json')
+    fetch('telemetry_' + drv + '_miami26.json')
       .then(function(r) { return r.json(); })
       .then(function(d) {
         TLM.data[drv] = d;
-        if (d.length) { var last = d[d.length-1].time; if (last > TLM.maxTime) TLM.maxTime = last; }
+        if (d.length) {
+          var last = d[d.length - 1].time;
+          if (last > TLM.maxTime) TLM.maxTime = last;
+        }
         loaded++;
         if (loaded === drivers.length) {
           var scrub = document.getElementById('tlm-scrubber');
@@ -1680,45 +1734,22 @@ function tlmLoadRace(race) {
           tlmDraw();
         }
       })
-      .catch(function() { loaded++; });
+      .catch(function() { loaded++; if (loaded === drivers.length) tlmDraw(); });
   });
-}
-
-function tlmSelectRace(race, btn) {
-  document.querySelectorAll('.tlm-race-btn').forEach(function(b) { b.classList.remove('active'); });
-  btn.classList.add('active');
-  TLM.scrubT = null;
-  var scrub = document.getElementById('tlm-scrubber');
-  if (scrub) scrub.value = 0;
-  tlmLoadRace(race);
-  var cap = document.getElementById('tlm-caption');
-  var rl = { canada:'Canada 2025', jeddah:'Jeddah 2025', miami:'Miami 2025' };
-  if (cap) cap.textContent = 'Fig 02 — Multi-driver telemetry \xb7 ' + (rl[race]||race) + ' \xb7 ' + TLM_CHANNEL_RANGE[TLM.channel].label + ' channel. Hover to scrub. Δ DELTA mode shows gain/loss regions.';
-}
-
-function tlmToggleDriver(drv, btn) {
-  TLM.drivers[drv] = !TLM.drivers[drv];
-  btn.classList.toggle('active', TLM.drivers[drv]);
-  tlmDraw();
 }
 
 function tlmSelectChannel(ch, btn) {
   TLM.channel = ch;
   document.querySelectorAll('.tlm-ch-btn').forEach(function(b) { b.classList.remove('active'); });
   btn.classList.add('active');
-  tlmDraw();
-}
-
-function tlmToggleMode() {
-  TLM.mode = TLM.mode === 'speed' ? 'delta' : 'speed';
-  var mb = document.getElementById('tlm-mode-btn');
-  if (mb) { mb.textContent = TLM.mode === 'delta' ? '— SPEED' : 'Δ DELTA'; }
+  var cap = document.getElementById('tlm-caption');
+  if (cap) cap.textContent = 'Fig 02 — Teammate fastest lap comparison \xb7 Miami 2026 \xb7 ' + TLM_CHANNEL_RANGE[ch].label + ' channel. Green = ANT faster \xb7 Red = RUS faster. Hover or scrub to explore.';
   tlmDraw();
 }
 
 function tlmScrub(val) {
   if (!TLM.maxTime) return;
-  var scrub = document.getElementById('tlm-scrubber');
+  var scrub  = document.getElementById('tlm-scrubber');
   var maxVal = scrub ? parseInt(scrub.max) : 1000;
   TLM.scrubT = (val / maxVal) * TLM.maxTime;
   tlmUpdateStatRow(TLM.scrubT);
@@ -1730,7 +1761,7 @@ function tlmInit() {
   if (!TLM.canvas) return;
   TLM.ctx = TLM.canvas.getContext('2d');
   var stage = document.getElementById('tlm-stage');
-  if (stage) { TLM.canvas.width = stage.offsetWidth; TLM.canvas.height = 220; }
+  if (stage) { TLM.canvas.width = stage.offsetWidth; TLM.canvas.height = 240; }
 
   TLM.canvas.addEventListener('mousemove', function(e) {
     var rect   = TLM.canvas.getBoundingClientRect();
@@ -1741,22 +1772,28 @@ function tlmInit() {
     t = Math.max(0, Math.min(TLM.maxTime, t));
     TLM.hoverT = t;
 
-    var stage  = document.getElementById('tlm-stage');
-    var tt     = document.getElementById('tlm-tooltip');
-    if (tt && stage) {
-      var DRVS   = ['LEC','STR','PIA'];
-      var rng    = TLM_CHANNEL_RANGE[TLM.channel];
-      var lines  = DRVS.filter(function(d) { return TLM.drivers[d] && TLM.data[d].length; })
-        .map(function(d) {
-          var pt  = tlmInterp(TLM.data[d], t);
-          var v   = pt ? pt[TLM.channel] : null;
-          var txt = v == null ? '—' : TLM.channel === 'brake' ? (v > 0.5 ? 'ON' : 'OFF') : Math.round(v) + rng.unit;
-          return '<span style="color:' + TLM.colors[d] + '">' + d + '</span> ' + txt;
-        });
-      tt.innerHTML   = t.toFixed(2) + 's<br>' + lines.join('<br>');
-      var sr         = stage.getBoundingClientRect();
-      tt.style.left  = (e.clientX - sr.left + 14) + 'px';
-      tt.style.top   = (e.clientY - sr.top  - 12) + 'px';
+    var stageEl = document.getElementById('tlm-stage');
+    var tt      = document.getElementById('tlm-tooltip');
+    if (tt && stageEl && TLM.maxTime > 0) {
+      var pA  = TLM.data.ANT.length ? tlmInterp(TLM.data.ANT, t) : null;
+      var pR  = TLM.data.RUS.length ? tlmInterp(TLM.data.RUS, t) : null;
+      var rng = TLM_CHANNEL_RANGE[TLM.channel];
+      var antTxt = pA ? tlmFmtVal(pA[TLM.channel], TLM.channel) : '—';
+      var rusTxt = pR ? tlmFmtVal(pR[TLM.channel], TLM.channel) : '—';
+      var deltaLine = '';
+      if (pA && pR && TLM.channel !== 'brake') {
+        var dv    = pA[TLM.channel] - pR[TLM.channel];
+        var dSign = dv >= 0 ? '+' : '';
+        var dCol  = dv > 0 ? '#00D284' : (dv < 0 ? '#E04040' : '#aaa');
+        deltaLine = '<br><span style="color:' + dCol + '">Δ ' + dSign + Math.round(dv) + (rng.unit||'') + '</span>';
+      }
+      tt.innerHTML  = t.toFixed(2) + 's'
+        + '<br><span style="color:' + TLM.colors.ANT + '">ANT</span> ' + antTxt
+        + '<br><span style="color:' + TLM.colors.RUS + '">RUS</span> ' + rusTxt
+        + deltaLine;
+      var sr = stageEl.getBoundingClientRect();
+      tt.style.left    = (e.clientX - sr.left + 14) + 'px';
+      tt.style.top     = (e.clientY - sr.top  - 12) + 'px';
       tt.style.opacity = '1';
     }
     tlmUpdateStatRow(t);
@@ -1771,13 +1808,13 @@ function tlmInit() {
   });
 
   window.addEventListener('resize', function() {
-    var stage = document.getElementById('tlm-stage');
-    if (!stage || !TLM.canvas) return;
-    TLM.canvas.width = stage.offsetWidth;
+    var stageEl = document.getElementById('tlm-stage');
+    if (!stageEl || !TLM.canvas) return;
+    TLM.canvas.width = stageEl.offsetWidth;
     tlmDraw();
   });
 
-  tlmLoadRace('canada');
+  tlmLoad();
 }
 
 
@@ -1802,9 +1839,9 @@ openOverlay = function(name) {
   }
 
   if (name === 'f1') {
-    if (!ldInited) {
-      ldInited = true;
-      setTimeout(function() { ldInit(); }, 400);
+    if (!mltInited) {
+      mltInited = true;
+      setTimeout(function() { mltInit(); }, 400);
     }
     if (!tlmInited) {
       tlmInited = true;

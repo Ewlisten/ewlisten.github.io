@@ -452,6 +452,8 @@ html,body{width:100%;height:100%;overflow:hidden;background:#080808;font-family:
 .tlm-drv-dot.lec{ background:#DC0000; }
 .tlm-drv-dot.str{ background:#00A550; }
 .tlm-drv-dot.pia{ background:#FF8000; }
+.tlm-drv-dot.ant{ background:#00D2BE; }
+.tlm-drv-dot.rus{ background:#C6C6C6; }
 
 .tlm-stage{
   position:relative;width:100%;
@@ -510,6 +512,37 @@ html,body{width:100%;height:100%;overflow:hidden;background:#080808;font-family:
 .tlm-stat-item.lec .tlm-stat-val{ color:#DC0000; }
 .tlm-stat-item.str .tlm-stat-val{ color:#00A550; }
 .tlm-stat-item.pia .tlm-stat-val{ color:#FF8000; }
+.tlm-stat-item.ant .tlm-stat-val{ color:#00D2BE; }
+.tlm-stat-item.rus .tlm-stat-val{ color:#C6C6C6; }
 .tlm-stat-sep{
   width:1px;height:1rem;background:rgba(255,255,255,.08);margin:0 .2rem;
+}
+
+/* ── Teammate driver badges (header) ── */
+.tlm-mate-badges{
+  display:flex;align-items:center;gap:.65rem;
+}
+.tlm-drv-badge{
+  display:flex;align-items:center;gap:.35rem;
+  font-family:'Oswald',sans-serif;font-weight:700;
+  font-size:.72rem;letter-spacing:.12em;
+  color:rgba(255,255,255,.55);
+}
+.tlm-drv-badge.ant{ color:#00D2BE; }
+.tlm-drv-badge.rus{ color:#C6C6C6; }
+
+/* ── Delta fill legend strip ── */
+.tlm-delta-legend{
+  display:flex;align-items:center;gap:.45rem;
+  margin-left:auto;
+}
+.tlm-delta-swatch{
+  width:10px;height:10px;border-radius:2px;
+}
+.tlm-delta-swatch.green{ background:rgba(0,210,130,0.4); }
+.tlm-delta-swatch.red  { background:rgba(210,50,50,0.4); }
+.tlm-delta-lbl{
+  font-family:'Roboto Mono',monospace;font-size:.58rem;
+  color:rgba(255,255,255,.28);letter-spacing:.06em;
+  text-transform:uppercase;margin-right:.5rem;
 }

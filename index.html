@@ -76,7 +76,7 @@
   <div class="ov-hero">
     <div class="ov-eyebrow"><div class="ov-eyebrow-line"></div>NBA Analytics</div>
     <div class="ov-big-title">NBA<br>ANALYTICS</div>
-    <p class="ov-question">"Three tools built on one belief — that the data already knows what the game is trying to say."</p>
+    <p class="ov-question">"Every game leaves a trace. This is how you read it."</p>
   </div>
 
   <!-- Shot Chart: Interactive Wembanyama Viewer -->
@@ -230,48 +230,13 @@
     <p class="ov-question">"The stopwatch captures everything. These tools are how we listen to it."</p>
   </div>
 
-  <!-- Monaco Draft Animation video — full bleed -->
+  <!-- Miami Track Animation video — full bleed -->
   <div class="ov-fullbleed">
     <div class="ov-fullbleed-inner">
       <video class="ov-video" controls muted loop playsinline style="max-height:540px;">
-        <source src="Monaco%20Draft%20Animation.mp4" type="video/mp4">
+        <source src="Miami_Trackanimation.mp4" type="video/mp4">
       </video>
-      <p class="ov-caption">Fig 01 — Monaco Draft Animation. Animated visualization of racing lines and drafting windows through the Monaco street circuit, built from FastF1 telemetry data.</p>
-    </div>
-  </div>
-
-  <!-- Lap Delta: Interactive Canvas -->
-  <div class="ov-fullbleed">
-    <div class="ov-fullbleed-inner">
-
-      <div class="ld-header">
-        <div>
-          <div class="ov-eyebrow" style="margin-bottom:.35rem;"><div class="ov-eyebrow-line"></div>Lap Delta Analyzer</div>
-          <h3 class="ov-h3" style="margin:0;">Monaco 2024 — where does the gap open?</h3>
-        </div>
-        <div class="ld-driver-row">
-          <div class="ld-drv-tag"><span class="ld-drv-dot" style="background:#F58426;"></span><span>VER</span></div>
-          <div class="ld-drv-tag"><span class="ld-drv-dot" style="background:#DC0000;"></span><span>LEC</span></div>
-          <button class="wemby-replay-btn" onclick="ldReplay()">↺ Replay</button>
-        </div>
-      </div>
-
-      <div class="ld-stage" id="ld-stage">
-        <canvas id="ld-canvas"></canvas>
-      </div>
-
-      <div class="ld-hover-panel" id="ld-hover-panel">
-        <span class="ld-hp-lap" id="ld-hp-lap">Hover a bar</span>
-        <span class="ld-hp-delta" id="ld-hp-delta">—</span>
-        <span class="ld-hp-sep">·</span>
-        <span class="ld-hp-sector" id="ld-hp-s1">S1 —</span>
-        <span class="ld-hp-sector" id="ld-hp-s2">S2 —</span>
-        <span class="ld-hp-sector" id="ld-hp-s3">S3 —</span>
-        <span class="ld-hp-sep">·</span>
-        <span class="ld-hp-tyre" id="ld-hp-tyre">—</span>
-      </div>
-
-      <p class="ov-caption">Fig 02 — Monaco GP 2024 · Per-lap time delta. Orange = VER faster · Red = LEC faster · Tire compound shown bottom rail · Hover any bar for sector split. Sample data shaped from FastF1 telemetry output.</p>
+      <p class="ov-caption">Fig 01 — Miami GP · Track Animation. Racing line and sector progression through the Miami International Autodrome, built from FastF1 telemetry data.</p>
     </div>
   </div>
 
@@ -281,31 +246,85 @@
 
       <div class="tlm-header">
         <div>
-          <div class="ov-eyebrow" style="margin-bottom:.35rem;"><div class="ov-eyebrow-line"></div>Live Telemetry Comparison</div>
-          <h3 class="ov-h3" style="margin:0;">Speed · Throttle · Brake — lap by lap</h3>
+          <div class="ov-eyebrow" style="margin-bottom:.35rem;"><div class="ov-eyebrow-line"></div>Multi-Driver Telemetry</div>
+          <h3 class="ov-h3" style="margin:0;">LEC · STR · PIA — Race Fastest Laps</h3>
         </div>
-        <button class="wemby-replay-btn" id="tlm-mode-btn" onclick="tlmToggleMode()">Δ DELTA</button>
+        <div class="tlm-mate-badges">
+          <span class="tlm-drv-badge" style="border-color:#DC0000;color:#DC0000;"><span class="tlm-drv-dot" style="background:#DC0000;"></span>LEC</span>
+          <span class="tlm-drv-badge" style="border-color:#00A550;color:#00A550;"><span class="tlm-drv-dot" style="background:#00A550;"></span>STR</span>
+          <span class="tlm-drv-badge" style="border-color:#FF8000;color:#FF8000;"><span class="tlm-drv-dot" style="background:#FF8000;"></span>PIA</span>
+        </div>
       </div>
 
-      <!-- Race + Driver controls -->
       <div class="tlm-controls">
         <div class="tlm-ctrl-group">
           <span class="tlm-ctrl-label">RACE</span>
-          <button class="tlm-race-btn active" id="tlm-r-canada"  onclick="tlmSelectRace('canada',this)">Canada</button>
-          <button class="tlm-race-btn"        id="tlm-r-jeddah"  onclick="tlmSelectRace('jeddah',this)">Jeddah</button>
-          <button class="tlm-race-btn"        id="tlm-r-miami"   onclick="tlmSelectRace('miami',this)">Miami</button>
+          <button class="tlm-ch-btn mlt-race-btn active" id="mlt-race-canada" onclick="mltSelectRace('canada',this)">Canada</button>
+          <button class="tlm-ch-btn mlt-race-btn" id="mlt-race-jeddah" onclick="mltSelectRace('jeddah',this)">Jeddah</button>
+          <button class="tlm-ch-btn mlt-race-btn" id="mlt-race-miami" onclick="mltSelectRace('miami',this)">Miami</button>
         </div>
         <div class="tlm-ctrl-group">
           <span class="tlm-ctrl-label">DRIVERS</span>
-          <button class="tlm-drv-btn active" id="tlm-d-LEC" data-drv="LEC" onclick="tlmToggleDriver('LEC',this)"><span class="tlm-drv-dot lec"></span>LEC</button>
-          <button class="tlm-drv-btn active" id="tlm-d-STR" data-drv="STR" onclick="tlmToggleDriver('STR',this)"><span class="tlm-drv-dot str"></span>STR</button>
-          <button class="tlm-drv-btn active" id="tlm-d-PIA" data-drv="PIA" onclick="tlmToggleDriver('PIA',this)"><span class="tlm-drv-dot pia"></span>PIA</button>
+          <button class="tlm-ch-btn active" id="mlt-drv-LEC" onclick="mltToggleDriver('LEC',this)">LEC</button>
+          <button class="tlm-ch-btn active" id="mlt-drv-STR" onclick="mltToggleDriver('STR',this)">STR</button>
+          <button class="tlm-ch-btn active" id="mlt-drv-PIA" onclick="mltToggleDriver('PIA',this)">PIA</button>
         </div>
+        <div class="tlm-ctrl-group">
+          <span class="tlm-ctrl-label">CHANNEL</span>
+          <button class="tlm-ch-btn mlt-ch-btn active" id="mlt-ch-speed" onclick="mltSelectChannel('speed',this)">Speed</button>
+          <button class="tlm-ch-btn mlt-ch-btn" id="mlt-ch-throttle" onclick="mltSelectChannel('throttle',this)">Throttle</button>
+          <button class="tlm-ch-btn mlt-ch-btn" id="mlt-ch-brake" onclick="mltSelectChannel('brake',this)">Brake</button>
+        </div>
+      </div>
+
+      <div class="tlm-stage" id="mlt-stage">
+        <canvas id="mlt-canvas"></canvas>
+        <div class="tlm-tooltip" id="mlt-tooltip"></div>
+        <div class="tlm-scrub-wrap">
+          <input type="range" class="tlm-scrubber" id="mlt-scrubber" min="0" max="1000" value="0" oninput="mltScrub(this.value)">
+        </div>
+      </div>
+
+      <div class="tlm-statrow" id="mlt-statrow">
+        <div class="tlm-stat-item"><span class="tlm-stat-lbl">TIME</span><span class="tlm-stat-val" id="mlt-s-time">—</span></div>
+        <div class="tlm-stat-sep"></div>
+        <div class="tlm-stat-item" style="color:#DC0000;"><span class="tlm-stat-lbl">LEC</span><span class="tlm-stat-val" id="mlt-s-LEC" style="color:#DC0000;">—</span></div>
+        <div class="tlm-stat-item" style="color:#00A550;"><span class="tlm-stat-lbl">STR</span><span class="tlm-stat-val" id="mlt-s-STR" style="color:#00A550;">—</span></div>
+        <div class="tlm-stat-item" style="color:#FF8000;"><span class="tlm-stat-lbl">PIA</span><span class="tlm-stat-val" id="mlt-s-PIA" style="color:#FF8000;">—</span></div>
+        <div class="tlm-stat-sep"></div>
+        <div class="tlm-stat-item"><span class="tlm-stat-lbl">LEAD</span><span class="tlm-stat-val" id="mlt-s-lead">—</span></div>
+      </div>
+
+      <p class="ov-caption">Fig 02 — Canada / Jeddah / Miami 2025 · Race fastest laps for Leclerc, Stroll, and Piastri. Speed, throttle, and brake channels extracted via FastF1. Scrub the timeline or hover to compare drivers at any point on the lap.</p>
+    </div>
+  </div>
+
+  <!-- Teammate Fastest Lap Comparison -->
+  <div class="ov-fullbleed">
+    <div class="ov-fullbleed-inner">
+
+      <div class="tlm-header">
+        <div>
+          <div class="ov-eyebrow" style="margin-bottom:.35rem;"><div class="ov-eyebrow-line"></div>Fastest Lap Comparison (Teammates)</div>
+          <h3 class="ov-h3" style="margin:0;">ANT vs RUS · Miami 2026 · Same car, different lap</h3>
+        </div>
+        <div class="tlm-mate-badges">
+          <span class="tlm-drv-badge ant"><span class="tlm-drv-dot ant"></span>ANT</span>
+          <span class="tlm-drv-badge rus"><span class="tlm-drv-dot rus"></span>RUS</span>
+        </div>
+      </div>
+
+      <!-- Channel controls only — drivers are fixed (ANT vs RUS) -->
+      <div class="tlm-controls">
         <div class="tlm-ctrl-group">
           <span class="tlm-ctrl-label">CHANNEL</span>
           <button class="tlm-ch-btn active" id="tlm-ch-speed"    onclick="tlmSelectChannel('speed',this)">Speed</button>
           <button class="tlm-ch-btn"        id="tlm-ch-throttle" onclick="tlmSelectChannel('throttle',this)">Throttle</button>
           <button class="tlm-ch-btn"        id="tlm-ch-brake"    onclick="tlmSelectChannel('brake',this)">Brake</button>
+        </div>
+        <div class="tlm-ctrl-group tlm-delta-legend">
+          <span class="tlm-delta-swatch green"></span><span class="tlm-delta-lbl">ANT faster</span>
+          <span class="tlm-delta-swatch red"></span><span class="tlm-delta-lbl">RUS faster</span>
         </div>
       </div>
 
@@ -313,7 +332,6 @@
       <div class="tlm-stage" id="tlm-stage">
         <canvas id="tlm-canvas"></canvas>
         <div class="tlm-tooltip" id="tlm-tooltip"></div>
-        <!-- Scrubber line drawn in canvas; position indicator -->
         <div class="tlm-scrub-wrap">
           <input type="range" class="tlm-scrubber" id="tlm-scrubber" min="0" max="1000" value="0" oninput="tlmScrub(this.value)">
         </div>
@@ -323,14 +341,13 @@
       <div class="tlm-statrow" id="tlm-statrow">
         <div class="tlm-stat-item"><span class="tlm-stat-lbl">TIME</span><span class="tlm-stat-val" id="tlm-s-time">—</span></div>
         <div class="tlm-stat-sep"></div>
-        <div class="tlm-stat-item lec"><span class="tlm-stat-lbl">LEC</span><span class="tlm-stat-val" id="tlm-s-LEC">—</span></div>
-        <div class="tlm-stat-item str"><span class="tlm-stat-lbl">STR</span><span class="tlm-stat-val" id="tlm-s-STR">—</span></div>
-        <div class="tlm-stat-item pia"><span class="tlm-stat-lbl">PIA</span><span class="tlm-stat-val" id="tlm-s-PIA">—</span></div>
+        <div class="tlm-stat-item ant"><span class="tlm-stat-lbl">ANT</span><span class="tlm-stat-val" id="tlm-s-ANT">—</span></div>
+        <div class="tlm-stat-item rus"><span class="tlm-stat-lbl">RUS</span><span class="tlm-stat-val" id="tlm-s-RUS">—</span></div>
         <div class="tlm-stat-sep"></div>
-        <div class="tlm-stat-item"><span class="tlm-stat-lbl">LEAD</span><span class="tlm-stat-val" id="tlm-s-lead">—</span></div>
+        <div class="tlm-stat-item"><span class="tlm-stat-lbl">Δ</span><span class="tlm-stat-val" id="tlm-s-delta">—</span></div>
       </div>
 
-      <p class="ov-caption" id="tlm-caption">Fig 02 — Multi-driver telemetry · Canada 2025 · Speed channel. Hover chart to scrub. Toggle drivers or channels. Δ DELTA mode highlights where time is gained or lost.</p>
+      <p class="ov-caption" id="tlm-caption">Fig 02 — Teammate fastest lap comparison · Miami 2026 · Speed channel. Green fill = ANT carrying more speed · Red fill = RUS carrying more speed. Hover or scrub to explore every moment of the lap.</p>
     </div>
   </div>
 
@@ -387,16 +404,16 @@
   <div class="ov-hero">
     <div class="ov-eyebrow"><div class="ov-eyebrow-line"></div>Computer Vision</div>
     <div class="ov-big-title">COM&shy;PUTER<br>VISION</div>
-    <p class="ov-question">"The camera was always watching. We built the pipeline to make it see."</p>
+    <p class="ov-question">"Seeing is easy. Understanding is built."</p>
   </div>
 
   <!-- Wemby trajectory video — full bleed -->
   <div class="ov-fullbleed">
     <div class="ov-fullbleed-inner">
       <video class="ov-video" controls muted loop playsinline style="max-height:520px;">
-        <source src="Wemby_StpBK_TrajectOV.mp4" type="video/mp4">
+        <source src="Wemby_StpBK_analyzed (1).mp4" type="video/mp4">
       </video>
-      <p class="ov-caption">Fig 01 — Wembanyama Step-Back Trajectory Overview. Ball flight path annotated frame by frame: release angle, arc peak, and landing zone mapped onto court coordinates. Processed via OpenCV + custom trajectory pipeline at 59 fps.</p>
+      <p class="ov-caption">Fig 01 — Wembanyama Step-Back · Model Output. Trajectory overlay computed frame by frame: ball detection, arc path, release angle, and peak annotated in real time. OpenCV + custom tracking pipeline · 59 fps.</p>
     </div>
   </div>
 
