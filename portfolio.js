@@ -1818,6 +1818,475 @@ function tlmInit() {
 }
 
 
+// ── MLB BATTED BALL ANALYTICS ─────────────────────────────────────────────────
+
+var mlbInited = false;
+
+var MLB_PLAYERS = {
+  harper: { label:'Bryce Harper',  abbr:'HARPER', file:'harper_batted_balls.json',  color:'#E81828' },
+  cruz:   { label:'Oneil Cruz',    abbr:'CRUZ',   file:'OCruz_batted_balls.json',   color:'#FDB827' },
+  wood:   { label:'James Wood',    abbr:'WOOD',   file:'JWood_batted_balls.json',   color:'#AB0003' },
+  walker: { label:'Jordan Walker', abbr:'WALKER', file:'walker_batted_balls.json',  color:'#C41E3A' },
+  marsh:  { label:'Brandon Marsh', abbr:'MARSH',  file:'marsh_batted_balls.json',   color:'#E81828' },
+  kwan:   { label:'Steven Kwan',   abbr:'KWAN',   file:'kwan_batted_balls.json',    color:'#E31937' },
+};
+
+var MLB_BB_LABELS = { ground_ball:'GB', line_drive:'LD', fly_ball:'FB', popup:'PU' };
+
+var MLB = {
+  scatter: null, sCtx: null,
+  vector:  null, vCtx: null,
+  player:  'harper',
+  data:    [], filtered: [],
+  selectedIdx: null, hoverIdx: null,
+  activePitch: null, activeBB: null,
+  allPitch: [], allBB: [],
+  PAD: { L:52, R:18, T:22, B:46 },
+  X_MIN:55, X_MAX:105, Y_MIN:30, Y_MAX:122,
+};
+
+// ── coordinate helpers ──
+
+function mlbSX(v) {
+  var c = MLB.scatter, P = MLB.PAD;
+  return P.L + (v - MLB.X_MIN) / (MLB.X_MAX - MLB.X_MIN) * (c.width - P.L - P.R);
+}
+function mlbSY(v) {
+  var c = MLB.scatter, P = MLB.PAD;
+  return c.height - P.B - (v - MLB.Y_MIN) / (MLB.Y_MAX - MLB.Y_MIN) * (c.height - P.T - P.B);
+}
+
+// ── filter & draw ──
+
+function mlbApplyFilter() {
+  MLB.filtered = MLB.data.filter(function(row) {
+    var ok1 = !MLB.activePitch || MLB.activePitch[row.pitch_type];
+    var ok2 = !MLB.activeBB    || MLB.activeBB[row.bb_type];
+    return ok1 && ok2;
+  });
+  MLB.selectedIdx = null;
+  MLB.hoverIdx    = null;
+  mlbUpdateStatRow(null);
+  mlbDrawScatter();
+  mlbDrawVector(null, null);
+}
+
+function mlbDrawScatter() {
+  var canvas = MLB.scatter, ctx = MLB.sCtx;
+  if (!ctx || !canvas || !canvas.width) return;
+  var W = canvas.width, H = canvas.height, P = MLB.PAD;
+  var chartW = W - P.L - P.R, chartH = H - P.T - P.B;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#050A12'; ctx.fillRect(0, 0, W, H);
+
+  // Hard contact zone tint (EV ≥ 95)
+  var hardY = mlbSY(95);
+  ctx.fillStyle = 'rgba(196,30,58,.04)';
+  ctx.fillRect(P.L, P.T, chartW, hardY - P.T);
+
+  // Grid – X (pitch speed)
+  [60, 70, 80, 90, 100].forEach(function(v) {
+    var x = mlbSX(v);
+    ctx.strokeStyle = '#090F1C'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x, P.T); ctx.lineTo(x, H - P.B); ctx.stroke();
+    ctx.fillStyle = 'rgba(255,255,255,.14)';
+    ctx.font = '8px "Roboto Mono",monospace'; ctx.textAlign = 'center';
+    ctx.fillText(v, x, H - P.B + 14);
+  });
+  // Grid – Y (exit velo)
+  [50, 75, 100].forEach(function(v) {
+    var y = mlbSY(v);
+    ctx.strokeStyle = '#090F1C'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(P.L, y); ctx.lineTo(W - P.R, y); ctx.stroke();
+    ctx.fillStyle = 'rgba(255,255,255,.14)';
+    ctx.font = '8px "Roboto Mono",monospace'; ctx.textAlign = 'right';
+    ctx.fillText(v, P.L - 5, y + 3);
+  });
+
+  // Hard-contact label
+  ctx.fillStyle = 'rgba(196,30,58,.22)';
+  ctx.font = '7px "Roboto Mono",monospace'; ctx.textAlign = 'right';
+  ctx.fillText('HARD CONTACT  95+ mph', W - P.R - 3, hardY - 4);
+
+  // Axis labels
+  ctx.fillStyle = 'rgba(255,255,255,.16)';
+  ctx.font = '7px "Roboto Mono",monospace'; ctx.textAlign = 'center';
+  ctx.fillText('PITCH SPEED (mph)', W / 2, H - 6);
+  ctx.save(); ctx.translate(11, H / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('EXIT VELOCITY (mph)', 0, 0); ctx.restore();
+
+  var playerColor = MLB_PLAYERS[MLB.player].color;
+
+  // Regular points (batch draw for performance)
+  ctx.fillStyle = 'rgba(12,35,64,.82)';
+  MLB.filtered.forEach(function(row, i) {
+    if (i === MLB.selectedIdx) return;
+    ctx.beginPath();
+    ctx.arc(mlbSX(row.release_speed), mlbSY(row.launch_speed), i === MLB.hoverIdx ? 5.5 : 4.5, 0, Math.PI * 2);
+    if (i === MLB.hoverIdx) {
+      ctx.fillStyle = 'rgba(12,35,64,.95)'; ctx.fill();
+      ctx.strokeStyle = 'rgba(196,30,58,.55)'; ctx.lineWidth = 1.5; ctx.stroke();
+      ctx.fillStyle = 'rgba(12,35,64,.82)';
+    } else {
+      ctx.fill();
+    }
+  });
+
+  // Selected point
+  if (MLB.selectedIdx !== null) {
+    var r = MLB.filtered[MLB.selectedIdx];
+    if (r) {
+      var sx = mlbSX(r.release_speed), sy = mlbSY(r.launch_speed);
+      // Glow ring
+      ctx.beginPath(); ctx.arc(sx, sy, 10, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(196,30,58,.13)'; ctx.fill();
+      // Dot
+      ctx.beginPath(); ctx.arc(sx, sy, 6.5, 0, Math.PI * 2);
+      ctx.fillStyle = playerColor; ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,.4)'; ctx.lineWidth = 1.5; ctx.stroke();
+    }
+  }
+}
+
+function mlbDrawVector(angle, speed) {
+  var canvas = MLB.vector, ctx = MLB.vCtx;
+  if (!ctx || !canvas || !canvas.width) return;
+  var W = canvas.width, H = canvas.height;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#050A12'; ctx.fillRect(0, 0, W, H);
+
+  // Origin: left-ish, 68% down
+  var ox = W * 0.15, oy = H * 0.68;
+  var maxLen = Math.min(W * 0.76, H * 0.72);
+
+  // Zone wedge fills (canvas: y increases downward, so negate angles)
+  var zones = [
+    { from:0,  to:10, color:'rgba(255,200,50,.07)',  lA:5  },
+    { from:10, to:25, color:'rgba(50,200,100,.07)',  lA:17 },
+    { from:25, to:50, color:'rgba(50,150,255,.07)',  lA:37 },
+    { from:50, to:85, color:'rgba(200,100,255,.05)', lA:63 },
+  ];
+  zones.forEach(function(z) {
+    var a1 = -(z.from * Math.PI / 180);
+    var a2 = -(z.to   * Math.PI / 180);
+    ctx.beginPath();
+    ctx.moveTo(ox, oy);
+    ctx.arc(ox, oy, maxLen, a1, a2, true);
+    ctx.closePath();
+    ctx.fillStyle = z.color; ctx.fill();
+    // Zone label
+    var mid = ((z.from + z.to) / 2) * Math.PI / 180;
+    var lx = ox + Math.cos(mid) * maxLen * 0.76;
+    var ly = oy - Math.sin(mid) * maxLen * 0.76;
+    ctx.fillStyle = 'rgba(255,255,255,.14)';
+    ctx.font = '7px "Roboto Mono",monospace'; ctx.textAlign = 'center';
+    var zLabels = ['GB','LD','FB','PU'];
+    ctx.fillText(zLabels[zones.indexOf(z)], lx, ly);
+  });
+
+  // Boundary dashes at 10°, 25°, 50°
+  [10, 25, 50].forEach(function(a) {
+    var aR = a * Math.PI / 180;
+    ctx.strokeStyle = 'rgba(255,255,255,.09)'; ctx.lineWidth = 1;
+    ctx.setLineDash([3, 5]);
+    ctx.beginPath();
+    ctx.moveTo(ox, oy);
+    ctx.lineTo(ox + Math.cos(aR) * maxLen, oy - Math.sin(aR) * maxLen);
+    ctx.stroke(); ctx.setLineDash([]);
+    // Angle tick label
+    var lx = ox + Math.cos(aR) * (maxLen + 13);
+    var ly = oy - Math.sin(aR) * (maxLen + 13);
+    ctx.fillStyle = 'rgba(255,255,255,.14)';
+    ctx.font = '7px "Roboto Mono",monospace'; ctx.textAlign = 'center';
+    ctx.fillText(a + '\xb0', lx, ly);
+  });
+
+  // Ground line
+  ctx.strokeStyle = 'rgba(255,255,255,.32)'; ctx.lineWidth = 1.5; ctx.setLineDash([]);
+  ctx.beginPath(); ctx.moveTo(ox - W * 0.07, oy); ctx.lineTo(W * 0.97, oy); ctx.stroke();
+  ctx.fillStyle = 'rgba(255,255,255,.18)';
+  ctx.font = '7px "Roboto Mono",monospace'; ctx.textAlign = 'left';
+  ctx.fillText('0\xb0', W * 0.96, oy - 4);
+
+  // Origin dot
+  ctx.beginPath(); ctx.arc(ox, oy, 3, 0, Math.PI * 2);
+  ctx.fillStyle = 'rgba(255,255,255,.28)'; ctx.fill();
+
+  if (angle === null || speed === null) {
+    ctx.fillStyle = 'rgba(255,255,255,.09)';
+    ctx.font = '9px "Roboto Mono",monospace'; ctx.textAlign = 'center';
+    ctx.fillText('click a point', W * 0.56, oy - maxLen * 0.28);
+    return;
+  }
+
+  // Vector arrow
+  var aRad = angle * Math.PI / 180;
+  var vecLen = Math.max(0.15, speed / 115) * maxLen;
+  var ex = ox + Math.cos(aRad) * vecLen;
+  var ey = oy - Math.sin(aRad) * vecLen;
+
+  var col = MLB_PLAYERS[MLB.player].color;
+
+  ctx.shadowColor = col; ctx.shadowBlur = 10;
+  ctx.strokeStyle = col; ctx.lineWidth = 3; ctx.lineCap = 'round';
+  ctx.beginPath(); ctx.moveTo(ox, oy); ctx.lineTo(ex, ey); ctx.stroke();
+  ctx.shadowBlur = 0;
+
+  // Arrowhead
+  var lineAngle = Math.atan2(ey - oy, ex - ox);
+  var hLen = 11, hSpread = Math.PI / 6;
+  ctx.fillStyle = col;
+  ctx.beginPath();
+  ctx.moveTo(ex, ey);
+  ctx.lineTo(ex - hLen * Math.cos(lineAngle - hSpread), ey - hLen * Math.sin(lineAngle - hSpread));
+  ctx.lineTo(ex - hLen * Math.cos(lineAngle + hSpread), ey - hLen * Math.sin(lineAngle + hSpread));
+  ctx.closePath(); ctx.fill();
+
+  // Info labels (top-right corner of canvas)
+  var zLabel = angle < 0   ? 'BELOW GROUND' :
+               angle < 10  ? 'GROUND BALL' :
+               angle < 25  ? 'LINE DRIVE' :
+               angle < 50  ? 'FLY BALL' : 'POPUP';
+  ctx.fillStyle = col;
+  ctx.font = '700 15px "Oswald",sans-serif'; ctx.textAlign = 'left';
+  ctx.fillText(angle.toFixed(1) + '\xb0', W * 0.56, H * 0.16);
+  ctx.fillStyle = 'rgba(255,255,255,.38)';
+  ctx.font = '8px "Roboto Mono",monospace';
+  ctx.fillText(speed.toFixed(1) + ' mph EV', W * 0.56, H * 0.16 + 17);
+  ctx.fillStyle = 'rgba(255,255,255,.18)';
+  ctx.font = '7px "Roboto Mono",monospace';
+  ctx.fillText(zLabel, W * 0.56, H * 0.16 + 30);
+}
+
+function mlbUpdateStatRow(row) {
+  var els = {
+    ev: document.getElementById('mlb-s-ev'),
+    la: document.getElementById('mlb-s-la'),
+    pt: document.getElementById('mlb-s-pt'),
+    ps: document.getElementById('mlb-s-ps'),
+    bb: document.getElementById('mlb-s-bb'),
+  };
+  if (!row) {
+    Object.keys(els).forEach(function(k) { if (els[k]) { els[k].textContent = '—'; els[k].classList.remove('ev-hard'); }});
+    return;
+  }
+  if (els.ev) {
+    els.ev.textContent = row.launch_speed.toFixed(1) + ' mph';
+    els.ev.classList.toggle('ev-hard', row.launch_speed >= 95);
+  }
+  if (els.la) els.la.textContent = row.launch_angle.toFixed(1) + '\xb0';
+  if (els.pt) els.pt.textContent = row.pitch_type || '—';
+  if (els.ps) els.ps.textContent = row.release_speed.toFixed(1) + ' mph';
+  if (els.bb) els.bb.textContent = MLB_BB_LABELS[row.bb_type] || row.bb_type || '—';
+}
+
+function mlbBuildFilters() {
+  var pc = document.getElementById('mlb-pitch-filters');
+  var bc = document.getElementById('mlb-bb-filters');
+  if (!pc || !bc) return;
+  pc.innerHTML = ''; bc.innerHTML = '';
+
+  // init active sets as plain objects for IE compat
+  MLB.activePitch = {};
+  MLB.activeBB    = {};
+
+  MLB.allPitch.forEach(function(pt) {
+    MLB.activePitch[pt] = true;
+    var btn = document.createElement('button');
+    btn.className = 'mlb-pill active';
+    btn.textContent = pt;
+    btn.onclick = (function(p, b) { return function() { mlbTogglePitch(p, b); }; })(pt, btn);
+    pc.appendChild(btn);
+  });
+
+  MLB.allBB.forEach(function(bb) {
+    MLB.activeBB[bb] = true;
+    var btn = document.createElement('button');
+    btn.className = 'mlb-pill active';
+    btn.textContent = MLB_BB_LABELS[bb] || bb;
+    btn.onclick = (function(b, el) { return function() { mlbToggleBB(b, el); }; })(bb, btn);
+    bc.appendChild(btn);
+  });
+}
+
+function mlbTogglePitch(type, btn) {
+  var active = MLB.activePitch;
+  if (active[type]) {
+    var count = Object.keys(active).filter(function(k) { return active[k]; }).length;
+    if (count <= 1) return; // keep at least one
+    active[type] = false; btn.classList.remove('active');
+  } else {
+    active[type] = true; btn.classList.add('active');
+  }
+  MLB.selectedIdx = null; mlbApplyFilter();
+}
+
+function mlbToggleBB(type, btn) {
+  var active = MLB.activeBB;
+  if (active[type]) {
+    var count = Object.keys(active).filter(function(k) { return active[k]; }).length;
+    if (count <= 1) return;
+    active[type] = false; btn.classList.remove('active');
+  } else {
+    active[type] = true; btn.classList.add('active');
+  }
+  MLB.selectedIdx = null; mlbApplyFilter();
+}
+
+function mlbSelectPlayer(key, btn) {
+  if (!MLB_PLAYERS[key]) return;
+  MLB.player = key;
+  document.querySelectorAll('.mlb-player-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  mlbLoad(key);
+}
+
+function mlbLoad(key) {
+  var cfg = MLB_PLAYERS[key]; if (!cfg) return;
+  MLB.data = []; MLB.filtered = [];
+  MLB.selectedIdx = null; MLB.hoverIdx = null;
+  MLB.activePitch = null; MLB.activeBB = null;
+
+  var pc = document.getElementById('mlb-pitch-filters');
+  var bc = document.getElementById('mlb-bb-filters');
+  if (pc) pc.innerHTML = '<span style="font-family:\'Roboto Mono\',monospace;font-size:.48rem;color:rgba(255,255,255,.18);">loading…</span>';
+  if (bc) bc.innerHTML = '';
+  mlbDrawScatter(); mlbDrawVector(null, null);
+
+  function processMLBData(raw) {
+    MLB.data = (Array.isArray(raw) ? raw : []).map(function(row) {
+      return {
+        pitch_type:    String(row.pitch_type   || '??'),
+        release_speed: +(row.release_speed || 0),
+        launch_speed:  +(row.launch_speed  || 0),
+        launch_angle:  +(row.launch_angle  || 0),
+        bb_type:       String(row.bb_type   || '??'),
+      };
+    }).filter(function(row) {
+      return row.launch_speed > 0;
+    });
+    var pitchSet = {}, bbSet = {};
+    MLB.data.forEach(function(row) { pitchSet[row.pitch_type] = true; bbSet[row.bb_type] = true; });
+    MLB.allPitch = Object.keys(pitchSet).sort();
+    MLB.allBB    = Object.keys(bbSet).sort();
+    mlbBuildFilters();
+    mlbApplyFilter();
+  }
+
+  // Use inline data bundle first (avoids fetch/CORS issues on file:// or local servers)
+  var inline = window.MLB_INLINE_DATA && window.MLB_INLINE_DATA[key];
+  if (inline) { processMLBData(inline); return; }
+
+  fetch(cfg.file)
+    .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(processMLBData)
+    .catch(function(err) {
+      console.warn('MLB load error:', err);
+      if (pc) pc.innerHTML = '<span style="font-family:\'Roboto Mono\',monospace;font-size:.48rem;color:rgba(255,80,80,.5);">data file not found</span>';
+    });
+}
+
+function mlbInit() {
+  MLB.scatter = document.getElementById('mlb-scatter-canvas');
+  MLB.vector  = document.getElementById('mlb-vector-canvas');
+  if (!MLB.scatter || !MLB.vector) return;
+  MLB.sCtx = MLB.scatter.getContext('2d');
+  MLB.vCtx  = MLB.vector.getContext('2d');
+
+  var scStage  = document.getElementById('mlb-scatter-stage');
+  var vecStage = document.getElementById('mlb-vector-stage');
+  if (scStage)  { MLB.scatter.width = scStage.offsetWidth;  MLB.scatter.height = 320; }
+  if (vecStage) { MLB.vector.width  = vecStage.offsetWidth; MLB.vector.height  = 320; }
+
+  // Hover on scatter
+  MLB.scatter.addEventListener('mousemove', function(e) {
+    var rect = MLB.scatter.getBoundingClientRect();
+    var sc   = MLB.scatter.width / rect.width;
+    var mx   = (e.clientX - rect.left) * sc;
+    var my   = (e.clientY - rect.top)  * sc;
+    var best = -1, bestD = 13 * sc;
+
+    MLB.filtered.forEach(function(row, i) {
+      var dx = mx - mlbSX(row.release_speed);
+      var dy = my - mlbSY(row.launch_speed);
+      var d  = Math.sqrt(dx*dx + dy*dy);
+      if (d < bestD) { bestD = d; best = i; }
+    });
+
+    var changed = MLB.hoverIdx !== (best >= 0 ? best : null);
+    MLB.hoverIdx = best >= 0 ? best : null;
+    MLB.scatter.style.cursor = best >= 0 ? 'pointer' : 'crosshair';
+
+    var tt = document.getElementById('mlb-tooltip');
+    if (tt) {
+      if (best >= 0) {
+        var row = MLB.filtered[best];
+        tt.innerHTML =
+          '<span style="color:rgba(255,255,255,.4);letter-spacing:.1em;">' + row.pitch_type + '</span><br>' +
+          'Pitch <b>' + row.release_speed.toFixed(1) + '</b> mph<br>' +
+          'Exit  <b>' + row.launch_speed.toFixed(1) + '</b> mph<br>' +
+          'Angle <b>' + row.launch_angle.toFixed(1) + '</b>\xb0<br>' +
+          '<span style="color:rgba(255,255,255,.3);">' + (MLB_BB_LABELS[row.bb_type] || row.bb_type) + '</span>';
+        var sr = document.getElementById('mlb-scatter-stage').getBoundingClientRect();
+        tt.style.left = (e.clientX - sr.left + 14) + 'px';
+        tt.style.top  = (e.clientY - sr.top  - 12) + 'px';
+        tt.style.opacity = '1';
+      } else { tt.style.opacity = '0'; }
+    }
+    if (changed) mlbDrawScatter();
+  });
+
+  MLB.scatter.addEventListener('mouseleave', function() {
+    MLB.hoverIdx = null;
+    var tt = document.getElementById('mlb-tooltip');
+    if (tt) tt.style.opacity = '0';
+    mlbDrawScatter();
+  });
+
+  // Click to select
+  MLB.scatter.addEventListener('click', function(e) {
+    var rect = MLB.scatter.getBoundingClientRect();
+    var sc   = MLB.scatter.width / rect.width;
+    var mx   = (e.clientX - rect.left) * sc;
+    var my   = (e.clientY - rect.top)  * sc;
+    var best = -1, bestD = 15 * sc;
+
+    MLB.filtered.forEach(function(row, i) {
+      var dx = mx - mlbSX(row.release_speed);
+      var dy = my - mlbSY(row.launch_speed);
+      var d  = Math.sqrt(dx*dx + dy*dy);
+      if (d < bestD) { bestD = d; best = i; }
+    });
+
+    if (best >= 0) {
+      MLB.selectedIdx = best;
+      var row = MLB.filtered[best];
+      mlbUpdateStatRow(row);
+      mlbDrawVector(row.launch_angle, row.launch_speed);
+      mlbDrawScatter();
+    }
+  });
+
+  // Resize
+  window.addEventListener('resize', function() {
+    var ss = document.getElementById('mlb-scatter-stage');
+    var vs = document.getElementById('mlb-vector-stage');
+    if (ss && MLB.scatter) { MLB.scatter.width = ss.offsetWidth; mlbDrawScatter(); }
+    if (vs && MLB.vector) {
+      MLB.vector.width = vs.offsetWidth;
+      if (MLB.selectedIdx !== null && MLB.filtered[MLB.selectedIdx]) {
+        var r = MLB.filtered[MLB.selectedIdx];
+        mlbDrawVector(r.launch_angle, r.launch_speed);
+      } else { mlbDrawVector(null, null); }
+    }
+  });
+
+  mlbLoad(MLB.player);
+}
+
+
 // ── OVERLAY HOOK ─────────────────────────────────────────────────────────────────────────
 
 var _origOpenOverlay = openOverlay;
@@ -1853,6 +2322,13 @@ openOverlay = function(name) {
     if (!trInited) {
       trInited = true;
       setTimeout(function() { trInit(); }, 400);
+    }
+  }
+
+  if (name === 'mlb') {
+    if (!mlbInited) {
+      mlbInited = true;
+      setTimeout(function() { mlbInit(); }, 400);
     }
   }
 };

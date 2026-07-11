@@ -38,6 +38,16 @@
     </div>
   </div>
 
+  <!-- PANEL 5: MLB -->
+  <div class="panel mlb-panel" onclick="openOverlay('mlb')">
+    <div class="panel-content">
+      <div class="panel-num">05 / MLB</div>
+      <div class="panel-sport">BASE—<br>BALL</div>
+      <div class="panel-sub">Statcast Analytics</div>
+      <div class="panel-hint">Exit Velocity · Launch Angle · Pitch Analysis</div>
+    </div>
+  </div>
+
   <!-- PANEL 3: CV -->
   <div class="panel cv-panel" onclick="openOverlay('cv')">
     <img src="Wemby_StpBK.gif" class="cv-video-bg" alt="" style="object-fit:cover;opacity:.22;">
@@ -541,6 +551,105 @@
 </div><!-- /overlay-about -->
 
 
+<!-- ════ OVERLAY: MLB ════ -->
+<div class="overlay" id="overlay-mlb">
+  <button class="ov-close" onclick="closeOverlay(event)">
+    <div class="ov-close-left">
+      <span class="ov-close-x">✕</span>
+      <span class="ov-close-label">Back to overview</span>
+    </div>
+    <span class="ov-close-right">05 / MLB Analytics</span>
+  </button>
+
+  <!-- Hero -->
+  <div class="ov-hero">
+    <div class="ov-eyebrow"><div class="ov-eyebrow-line"></div>MLB Analytics</div>
+    <div class="ov-big-title">BASE—<br>BALL</div>
+    <p class="ov-question">This scouting lab breaks down hitter performance using Statcast data. Use the zone grid to see where a player makes contact, the EV histogram to assess bat speed, and the stats table to compare month-to-month trends. Higher barrel% and hard-hit% indicate quality contact.</p>
+  </div>
+
+  <!-- Batted Ball Profile -->
+  <div class="ov-fullbleed">
+    <div class="ov-fullbleed-inner">
+
+      <div class="mlb-header">
+        <div>
+          <div class="ov-eyebrow" style="margin-bottom:.35rem;"><div class="ov-eyebrow-line"></div>Batted Ball Profile</div>
+          <h3 class="ov-h3" style="margin:0;">Pitch Speed vs Exit Velocity · Click a point</h3>
+        </div>
+        <div class="mlb-player-btns" id="mlb-player-btns">
+          <button class="mlb-player-btn active" onclick="mlbSelectPlayer('harper',this)">HARPER</button>
+          <button class="mlb-player-btn" onclick="mlbSelectPlayer('cruz',this)">CRUZ</button>
+          <button class="mlb-player-btn" onclick="mlbSelectPlayer('wood',this)">WOOD</button>
+          <button class="mlb-player-btn" onclick="mlbSelectPlayer('walker',this)">WALKER</button>
+          <button class="mlb-player-btn" onclick="mlbSelectPlayer('marsh',this)">MARSH</button>
+          <button class="mlb-player-btn" onclick="mlbSelectPlayer('kwan',this)">KWAN</button>
+        </div>
+      </div>
+
+      <div class="mlb-filter-row">
+        <div class="mlb-filter-group">
+          <span class="mlb-filter-label">PITCH</span>
+          <div class="mlb-pills" id="mlb-pitch-filters"></div>
+        </div>
+        <div class="mlb-filter-group">
+          <span class="mlb-filter-label">CONTACT</span>
+          <div class="mlb-pills" id="mlb-bb-filters"></div>
+        </div>
+      </div>
+
+      <div class="mlb-canvas-row">
+        <div class="mlb-scatter-stage" id="mlb-scatter-stage">
+          <canvas id="mlb-scatter-canvas"></canvas>
+          <div class="mlb-tooltip" id="mlb-tooltip"></div>
+        </div>
+        <div class="mlb-vector-stage" id="mlb-vector-stage">
+          <canvas id="mlb-vector-canvas"></canvas>
+        </div>
+      </div>
+
+      <div class="mlb-statrow">
+        <div class="mlb-stat-item">
+          <span class="mlb-stat-lbl">Exit Velo</span>
+          <span class="mlb-stat-val" id="mlb-s-ev">—</span>
+        </div>
+        <div class="mlb-stat-sep"></div>
+        <div class="mlb-stat-item">
+          <span class="mlb-stat-lbl">Launch Angle</span>
+          <span class="mlb-stat-val" id="mlb-s-la">—</span>
+        </div>
+        <div class="mlb-stat-sep"></div>
+        <div class="mlb-stat-item">
+          <span class="mlb-stat-lbl">Pitch Type</span>
+          <span class="mlb-stat-val" id="mlb-s-pt">—</span>
+        </div>
+        <div class="mlb-stat-sep"></div>
+        <div class="mlb-stat-item">
+          <span class="mlb-stat-lbl">Pitch Speed</span>
+          <span class="mlb-stat-val" id="mlb-s-ps">—</span>
+        </div>
+        <div class="mlb-stat-sep"></div>
+        <div class="mlb-stat-item">
+          <span class="mlb-stat-lbl">Contact</span>
+          <span class="mlb-stat-val" id="mlb-s-bb">—</span>
+        </div>
+      </div>
+
+      <p class="ov-caption">Fig 01 — Statcast batted ball data · Each point is one batted ball event · Red shading = hard contact zone (95+ mph EV) · Click a point to view its launch angle profile on the right · Filter by pitch type or contact result above.</p>
+    </div>
+  </div>
+
+  <!-- Bottom nav -->
+  <div class="ov-bnav">
+    <div>
+      <div class="ov-bn-l">Continue to</div>
+      <button class="ov-bn-next nb" onclick="switchOverlay('mlb','nba')">NBA Analytics →</button>
+    </div>
+  </div>
+
+</div><!-- /overlay-mlb -->
+
+<script src="mlb_data.js"></script>
 <script src="portfolio.js"></script>
 </body>
 </html>

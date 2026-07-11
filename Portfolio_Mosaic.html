@@ -32,9 +32,19 @@
   <div class="panel f1-panel" onclick="openOverlay('f1')">
     <div class="panel-content">
       <div class="panel-num">02 / F1</div>
-      <div class="panel-sport">F—1</div>
+      <div class="panel-sport">F1</div>
       <div class="panel-sub">Formula One</div>
       <div class="panel-hint">Telemetry · Lap Analysis · Driver Comparison</div>
+    </div>
+  </div>
+
+  <!-- PANEL 5: MLB -->
+  <div class="panel mlb-panel" onclick="openOverlay('mlb')">
+    <div class="panel-content">
+      <div class="panel-num">05 / MLB</div>
+      <div class="panel-sport">MLB</div>
+      <div class="panel-sub">Statcast Analytics</div>
+      <div class="panel-hint">Exit Velocity · Launch Angle · Pitch type Analysis</div>
     </div>
   </div>
 
@@ -55,7 +65,7 @@
       <div class="panel-num">04 / EW</div>
       <div class="panel-sport">ELIJAH<br>WHITTLE</div>
       <div class="panel-sub">CS Student · Data Scientist</div>
-      <div class="panel-hint">University of DC · EDGIO · Open to Work</div>
+      <div class="panel-hint">University of DC · Open to Work</div>
     </div>
   </div>
 
@@ -298,6 +308,14 @@
       <p class="ov-caption">Fig 02 — Canada / Jeddah / Miami 2025 · Race fastest laps for Leclerc, Stroll, and Piastri. Speed, throttle, and brake channels extracted via FastF1. Scrub the timeline or hover to compare drivers at any point on the lap.</p>
     </div>
   </div>
+  <!-- Lap analyzer text -->
+  <div class="ov-prose">
+    <div class="ov-prose-inner">
+      <h3 class="ov-h3">Where on the track does the gap actually open up?</h3>
+      <p class="ov-body">A two-second gap at the flag looks like one thing in the standings and a completely different thing in the data. The Lap Time Analyzer pulls real race telemetry via FastF1 and breaks every lap into sectors — showing not just who was faster, but at which corner, on which lap, under which tire compound the delta grew.</p>
+      <div class="ov-callout f1-call">Sector 2 deltas often reveal more than overall lap time. It's where setup decisions, brake bias, and driver commitment intersect — the invisible part of the race.</div>
+    </div>
+  </div>
 
   <!-- Teammate Fastest Lap Comparison -->
   <div class="ov-fullbleed">
@@ -348,15 +366,6 @@
       </div>
 
       <p class="ov-caption" id="tlm-caption">Fig 02 — Teammate fastest lap comparison · Miami 2026 · Speed channel. Green fill = ANT carrying more speed · Red fill = RUS carrying more speed. Hover or scrub to explore every moment of the lap.</p>
-    </div>
-  </div>
-
-  <!-- Lap analyzer text -->
-  <div class="ov-prose">
-    <div class="ov-prose-inner">
-      <h3 class="ov-h3">Where on the track does the gap actually open up?</h3>
-      <p class="ov-body">A two-second gap at the flag looks like one thing in the standings and a completely different thing in the data. The Lap Time Analyzer pulls real race telemetry via FastF1 and breaks every lap into sectors — showing not just who was faster, but at which corner, on which lap, under which tire compound the delta grew.</p>
-      <div class="ov-callout f1-call">Sector 2 deltas often reveal more than overall lap time. It's where setup decisions, brake bias, and driver commitment intersect — the invisible part of the race.</div>
     </div>
   </div>
 
@@ -479,10 +488,10 @@
   <div class="ov-section">
     <div class="ov-cols">
       <div>
-        <h3 class="ov-h3">The work</h3>
+        <h3 class="ov-h3">My work and goals</h3>
         <p class="ov-body">I build machine learning pipelines, interactive visualizations, and computer vision systems for sports data. The focus is always the same: take something the game produces — shot coordinates, lap telemetry, video footage — and turn it into something you can actually see and reason about.</p>
-        <p class="ov-body">I believe sports produce some of the richest, most underutilized data in the world. Every play, lap, and sprint is a measurement. My job is to make those measurements speak.</p>
-        <div class="ov-callout nba-call">"The data already knows what the game is trying to say. The tool is just how you listen."</div>
+        <p class="ov-body">I believe sports produce some of the richest, most underutilized data in the world. Each play, lap, and pitch is a measurement. My job is to make those measurements speak.</p>
+        <div class="ov-callout nba-call">"The data already knows what the game is trying to say. Tools are just how you listen."</div>
         <div class="ov-pills" style="margin-top:1.25rem;">
           <span class="ov-pill np">Python</span>
           <span class="ov-pill np">scikit-learn</span>
@@ -513,7 +522,7 @@
       <div>
         <h3 class="ov-h3">Education</h3>
         <p class="ov-body" style="margin-bottom:.4rem;color:rgba(255,255,255,.7);font-weight:700;">University of the District of Columbia</p>
-        <p class="ov-body" style="margin-bottom:1.5rem;font-size:.8rem;color:rgba(255,255,255,.3);letter-spacing:.06em;">B.S. Computer Science · Expected 2027 · GPA 3.0</p>
+        <p class="ov-body" style="margin-bottom:1.5rem;font-size:.8rem;color:rgba(255,255,255,.3);letter-spacing:.06em;">B.S. Computer Science · Expected 2027 · GPA 3.4</p>
         <p class="ov-body" style="margin-bottom:.4rem;color:rgba(255,255,255,.7);font-weight:700;">Duke Ellington School of the Arts</p>
         <p class="ov-body" style="font-size:.8rem;color:rgba(255,255,255,.3);letter-spacing:.06em;">Graduated 2017</p>
       </div>
@@ -541,6 +550,105 @@
 </div><!-- /overlay-about -->
 
 
+<!-- ════ OVERLAY: MLB ════ -->
+<div class="overlay" id="overlay-mlb">
+  <button class="ov-close" onclick="closeOverlay(event)">
+    <div class="ov-close-left">
+      <span class="ov-close-x">✕</span>
+      <span class="ov-close-label">Back to overview</span>
+    </div>
+    <span class="ov-close-right">05 / MLB Analytics</span>
+  </button>
+
+  <!-- Hero -->
+  <div class="ov-hero">
+    <div class="ov-eyebrow"><div class="ov-eyebrow-line"></div>MLB Analytics</div>
+    <div class="ov-big-title">MLB</div>
+    <p class="ov-question">This scouting lab breaks down hitter performance using Statcast data. Use the zone grid to see where a player makes contact, the EV histogram to assess bat speed, and the stats table to compare month-to-month trends. Higher barrel% and hard-hit% indicate quality contact.</p>
+  </div>
+
+  <!-- Batted Ball Profile -->
+  <div class="ov-fullbleed">
+    <div class="ov-fullbleed-inner">
+
+      <div class="mlb-header">
+        <div>
+          <div class="ov-eyebrow" style="margin-bottom:.35rem;"><div class="ov-eyebrow-line"></div>Batted Ball Profile</div>
+          <h3 class="ov-h3" style="margin:0;">Pitch Speed vs Exit Velocity · Click a point</h3>
+        </div>
+        <div class="mlb-player-btns" id="mlb-player-btns">
+          <button class="mlb-player-btn active" onclick="mlbSelectPlayer('harper',this)">HARPER</button>
+          <button class="mlb-player-btn" onclick="mlbSelectPlayer('cruz',this)">CRUZ</button>
+          <button class="mlb-player-btn" onclick="mlbSelectPlayer('wood',this)">WOOD</button>
+          <button class="mlb-player-btn" onclick="mlbSelectPlayer('walker',this)">WALKER</button>
+          <button class="mlb-player-btn" onclick="mlbSelectPlayer('marsh',this)">MARSH</button>
+          <button class="mlb-player-btn" onclick="mlbSelectPlayer('kwan',this)">KWAN</button>
+        </div>
+      </div>
+
+      <div class="mlb-filter-row">
+        <div class="mlb-filter-group">
+          <span class="mlb-filter-label">PITCH</span>
+          <div class="mlb-pills" id="mlb-pitch-filters"></div>
+        </div>
+        <div class="mlb-filter-group">
+          <span class="mlb-filter-label">CONTACT</span>
+          <div class="mlb-pills" id="mlb-bb-filters"></div>
+        </div>
+      </div>
+
+      <div class="mlb-canvas-row">
+        <div class="mlb-scatter-stage" id="mlb-scatter-stage">
+          <canvas id="mlb-scatter-canvas"></canvas>
+          <div class="mlb-tooltip" id="mlb-tooltip"></div>
+        </div>
+        <div class="mlb-vector-stage" id="mlb-vector-stage">
+          <canvas id="mlb-vector-canvas"></canvas>
+        </div>
+      </div>
+
+      <div class="mlb-statrow">
+        <div class="mlb-stat-item">
+          <span class="mlb-stat-lbl">Exit Velo</span>
+          <span class="mlb-stat-val" id="mlb-s-ev">—</span>
+        </div>
+        <div class="mlb-stat-sep"></div>
+        <div class="mlb-stat-item">
+          <span class="mlb-stat-lbl">Launch Angle</span>
+          <span class="mlb-stat-val" id="mlb-s-la">—</span>
+        </div>
+        <div class="mlb-stat-sep"></div>
+        <div class="mlb-stat-item">
+          <span class="mlb-stat-lbl">Pitch Type</span>
+          <span class="mlb-stat-val" id="mlb-s-pt">—</span>
+        </div>
+        <div class="mlb-stat-sep"></div>
+        <div class="mlb-stat-item">
+          <span class="mlb-stat-lbl">Pitch Speed</span>
+          <span class="mlb-stat-val" id="mlb-s-ps">—</span>
+        </div>
+        <div class="mlb-stat-sep"></div>
+        <div class="mlb-stat-item">
+          <span class="mlb-stat-lbl">Contact</span>
+          <span class="mlb-stat-val" id="mlb-s-bb">—</span>
+        </div>
+      </div>
+
+      <p class="ov-caption">Fig 01 — Statcast batted ball data · Each point is one batted ball event · Red shading = hard contact zone (95+ mph EV) · Click a point to view its launch angle profile on the right · Filter by pitch type or contact result above.</p>
+    </div>
+  </div>
+
+  <!-- Bottom nav -->
+  <div class="ov-bnav">
+    <div>
+      <div class="ov-bn-l">Continue to</div>
+      <button class="ov-bn-next nb" onclick="switchOverlay('mlb','nba')">NBA Analytics →</button>
+    </div>
+  </div>
+
+</div><!-- /overlay-mlb -->
+
+<script src="mlb_data.js"></script>
 <script src="portfolio.js"></script>
 </body>
 </html>
