@@ -1,0 +1,1890 @@
+[
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 81.6,
+    "launch_speed": 101.7,
+    "launch_angle": -4.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 86.7,
+    "launch_speed": 111.9,
+    "launch_angle": 2.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CU",
+    "release_speed": 75.8,
+    "launch_speed": 52.3,
+    "launch_angle": -70.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 94.3,
+    "launch_speed": 106.0,
+    "launch_angle": -19.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 89.5,
+    "launch_speed": 105.5,
+    "launch_angle": 27.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 83.6,
+    "launch_speed": 63.5,
+    "launch_angle": -32.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 82.6,
+    "launch_speed": 100.8,
+    "launch_angle": 2.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 79.7,
+    "launch_speed": 93.3,
+    "launch_angle": -2.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 83.1,
+    "launch_speed": 111.4,
+    "launch_angle": 24.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 94.5,
+    "launch_speed": 85.9,
+    "launch_angle": 0.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 96.1,
+    "launch_speed": 109.8,
+    "launch_angle": 32.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 91.7,
+    "launch_speed": 58.8,
+    "launch_angle": -34.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 94.6,
+    "launch_speed": 85.6,
+    "launch_angle": -32.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 88.9,
+    "launch_speed": 97.5,
+    "launch_angle": 18.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 91.3,
+    "launch_speed": 98.0,
+    "launch_angle": -19.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 97.1,
+    "launch_speed": 113.1,
+    "launch_angle": 31.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 93.3,
+    "launch_speed": 111.7,
+    "launch_angle": 9.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 81.0,
+    "launch_speed": 107.2,
+    "launch_angle": 15.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FA",
+    "release_speed": 69.5,
+    "launch_speed": 98.0,
+    "launch_angle": 34.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 96.1,
+    "launch_speed": 102.7,
+    "launch_angle": 20.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 81.3,
+    "launch_speed": 88.3,
+    "launch_angle": 24.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 96.5,
+    "launch_speed": 50.2,
+    "launch_angle": 11.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 85.6,
+    "launch_speed": 105.2,
+    "launch_angle": 0.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 87.6,
+    "launch_speed": 104.2,
+    "launch_angle": 26.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 92.9,
+    "launch_speed": 79.3,
+    "launch_angle": -64.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 86.6,
+    "launch_speed": 107.1,
+    "launch_angle": 17.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 90.0,
+    "launch_speed": 109.0,
+    "launch_angle": 6.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 83.5,
+    "launch_speed": 90.0,
+    "launch_angle": 71.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 91.6,
+    "launch_speed": 49.9,
+    "launch_angle": -59.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 90.4,
+    "launch_speed": 113.6,
+    "launch_angle": 24.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 95.9,
+    "launch_speed": 99.6,
+    "launch_angle": 21.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 95.8,
+    "launch_speed": 108.9,
+    "launch_angle": 14.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CU",
+    "release_speed": 86.2,
+    "launch_speed": 95.0,
+    "launch_angle": 38.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 77.0,
+    "launch_speed": 68.1,
+    "launch_angle": 16.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 85.7,
+    "launch_speed": 78.1,
+    "launch_angle": 57.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 96.2,
+    "launch_speed": 83.7,
+    "launch_angle": -22.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 87.7,
+    "launch_speed": 59.6,
+    "launch_angle": -17.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 96.0,
+    "launch_speed": 80.6,
+    "launch_angle": 11.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "KC",
+    "release_speed": 78.8,
+    "launch_speed": 96.6,
+    "launch_angle": 17.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 92.8,
+    "launch_speed": 97.7,
+    "launch_angle": 41.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 94.5,
+    "launch_speed": 81.1,
+    "launch_angle": -12.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 96.8,
+    "launch_speed": 96.5,
+    "launch_angle": 1.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 98.0,
+    "launch_speed": 100.1,
+    "launch_angle": 12.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 92.8,
+    "launch_speed": 101.7,
+    "launch_angle": 5.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 93.2,
+    "launch_speed": 101.7,
+    "launch_angle": -2.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 90.8,
+    "launch_speed": 104.7,
+    "launch_angle": 29.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 82.7,
+    "launch_speed": 110.9,
+    "launch_angle": 17.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 84.1,
+    "launch_speed": 95.4,
+    "launch_angle": 42.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 96.4,
+    "launch_speed": 106.6,
+    "launch_angle": 60.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 88.1,
+    "launch_speed": 98.4,
+    "launch_angle": -4.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 81.7,
+    "launch_speed": 97.2,
+    "launch_angle": 20.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CU",
+    "release_speed": 84.4,
+    "launch_speed": 105.9,
+    "launch_angle": 29.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 79.4,
+    "launch_speed": 103.6,
+    "launch_angle": 42.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 91.6,
+    "launch_speed": 59.8,
+    "launch_angle": -45.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 83.0,
+    "launch_speed": 104.5,
+    "launch_angle": 5.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 90.3,
+    "launch_speed": 87.6,
+    "launch_angle": -29.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 81.2,
+    "launch_speed": 85.5,
+    "launch_angle": 23.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 95.3,
+    "launch_speed": 102.0,
+    "launch_angle": 40.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 88.7,
+    "launch_speed": 97.2,
+    "launch_angle": -18.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 90.1,
+    "launch_speed": 108.1,
+    "launch_angle": 2.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 84.7,
+    "launch_speed": 79.8,
+    "launch_angle": 11.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 95.1,
+    "launch_speed": 100.2,
+    "launch_angle": 14.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 97.2,
+    "launch_speed": 92.7,
+    "launch_angle": 19.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 87.1,
+    "launch_speed": 109.4,
+    "launch_angle": 35.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 96.9,
+    "launch_speed": 104.1,
+    "launch_angle": 18.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 84.9,
+    "launch_speed": 63.2,
+    "launch_angle": 18.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 96.7,
+    "launch_speed": 97.9,
+    "launch_angle": -19.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 85.9,
+    "launch_speed": 64.7,
+    "launch_angle": -33.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 87.5,
+    "launch_speed": 111.5,
+    "launch_angle": 26.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CU",
+    "release_speed": 83.5,
+    "launch_speed": 75.9,
+    "launch_angle": 7.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 96.7,
+    "launch_speed": 100.7,
+    "launch_angle": -2.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "KC",
+    "release_speed": 83.3,
+    "launch_speed": 101.6,
+    "launch_angle": 39.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 94.0,
+    "launch_speed": 104.1,
+    "launch_angle": 33.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 86.9,
+    "launch_speed": 75.5,
+    "launch_angle": 0.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 94.7,
+    "launch_speed": 107.8,
+    "launch_angle": 7.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 94.9,
+    "launch_speed": 112.1,
+    "launch_angle": 12.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 85.9,
+    "launch_speed": 67.9,
+    "launch_angle": -24.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 91.3,
+    "launch_speed": 114.3,
+    "launch_angle": 5.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 87.7,
+    "launch_speed": 83.8,
+    "launch_angle": 11.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 96.6,
+    "launch_speed": 86.7,
+    "launch_angle": -37.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 88.6,
+    "launch_speed": 51.7,
+    "launch_angle": 20.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 96.3,
+    "launch_speed": 100.3,
+    "launch_angle": 29.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 90.9,
+    "launch_speed": 85.7,
+    "launch_angle": 13.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 92.6,
+    "launch_speed": 105.9,
+    "launch_angle": 29.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 81.4,
+    "launch_speed": 113.7,
+    "launch_angle": 7.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 89.5,
+    "launch_speed": 89.4,
+    "launch_angle": 32.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 95.6,
+    "launch_speed": 83.8,
+    "launch_angle": 45.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 90.2,
+    "launch_speed": 85.4,
+    "launch_angle": -41.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 92.1,
+    "launch_speed": 76.3,
+    "launch_angle": 9.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 95.9,
+    "launch_speed": 85.2,
+    "launch_angle": 24.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 90.0,
+    "launch_speed": 113.8,
+    "launch_angle": 21.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 100.0,
+    "launch_speed": 66.5,
+    "launch_angle": 8.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 81.9,
+    "launch_speed": 106.1,
+    "launch_angle": 36.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 91.0,
+    "launch_speed": 93.8,
+    "launch_angle": 51.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 87.0,
+    "launch_speed": 97.4,
+    "launch_angle": 12.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 80.1,
+    "launch_speed": 95.7,
+    "launch_angle": 48.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FS",
+    "release_speed": 82.6,
+    "launch_speed": 93.7,
+    "launch_angle": 21.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 85.8,
+    "launch_speed": 93.5,
+    "launch_angle": -4.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 96.3,
+    "launch_speed": 103.9,
+    "launch_angle": 24.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CU",
+    "release_speed": 84.2,
+    "launch_speed": 102.6,
+    "launch_angle": 19.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 79.3,
+    "launch_speed": 109.8,
+    "launch_angle": 28.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 91.3,
+    "launch_speed": 89.9,
+    "launch_angle": -41.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 91.4,
+    "launch_speed": 111.1,
+    "launch_angle": 10.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 84.1,
+    "launch_speed": 107.0,
+    "launch_angle": 8.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 94.5,
+    "launch_speed": 98.4,
+    "launch_angle": 9.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 83.2,
+    "launch_speed": 99.7,
+    "launch_angle": 17.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CU",
+    "release_speed": 80.2,
+    "launch_speed": 107.7,
+    "launch_angle": 28.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 86.5,
+    "launch_speed": 72.9,
+    "launch_angle": -71.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 84.4,
+    "launch_speed": 96.4,
+    "launch_angle": -7.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 93.3,
+    "launch_speed": 113.2,
+    "launch_angle": 12.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 88.6,
+    "launch_speed": 90.6,
+    "launch_angle": 31.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 97.5,
+    "launch_speed": 88.6,
+    "launch_angle": -18.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 88.6,
+    "launch_speed": 86.6,
+    "launch_angle": 2.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 87.1,
+    "launch_speed": 111.7,
+    "launch_angle": 21.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 93.3,
+    "launch_speed": 93.9,
+    "launch_angle": -28.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 89.7,
+    "launch_speed": 90.7,
+    "launch_angle": 57.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 78.6,
+    "launch_speed": 98.0,
+    "launch_angle": 24.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 92.7,
+    "launch_speed": 101.3,
+    "launch_angle": 44.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 93.5,
+    "launch_speed": 86.7,
+    "launch_angle": -38.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 94.7,
+    "launch_speed": 80.3,
+    "launch_angle": -15.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 92.7,
+    "launch_speed": 93.1,
+    "launch_angle": 10.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 85.7,
+    "launch_speed": 101.3,
+    "launch_angle": 24.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 82.7,
+    "launch_speed": 101.0,
+    "launch_angle": 34.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 96.6,
+    "launch_speed": 93.1,
+    "launch_angle": 17.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 95.9,
+    "launch_speed": 107.0,
+    "launch_angle": 13.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 91.2,
+    "launch_speed": 78.2,
+    "launch_angle": -27.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 87.0,
+    "launch_speed": 93.4,
+    "launch_angle": 1.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 81.3,
+    "launch_speed": 104.7,
+    "launch_angle": 18.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 87.5,
+    "launch_speed": 97.3,
+    "launch_angle": 15.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 86.0,
+    "launch_speed": 104.7,
+    "launch_angle": 22.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 94.1,
+    "launch_speed": 99.4,
+    "launch_angle": 54.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 88.8,
+    "launch_speed": 102.4,
+    "launch_angle": 56.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 96.3,
+    "launch_speed": 111.6,
+    "launch_angle": 6.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "KC",
+    "release_speed": 85.3,
+    "launch_speed": 89.7,
+    "launch_angle": 4.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 92.8,
+    "launch_speed": 108.0,
+    "launch_angle": 27.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 97.7,
+    "launch_speed": 74.1,
+    "launch_angle": 44.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 94.5,
+    "launch_speed": 114.4,
+    "launch_angle": 5.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 90.1,
+    "launch_speed": 96.5,
+    "launch_angle": -12.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 84.0,
+    "launch_speed": 108.2,
+    "launch_angle": 35.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 92.6,
+    "launch_speed": 99.0,
+    "launch_angle": 1.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 97.1,
+    "launch_speed": 62.5,
+    "launch_angle": -26.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 91.4,
+    "launch_speed": 100.4,
+    "launch_angle": 44.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 91.4,
+    "launch_speed": 93.2,
+    "launch_angle": -16.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 96.7,
+    "launch_speed": 100.2,
+    "launch_angle": 25.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CU",
+    "release_speed": 78.3,
+    "launch_speed": 88.5,
+    "launch_angle": 35.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 98.5,
+    "launch_speed": 102.2,
+    "launch_angle": 24.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 86.4,
+    "launch_speed": 109.6,
+    "launch_angle": 28.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CU",
+    "release_speed": 81.7,
+    "launch_speed": 95.0,
+    "launch_angle": 34.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CU",
+    "release_speed": 83.3,
+    "launch_speed": 67.9,
+    "launch_angle": -28.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CU",
+    "release_speed": 84.4,
+    "launch_speed": 95.0,
+    "launch_angle": 10.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 93.5,
+    "launch_speed": 99.6,
+    "launch_angle": 20.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 93.7,
+    "launch_speed": 108.2,
+    "launch_angle": 14.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 83.7,
+    "launch_speed": 84.3,
+    "launch_angle": 20.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 87.0,
+    "launch_speed": 100.5,
+    "launch_angle": -4.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 89.8,
+    "launch_speed": 97.9,
+    "launch_angle": 30.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 87.3,
+    "launch_speed": 111.9,
+    "launch_angle": 20.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 83.7,
+    "launch_speed": 89.5,
+    "launch_angle": -22.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 78.8,
+    "launch_speed": 92.1,
+    "launch_angle": 40.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 92.2,
+    "launch_speed": 88.0,
+    "launch_angle": 34.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 96.0,
+    "launch_speed": 88.3,
+    "launch_angle": 15.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 84.2,
+    "launch_speed": 74.4,
+    "launch_angle": 2.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 96.0,
+    "launch_speed": 57.8,
+    "launch_angle": -63.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 100.2,
+    "launch_speed": 111.7,
+    "launch_angle": 0.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 101.9,
+    "launch_speed": 89.5,
+    "launch_angle": 9.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CU",
+    "release_speed": 76.7,
+    "launch_speed": 94.0,
+    "launch_angle": 22.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 75.2,
+    "launch_speed": 114.6,
+    "launch_angle": 10.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 90.4,
+    "launch_speed": 94.3,
+    "launch_angle": 23.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 92.1,
+    "launch_speed": 110.3,
+    "launch_angle": 0.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 87.7,
+    "launch_speed": 108.4,
+    "launch_angle": -3.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 95.1,
+    "launch_speed": 83.2,
+    "launch_angle": 19.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 80.6,
+    "launch_speed": 103.8,
+    "launch_angle": 30.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 99.6,
+    "launch_speed": 99.3,
+    "launch_angle": 21.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 94.7,
+    "launch_speed": 94.4,
+    "launch_angle": 33.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 86.7,
+    "launch_speed": 93.6,
+    "launch_angle": 22.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 93.5,
+    "launch_speed": 102.4,
+    "launch_angle": 32.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 91.4,
+    "launch_speed": 112.2,
+    "launch_angle": 28.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 97.2,
+    "launch_speed": 79.3,
+    "launch_angle": -32.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 93.1,
+    "launch_speed": 114.5,
+    "launch_angle": 20.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 91.9,
+    "launch_speed": 89.7,
+    "launch_angle": 53.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 89.2,
+    "launch_speed": 104.6,
+    "launch_angle": 27.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 88.1,
+    "launch_speed": 107.1,
+    "launch_angle": -1.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 89.9,
+    "launch_speed": 106.2,
+    "launch_angle": -18.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 94.8,
+    "launch_speed": 101.8,
+    "launch_angle": -19.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 90.0,
+    "launch_speed": 91.6,
+    "launch_angle": 32.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 95.6,
+    "launch_speed": 109.0,
+    "launch_angle": 28.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 82.5,
+    "launch_speed": 100.0,
+    "launch_angle": 52.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 86.5,
+    "launch_speed": 105.9,
+    "launch_angle": 22.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 82.7,
+    "launch_speed": 110.5,
+    "launch_angle": 29.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CU",
+    "release_speed": 86.3,
+    "launch_speed": 105.8,
+    "launch_angle": -3.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 93.9,
+    "launch_speed": 104.4,
+    "launch_angle": 37.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "ST",
+    "release_speed": 81.4,
+    "launch_speed": 75.4,
+    "launch_angle": 24.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 85.8,
+    "launch_speed": 106.3,
+    "launch_angle": 1.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FS",
+    "release_speed": 85.4,
+    "launch_speed": 101.8,
+    "launch_angle": 39.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 97.9,
+    "launch_speed": 105.6,
+    "launch_angle": 42.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 83.9,
+    "launch_speed": 103.7,
+    "launch_angle": -5.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 92.9,
+    "launch_speed": 101.1,
+    "launch_angle": 32.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 85.3,
+    "launch_speed": 79.5,
+    "launch_angle": 10.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 94.4,
+    "launch_speed": 111.5,
+    "launch_angle": 12.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SV",
+    "release_speed": 83.0,
+    "launch_speed": 78.4,
+    "launch_angle": -9.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 88.7,
+    "launch_speed": 105.3,
+    "launch_angle": -4.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 97.8,
+    "launch_speed": 116.3,
+    "launch_angle": 16.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 92.1,
+    "launch_speed": 115.3,
+    "launch_angle": 15.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 98.0,
+    "launch_speed": 98.7,
+    "launch_angle": 16.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 85.1,
+    "launch_speed": 83.2,
+    "launch_angle": 7.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 89.4,
+    "launch_speed": 110.7,
+    "launch_angle": 11.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 91.8,
+    "launch_speed": 116.0,
+    "launch_angle": 6.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 89.6,
+    "launch_speed": 101.9,
+    "launch_angle": -21.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 92.9,
+    "launch_speed": 92.5,
+    "launch_angle": -31.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 85.8,
+    "launch_speed": 108.4,
+    "launch_angle": 27.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 94.8,
+    "launch_speed": 86.1,
+    "launch_angle": 17.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "KC",
+    "release_speed": 75.6,
+    "launch_speed": 67.8,
+    "launch_angle": -10.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 99.3,
+    "launch_speed": 114.3,
+    "launch_angle": 18.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 94.2,
+    "launch_speed": 104.3,
+    "launch_angle": -9.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FO",
+    "release_speed": 85.3,
+    "launch_speed": 107.6,
+    "launch_angle": 34.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 92.1,
+    "launch_speed": 105.1,
+    "launch_angle": 1.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 97.2,
+    "launch_speed": 64.2,
+    "launch_angle": -30.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 96.3,
+    "launch_speed": 106.0,
+    "launch_angle": 38.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FC",
+    "release_speed": 94.6,
+    "launch_speed": 79.6,
+    "launch_angle": -18.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 95.9,
+    "launch_speed": 104.7,
+    "launch_angle": 5.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 84.5,
+    "launch_speed": 60.0,
+    "launch_angle": -29.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 94.4,
+    "launch_speed": 109.8,
+    "launch_angle": 20.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 92.6,
+    "launch_speed": 98.1,
+    "launch_angle": 38.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 94.2,
+    "launch_speed": 105.2,
+    "launch_angle": -11.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 96.1,
+    "launch_speed": 86.9,
+    "launch_angle": -20.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 95.2,
+    "launch_speed": 90.2,
+    "launch_angle": -17.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SI",
+    "release_speed": 93.7,
+    "launch_speed": 106.9,
+    "launch_angle": -3.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 96.8,
+    "launch_speed": 76.9,
+    "launch_angle": -18.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 99.8,
+    "launch_speed": 100.2,
+    "launch_angle": 20.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 92.0,
+    "launch_speed": 99.5,
+    "launch_angle": 11.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FS",
+    "release_speed": 86.1,
+    "launch_speed": 61.4,
+    "launch_angle": -47.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 99.0,
+    "launch_speed": 108.1,
+    "launch_angle": 40.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 97.0,
+    "launch_speed": 84.0,
+    "launch_angle": 31.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "CH",
+    "release_speed": 88.2,
+    "launch_speed": 83.3,
+    "launch_angle": -32.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 95.2,
+    "launch_speed": 110.0,
+    "launch_angle": 18.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "SL",
+    "release_speed": 89.3,
+    "launch_speed": 50.5,
+    "launch_angle": 46.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Wood, James",
+    "pitch_type": "FF",
+    "release_speed": 96.8,
+    "launch_speed": 85.3,
+    "launch_angle": -35.0,
+    "bb_type": "ground_ball"
+  }
+]

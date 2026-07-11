@@ -1,0 +1,2050 @@
+[
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 97.8,
+    "launch_speed": 101.2,
+    "launch_angle": 8.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 80.2,
+    "launch_speed": 81.6,
+    "launch_angle": 1.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 100.0,
+    "launch_speed": 87.5,
+    "launch_angle": -42.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 94.0,
+    "launch_speed": 100.6,
+    "launch_angle": -24.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 89.8,
+    "launch_speed": 106.5,
+    "launch_angle": 28.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 86.6,
+    "launch_speed": 115.0,
+    "launch_angle": 1.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 81.9,
+    "launch_speed": 87.7,
+    "launch_angle": 4.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 83.8,
+    "launch_speed": 91.8,
+    "launch_angle": 10.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 96.8,
+    "launch_speed": 104.6,
+    "launch_angle": 23.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 86.9,
+    "launch_speed": 107.7,
+    "launch_angle": 6.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 103.5,
+    "launch_speed": 84.4,
+    "launch_angle": 50.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 87.7,
+    "launch_speed": 108.9,
+    "launch_angle": -16.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 93.4,
+    "launch_speed": 103.1,
+    "launch_angle": 8.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 95.1,
+    "launch_speed": 105.6,
+    "launch_angle": 23.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 87.4,
+    "launch_speed": 79.5,
+    "launch_angle": 67.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 95.1,
+    "launch_speed": 110.4,
+    "launch_angle": 5.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 84.2,
+    "launch_speed": 107.6,
+    "launch_angle": -19.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 80.0,
+    "launch_speed": 86.0,
+    "launch_angle": 31.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 94.3,
+    "launch_speed": 91.0,
+    "launch_angle": 19.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 82.8,
+    "launch_speed": 109.2,
+    "launch_angle": 26.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FS",
+    "release_speed": 83.0,
+    "launch_speed": 89.2,
+    "launch_angle": -18.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 80.0,
+    "launch_speed": 112.1,
+    "launch_angle": 14.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 90.9,
+    "launch_speed": 101.6,
+    "launch_angle": 17.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 95.8,
+    "launch_speed": 107.6,
+    "launch_angle": 16.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 95.7,
+    "launch_speed": 82.2,
+    "launch_angle": -8.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FS",
+    "release_speed": 83.8,
+    "launch_speed": 104.4,
+    "launch_angle": 35.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 96.1,
+    "launch_speed": 88.7,
+    "launch_angle": 47.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 95.3,
+    "launch_speed": 109.6,
+    "launch_angle": -2.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 95.8,
+    "launch_speed": 102.4,
+    "launch_angle": 11.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 79.7,
+    "launch_speed": 102.5,
+    "launch_angle": 15.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 86.9,
+    "launch_speed": 65.0,
+    "launch_angle": -69.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 83.9,
+    "launch_speed": 82.9,
+    "launch_angle": 5.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 91.0,
+    "launch_speed": 67.7,
+    "launch_angle": -6.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 89.9,
+    "launch_speed": 95.3,
+    "launch_angle": -36.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 90.4,
+    "launch_speed": 80.2,
+    "launch_angle": -46.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 91.8,
+    "launch_speed": 107.1,
+    "launch_angle": 8.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 87.8,
+    "launch_speed": 92.9,
+    "launch_angle": 11.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 89.0,
+    "launch_speed": 77.4,
+    "launch_angle": 14.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CU",
+    "release_speed": 80.9,
+    "launch_speed": 99.5,
+    "launch_angle": 27.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 92.0,
+    "launch_speed": 76.4,
+    "launch_angle": 64.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 87.0,
+    "launch_speed": 81.6,
+    "launch_angle": -5.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 90.5,
+    "launch_speed": 78.9,
+    "launch_angle": 12.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 85.0,
+    "launch_speed": 82.8,
+    "launch_angle": -25.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 93.2,
+    "launch_speed": 51.8,
+    "launch_angle": 54.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 94.0,
+    "launch_speed": 36.9,
+    "launch_angle": -87.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 93.7,
+    "launch_speed": 88.3,
+    "launch_angle": 4.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CU",
+    "release_speed": 79.5,
+    "launch_speed": 91.1,
+    "launch_angle": 28.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 82.6,
+    "launch_speed": 80.5,
+    "launch_angle": 16.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CU",
+    "release_speed": 86.0,
+    "launch_speed": 97.2,
+    "launch_angle": 4.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 95.7,
+    "launch_speed": 97.8,
+    "launch_angle": 7.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 79.2,
+    "launch_speed": 109.9,
+    "launch_angle": -7.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "KC",
+    "release_speed": 81.0,
+    "launch_speed": 85.2,
+    "launch_angle": -1.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 89.5,
+    "launch_speed": 101.8,
+    "launch_angle": 45.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 89.4,
+    "launch_speed": 90.0,
+    "launch_angle": -37.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 90.2,
+    "launch_speed": 94.2,
+    "launch_angle": 69.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 86.1,
+    "launch_speed": 101.1,
+    "launch_angle": 29.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 94.9,
+    "launch_speed": 107.0,
+    "launch_angle": -4.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 94.9,
+    "launch_speed": 86.5,
+    "launch_angle": -54.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 91.9,
+    "launch_speed": 99.4,
+    "launch_angle": -20.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 88.4,
+    "launch_speed": 115.0,
+    "launch_angle": 9.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 91.1,
+    "launch_speed": 111.5,
+    "launch_angle": 4.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 96.0,
+    "launch_speed": 96.0,
+    "launch_angle": 56.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CU",
+    "release_speed": 84.3,
+    "launch_speed": 98.9,
+    "launch_angle": 29.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 90.2,
+    "launch_speed": 98.2,
+    "launch_angle": 20.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 92.1,
+    "launch_speed": 89.6,
+    "launch_angle": 10.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 80.8,
+    "launch_speed": 116.6,
+    "launch_angle": 24.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 91.5,
+    "launch_speed": 104.4,
+    "launch_angle": -27.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 93.2,
+    "launch_speed": 86.6,
+    "launch_angle": -34.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 81.8,
+    "launch_speed": 76.3,
+    "launch_angle": -6.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FS",
+    "release_speed": 85.3,
+    "launch_speed": 111.7,
+    "launch_angle": 8.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 89.4,
+    "launch_speed": 48.1,
+    "launch_angle": -70.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 81.3,
+    "launch_speed": 83.2,
+    "launch_angle": 19.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 80.5,
+    "launch_speed": 100.1,
+    "launch_angle": 18.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 88.9,
+    "launch_speed": 90.5,
+    "launch_angle": 39.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 92.5,
+    "launch_speed": 107.3,
+    "launch_angle": 23.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 88.9,
+    "launch_speed": 90.5,
+    "launch_angle": 37.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 85.9,
+    "launch_speed": 107.7,
+    "launch_angle": 11.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 86.2,
+    "launch_speed": 89.5,
+    "launch_angle": 54.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 94.0,
+    "launch_speed": 78.7,
+    "launch_angle": -31.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 88.1,
+    "launch_speed": 114.0,
+    "launch_angle": 6.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 81.3,
+    "launch_speed": 80.0,
+    "launch_angle": -6.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 97.9,
+    "launch_speed": 114.7,
+    "launch_angle": -10.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 93.5,
+    "launch_speed": 94.3,
+    "launch_angle": 20.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 86.4,
+    "launch_speed": 109.8,
+    "launch_angle": 5.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SV",
+    "release_speed": 86.7,
+    "launch_speed": 102.1,
+    "launch_angle": -5.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 93.3,
+    "launch_speed": 106.1,
+    "launch_angle": 17.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 86.7,
+    "launch_speed": 85.8,
+    "launch_angle": 77.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 94.3,
+    "launch_speed": 105.4,
+    "launch_angle": 25.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 88.5,
+    "launch_speed": 109.8,
+    "launch_angle": 2.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 84.8,
+    "launch_speed": 86.3,
+    "launch_angle": -9.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 87.2,
+    "launch_speed": 111.0,
+    "launch_angle": 12.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 87.4,
+    "launch_speed": 103.7,
+    "launch_angle": 18.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 98.3,
+    "launch_speed": 89.9,
+    "launch_angle": 28.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CU",
+    "release_speed": 81.2,
+    "launch_speed": 86.6,
+    "launch_angle": 18.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 90.6,
+    "launch_speed": 65.1,
+    "launch_angle": 16.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CU",
+    "release_speed": 82.0,
+    "launch_speed": 81.3,
+    "launch_angle": -10.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 94.1,
+    "launch_speed": 114.9,
+    "launch_angle": -1.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CU",
+    "release_speed": 76.5,
+    "launch_speed": 75.4,
+    "launch_angle": 19.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 84.6,
+    "launch_speed": 81.7,
+    "launch_angle": 3.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 81.9,
+    "launch_speed": 94.7,
+    "launch_angle": 59.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 94.2,
+    "launch_speed": 96.9,
+    "launch_angle": -14.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 94.2,
+    "launch_speed": 99.0,
+    "launch_angle": 7.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 95.3,
+    "launch_speed": 112.0,
+    "launch_angle": 0.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 100.8,
+    "launch_speed": 98.8,
+    "launch_angle": 19.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 96.3,
+    "launch_speed": 85.5,
+    "launch_angle": 60.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 90.1,
+    "launch_speed": 103.3,
+    "launch_angle": -1.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CU",
+    "release_speed": 75.0,
+    "launch_speed": 84.7,
+    "launch_angle": 3.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 84.2,
+    "launch_speed": 105.7,
+    "launch_angle": -4.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 94.5,
+    "launch_speed": 74.0,
+    "launch_angle": 28.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 98.5,
+    "launch_speed": 98.0,
+    "launch_angle": -15.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 94.4,
+    "launch_speed": 104.9,
+    "launch_angle": -23.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 89.4,
+    "launch_speed": 82.2,
+    "launch_angle": 13.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SV",
+    "release_speed": 82.5,
+    "launch_speed": 103.5,
+    "launch_angle": 9.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SV",
+    "release_speed": 83.3,
+    "launch_speed": 80.1,
+    "launch_angle": 37.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SV",
+    "release_speed": 83.7,
+    "launch_speed": 98.8,
+    "launch_angle": 4.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 86.5,
+    "launch_speed": 98.6,
+    "launch_angle": -15.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 101.3,
+    "launch_speed": 78.6,
+    "launch_angle": 45.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 91.8,
+    "launch_speed": 81.7,
+    "launch_angle": 2.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 91.7,
+    "launch_speed": 93.4,
+    "launch_angle": 60.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 95.0,
+    "launch_speed": 112.1,
+    "launch_angle": 30.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CU",
+    "release_speed": 77.9,
+    "launch_speed": 90.8,
+    "launch_angle": -21.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 89.0,
+    "launch_speed": 103.9,
+    "launch_angle": 19.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 85.8,
+    "launch_speed": 75.0,
+    "launch_angle": 72.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SV",
+    "release_speed": 85.7,
+    "launch_speed": 95.6,
+    "launch_angle": -5.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 99.0,
+    "launch_speed": 108.0,
+    "launch_angle": 21.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 91.7,
+    "launch_speed": 79.8,
+    "launch_angle": 78.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 87.4,
+    "launch_speed": 88.7,
+    "launch_angle": 11.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 92.6,
+    "launch_speed": 112.2,
+    "launch_angle": -11.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 94.6,
+    "launch_speed": 86.5,
+    "launch_angle": -10.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 96.4,
+    "launch_speed": 91.9,
+    "launch_angle": 40.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 87.8,
+    "launch_speed": 70.0,
+    "launch_angle": 73.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 93.6,
+    "launch_speed": 110.8,
+    "launch_angle": 7.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 82.9,
+    "launch_speed": 85.8,
+    "launch_angle": -45.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 86.9,
+    "launch_speed": 82.9,
+    "launch_angle": -11.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 79.3,
+    "launch_speed": 112.8,
+    "launch_angle": -8.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 80.4,
+    "launch_speed": 86.5,
+    "launch_angle": -11.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 80.3,
+    "launch_speed": 89.8,
+    "launch_angle": 4.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 97.8,
+    "launch_speed": 100.5,
+    "launch_angle": -16.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 89.6,
+    "launch_speed": 73.5,
+    "launch_angle": -24.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 93.9,
+    "launch_speed": 104.8,
+    "launch_angle": 44.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 81.2,
+    "launch_speed": 84.2,
+    "launch_angle": 1.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 85.5,
+    "launch_speed": 69.6,
+    "launch_angle": 19.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 79.7,
+    "launch_speed": 104.5,
+    "launch_angle": 30.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 89.7,
+    "launch_speed": 107.5,
+    "launch_angle": -2.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 94.0,
+    "launch_speed": 96.8,
+    "launch_angle": -33.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 91.1,
+    "launch_speed": 105.4,
+    "launch_angle": 20.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 77.9,
+    "launch_speed": 100.1,
+    "launch_angle": 21.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 95.8,
+    "launch_speed": 70.2,
+    "launch_angle": 33.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 90.5,
+    "launch_speed": 110.5,
+    "launch_angle": 2.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 79.5,
+    "launch_speed": 83.2,
+    "launch_angle": 68.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 91.6,
+    "launch_speed": 85.0,
+    "launch_angle": 66.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 94.0,
+    "launch_speed": 96.3,
+    "launch_angle": 35.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 91.3,
+    "launch_speed": 93.8,
+    "launch_angle": 35.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 94.3,
+    "launch_speed": 83.2,
+    "launch_angle": -1.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 80.9,
+    "launch_speed": 89.7,
+    "launch_angle": 18.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "KC",
+    "release_speed": 76.3,
+    "launch_speed": 108.3,
+    "launch_angle": 31.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 92.4,
+    "launch_speed": 84.9,
+    "launch_angle": 35.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 96.1,
+    "launch_speed": 104.6,
+    "launch_angle": -17.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 94.8,
+    "launch_speed": 93.9,
+    "launch_angle": 6.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 97.9,
+    "launch_speed": 93.5,
+    "launch_angle": 42.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 88.0,
+    "launch_speed": 92.7,
+    "launch_angle": -6.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 90.8,
+    "launch_speed": 84.8,
+    "launch_angle": 4.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 83.0,
+    "launch_speed": 88.8,
+    "launch_angle": 49.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 94.8,
+    "launch_speed": 76.6,
+    "launch_angle": 60.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 85.5,
+    "launch_speed": 115.6,
+    "launch_angle": 3.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 88.5,
+    "launch_speed": 96.2,
+    "launch_angle": 24.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 95.4,
+    "launch_speed": 58.4,
+    "launch_angle": -73.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 97.7,
+    "launch_speed": 91.4,
+    "launch_angle": 37.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 95.5,
+    "launch_speed": 71.5,
+    "launch_angle": 23.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 94.1,
+    "launch_speed": 84.3,
+    "launch_angle": 70.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 95.5,
+    "launch_speed": 109.4,
+    "launch_angle": -24.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 93.8,
+    "launch_speed": 105.6,
+    "launch_angle": 26.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 95.4,
+    "launch_speed": 94.9,
+    "launch_angle": 49.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FO",
+    "release_speed": 84.2,
+    "launch_speed": 110.0,
+    "launch_angle": 17.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 97.5,
+    "launch_speed": 107.9,
+    "launch_angle": 0.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 93.5,
+    "launch_speed": 100.8,
+    "launch_angle": 19.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CU",
+    "release_speed": 75.0,
+    "launch_speed": 85.5,
+    "launch_angle": 15.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 95.1,
+    "launch_speed": 107.8,
+    "launch_angle": 3.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 95.3,
+    "launch_speed": 86.9,
+    "launch_angle": 18.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 87.8,
+    "launch_speed": 101.6,
+    "launch_angle": 12.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 97.6,
+    "launch_speed": 82.8,
+    "launch_angle": 28.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 83.6,
+    "launch_speed": 107.0,
+    "launch_angle": 40.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 97.0,
+    "launch_speed": 112.9,
+    "launch_angle": 2.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 92.9,
+    "launch_speed": 114.0,
+    "launch_angle": 10.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 86.7,
+    "launch_speed": 93.7,
+    "launch_angle": -6.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 98.5,
+    "launch_speed": 99.8,
+    "launch_angle": 39.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 93.7,
+    "launch_speed": 105.7,
+    "launch_angle": -3.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 97.8,
+    "launch_speed": 99.3,
+    "launch_angle": 25.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 94.7,
+    "launch_speed": 87.2,
+    "launch_angle": 40.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 97.8,
+    "launch_speed": 109.1,
+    "launch_angle": -6.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 94.3,
+    "launch_speed": 104.6,
+    "launch_angle": -1.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 97.8,
+    "launch_speed": 103.2,
+    "launch_angle": -8.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 95.9,
+    "launch_speed": 68.2,
+    "launch_angle": -45.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 94.4,
+    "launch_speed": 77.6,
+    "launch_angle": -17.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 86.4,
+    "launch_speed": 105.3,
+    "launch_angle": 8.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 88.1,
+    "launch_speed": 95.6,
+    "launch_angle": 1.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 97.4,
+    "launch_speed": 72.2,
+    "launch_angle": -17.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 83.3,
+    "launch_speed": 110.4,
+    "launch_angle": -1.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 92.9,
+    "launch_speed": 76.9,
+    "launch_angle": 0.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 83.0,
+    "launch_speed": 90.6,
+    "launch_angle": 44.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 87.9,
+    "launch_speed": 112.1,
+    "launch_angle": -5.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 95.6,
+    "launch_speed": 80.2,
+    "launch_angle": 10.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 85.3,
+    "launch_speed": 87.3,
+    "launch_angle": -6.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 87.0,
+    "launch_speed": 98.0,
+    "launch_angle": 30.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 88.3,
+    "launch_speed": 71.2,
+    "launch_angle": 46.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 90.9,
+    "launch_speed": 89.5,
+    "launch_angle": 21.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 86.3,
+    "launch_speed": 109.9,
+    "launch_angle": -2.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 97.4,
+    "launch_speed": 114.7,
+    "launch_angle": 10.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 83.7,
+    "launch_speed": 98.3,
+    "launch_angle": 17.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 87.0,
+    "launch_speed": 80.8,
+    "launch_angle": 47.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 83.5,
+    "launch_speed": 86.3,
+    "launch_angle": 56.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 93.6,
+    "launch_speed": 100.2,
+    "launch_angle": -27.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 83.5,
+    "launch_speed": 88.6,
+    "launch_angle": 70.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 90.0,
+    "launch_speed": 80.9,
+    "launch_angle": 18.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 85.0,
+    "launch_speed": 107.6,
+    "launch_angle": 20.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 95.5,
+    "launch_speed": 87.5,
+    "launch_angle": 33.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 97.1,
+    "launch_speed": 86.3,
+    "launch_angle": 32.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 91.2,
+    "launch_speed": 72.4,
+    "launch_angle": -24.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 95.1,
+    "launch_speed": 112.2,
+    "launch_angle": 11.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 85.8,
+    "launch_speed": 66.6,
+    "launch_angle": 58.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 86.7,
+    "launch_speed": 103.8,
+    "launch_angle": 29.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 84.7,
+    "launch_speed": 75.3,
+    "launch_angle": 7.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 94.3,
+    "launch_speed": 109.6,
+    "launch_angle": 26.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 85.1,
+    "launch_speed": 104.9,
+    "launch_angle": 11.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 95.5,
+    "launch_speed": 80.3,
+    "launch_angle": 18.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 93.6,
+    "launch_speed": 114.6,
+    "launch_angle": -15.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 91.8,
+    "launch_speed": 83.0,
+    "launch_angle": -33.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 85.2,
+    "launch_speed": 107.8,
+    "launch_angle": 31.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 90.2,
+    "launch_speed": 109.1,
+    "launch_angle": 26.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 86.0,
+    "launch_speed": 73.3,
+    "launch_angle": -11.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 97.8,
+    "launch_speed": 106.1,
+    "launch_angle": 19.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 94.3,
+    "launch_speed": 81.8,
+    "launch_angle": 48.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 90.7,
+    "launch_speed": 115.2,
+    "launch_angle": -5.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 92.1,
+    "launch_speed": 104.4,
+    "launch_angle": 32.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 97.7,
+    "launch_speed": 100.7,
+    "launch_angle": 13.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 93.3,
+    "launch_speed": 71.6,
+    "launch_angle": 28.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 93.5,
+    "launch_speed": 111.1,
+    "launch_angle": 2.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 86.2,
+    "launch_speed": 89.4,
+    "launch_angle": 17.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 95.6,
+    "launch_speed": 113.7,
+    "launch_angle": 22.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 93.2,
+    "launch_speed": 95.4,
+    "launch_angle": -35.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 94.7,
+    "launch_speed": 91.3,
+    "launch_angle": 55.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 96.7,
+    "launch_speed": 99.1,
+    "launch_angle": -31.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 90.1,
+    "launch_speed": 102.6,
+    "launch_angle": 49.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 89.5,
+    "launch_speed": 97.0,
+    "launch_angle": -21.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FC",
+    "release_speed": 88.0,
+    "launch_speed": 71.5,
+    "launch_angle": -52.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "FF",
+    "release_speed": 94.5,
+    "launch_speed": 93.7,
+    "launch_angle": 62.0,
+    "bb_type": "popup"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SL",
+    "release_speed": 80.0,
+    "launch_speed": 98.9,
+    "launch_angle": 55.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 83.3,
+    "launch_speed": 105.8,
+    "launch_angle": 27.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 93.8,
+    "launch_speed": 114.9,
+    "launch_angle": 13.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 85.5,
+    "launch_speed": 97.5,
+    "launch_angle": 9.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 96.2,
+    "launch_speed": 104.9,
+    "launch_angle": -14.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 96.9,
+    "launch_speed": 103.7,
+    "launch_angle": 30.0,
+    "bb_type": "fly_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 97.0,
+    "launch_speed": 99.4,
+    "launch_angle": 3.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "SI",
+    "release_speed": 95.1,
+    "launch_speed": 78.5,
+    "launch_angle": -27.0,
+    "bb_type": "ground_ball"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "CH",
+    "release_speed": 82.9,
+    "launch_speed": 100.4,
+    "launch_angle": 22.0,
+    "bb_type": "line_drive"
+  },
+  {
+    "player_name": "Walker, Jordan",
+    "pitch_type": "ST",
+    "release_speed": 84.4,
+    "launch_speed": 98.7,
+    "launch_angle": 34.0,
+    "bb_type": "fly_ball"
+  }
+]
