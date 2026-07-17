@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D9VRXZK9Y6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D9VRXZK9Y6');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elijah Whittle | Sports Analytics Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Lato:wght@400;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --nba-orange: #F58426;
+      --f1-red:     #DC0000;
+      --cv-cyan:    #00C8FF;
+      --cv-dark:    #060D16;
+      --f1-dark:    #15151E;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: #111; color: #fff; line-height: 1.6; }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: #0d0d0d; border-bottom: 1px solid #222;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 0.7rem 2rem;
+    }
+    .header-name {
+      font-family: 'Oswald', sans-serif; font-size: 1.3rem;
+      font-weight: 700; color: #fff; letter-spacing: 0.06em; text-decoration: none;
+    }
+    .header-name span { color: var(--nba-orange); }
+    nav { display: flex; gap: 0.1rem; }
+    nav a {
+      color: #777; text-decoration: none; padding: 0.3rem 0.7rem;
+      font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; border-radius: 3px;
+      transition: color 0.2s, background 0.2s;
+    }
+    nav a:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .status-pill {
+      font-size: 10px; padding: 4px 12px; border-radius: 999px;
+      background: rgba(0,200,80,0.1); border: 1px solid rgba(0,200,80,0.32);
+      color: #00cc55; font-weight: 700; letter-spacing: 0.05em;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 6rem 2rem 5rem; text-align: center;
+      background: #111; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 65%, rgba(245,132,38,0.07) 0%, transparent 62%);
+      pointer-events: none;
+    }
+    .hero-eyebrow {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em;
+      text-transform: uppercase; color: var(--nba-orange); margin-bottom: 1.2rem;
+    }
+    .hero h1 {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(2.6rem, 6vw, 4.8rem);
+      font-weight: 700; line-height: 1.05; margin-bottom: 1.2rem;
+    }
+    .hero h1 em { color: var(--nba-orange); font-style: normal; }
+    .hero p { font-size: 1.1rem; color: #888; max-width: 520px; margin: 0 auto 2.2rem; }
+    .hero-links { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; padding: 0.65rem 1.5rem; border-radius: 4px;
+      font-weight: 700; font-size: 0.85rem; text-decoration: none;
+      letter-spacing: 0.05em; transition: opacity 0.2s, transform 0.15s;
+    }
+    .btn:hover { opacity: 0.8; transform: translateY(-2px); }
+    .btn-primary { background: var(--nba-orange); color: #fff; }
+    .btn-outline  { background: transparent; border: 1px solid #444; color: #bbb; }
+
+    /* ── SHARED SECTION CHROME ── */
+    .section-inner { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; }
+    .accent-bar { height: 3px; width: 34px; border-radius: 2px; margin-bottom: 1.1rem; }
+    .nba-accent { background: var(--nba-orange); }
+    .f1-accent  { background: var(--f1-red); }
+    .cv-accent  { background: var(--cv-cyan); }
+    .section-eyebrow {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; margin-bottom: 0.35rem;
+    }
+    .section-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      font-weight: 700; line-height: 1.05; color: #fff; margin-bottom: 0.4rem;
+    }
+    .section-sub {
+      font-size: 0.93rem; color: rgba(255,255,255,0.5);
+      max-width: 460px; margin-bottom: 2.5rem;
+    }
+    .nba-eyebrow { color: var(--nba-orange); }
+    .f1-eyebrow  { color: var(--f1-red); }
+    .cv-eyebrow  { color: var(--cv-cyan); }
+
+    /* ── NBA SECTION — hardwood court ── */
+    #nba {
+      padding: 5rem 2rem; position: relative; overflow: hidden;
+      background-color: #8a5520;
+      background-image:
+        repeating-linear-gradient(90deg,
+          transparent 0, transparent 38px,
+          rgba(0,0,0,0.06) 38px, rgba(0,0,0,0.06) 40px,
+          transparent 40px, transparent 56px,
+          rgba(255,255,255,0.025) 56px, rgba(255,255,255,0.025) 58px
+        ),
+        repeating-linear-gradient(180deg,
+          rgba(255,255,255,0.02) 0, rgba(255,255,255,0.02) 55px,
+          rgba(0,0,0,0.04) 55px, rgba(0,0,0,0.04) 58px
+        ),
+        linear-gradient(168deg, #C8954A 0%, #A07030 42%, #8A5E22 68%, #B8853C 100%);
+    }
+    #nba::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(0,0,0,0.5); pointer-events: none;
+    }
+    #nba .court-circle {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px; height: 320px; border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.07);
+      pointer-events: none; z-index: 0;
+    }
+
+    /* ── F1 SECTION — carbon fibre ── */
+    #f1 {
+      padding: 5rem 2rem; position: relative; overflow: hidden;
+      background-color: var(--f1-dark);
+      background-image: repeating-conic-gradient(#1c1c28 0% 25%, #131320 0% 50%);
+      background-size: 10px 10px;
+    }
+    #f1::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(140deg, rgba(220,0,0,0.1) 0%, transparent 44%),
+                  linear-gradient(320deg, rgba(220,0,0,0.05) 0%, transparent 40%);
+      pointer-events: none;
+    }
+
+    /* ── CV SECTION — tech scanner ── */
+    #cv {
+      padding: 5rem 2rem; position: relative; overflow: hidden;
+      background: var(--cv-dark);
+    }
+    #cv::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 12% 50%, rgba(0,200,255,0.07) 0%, transparent 48%),
+        radial-gradient(ellipse at 88% 50%, rgba(0,200,255,0.05) 0%, transparent 48%);
+      pointer-events: none;
+    }
+    #cv::after {
+      content: ''; position: absolute; inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 3px,
+        rgba(0,200,255,0.016) 3px, rgba(0,200,255,0.016) 4px);
+      pointer-events: none;
+    }
+
+    /* ── CARDS ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .card {
+      border-radius: 8px; overflow: hidden;
+      display: flex; flex-direction: column;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .nba-card {
+      background: rgba(15,8,0,0.72); border: 1px solid rgba(245,132,38,0.2);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+    }
+    .nba-card:hover {
+      transform: translateY(-5px); border-color: rgba(245,132,38,0.5);
+      box-shadow: 0 10px 32px rgba(245,132,38,0.14);
+    }
+    .f1-card {
+      background: rgba(6,6,14,0.75); border: 1px solid rgba(220,0,0,0.2);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+    }
+    .f1-card:hover {
+      transform: translateY(-5px); border-color: rgba(220,0,0,0.5);
+      box-shadow: 0 10px 32px rgba(220,0,0,0.15);
+    }
+    .cv-card {
+      background: rgba(0,12,24,0.75); border: 1px solid rgba(0,200,255,0.17);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.5); backdrop-filter: blur(4px);
+    }
+    .cv-card:hover {
+      transform: translateY(-5px); border-color: rgba(0,200,255,0.42);
+      box-shadow: 0 10px 32px rgba(0,200,255,0.11);
+    }
+
+    /* card media */
+    .card-media { width: 100%; height: 185px; object-fit: cover; display: block; }
+    .card-media-svg { width: 100%; height: 185px; display: block; overflow: hidden; }
+    video.card-media { object-fit: cover; background: #000; }
+
+    /* card body */
+    .card-body { padding: 1.25rem 1.35rem; flex: 1; display: flex; flex-direction: column; }
+
+    /* Tip 1 — story question */
+    .card-question {
+      font-size: 11px; font-style: italic;
+      color: rgba(255,255,255,0.38); margin-bottom: 6px; line-height: 1.4;
+    }
+    .card-tag {
+      font-size: 10px; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; margin-bottom: 5px;
+    }
+    .nba-card .card-tag { color: var(--nba-orange); }
+    .f1-card  .card-tag { color: var(--f1-red); }
+    .cv-card  .card-tag { color: var(--cv-cyan); }
+    .card-body h3 {
+      font-family: 'Oswald', sans-serif; font-size: 1.15rem;
+      font-weight: 500; color: #fff; margin-bottom: 0.8rem;
+    }
+
+    /* Tip 4 — insight callout */
+    .insight {
+      display: flex; align-items: flex-start; gap: 8px;
+      border-radius: 4px; padding: 8px 10px;
+      margin-bottom: 0.9rem; font-size: 12px; line-height: 1.5;
+    }
+    .insight-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      margin-top: 4px; flex-shrink: 0;
+    }
+    .nba-card .insight { background: rgba(245,132,38,0.08); border-left: 2px solid rgba(245,132,38,0.4); }
+    .nba-card .insight-dot { background: var(--nba-orange); }
+    .nba-card .insight { color: rgba(245,200,150,0.85); }
+    .f1-card  .insight { background: rgba(220,0,0,0.08); border-left: 2px solid rgba(220,0,0,0.4); color: rgba(255,180,180,0.85); }
+    .f1-card  .insight-dot { background: var(--f1-red); }
+    .cv-card  .insight { background: rgba(0,200,255,0.07); border-left: 2px solid rgba(0,200,255,0.4); color: rgba(150,230,255,0.85); }
+    .cv-card  .insight-dot { background: var(--cv-cyan); }
+
+    /* Tip 5 — caption */
+    .caption {
+      font-size: 0.82rem; color: rgba(255,255,255,0.48);
+      line-height: 1.6; margin-bottom: 1rem; flex: 1;
+    }
+
+    /* tech pills — Tip 2: only essential stack */
+    .pills { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 1rem; }
+    .pill { font-family: 'Roboto Mono', monospace; font-size: 10px; padding: 3px 8px; border-radius: 3px; }
+    .nba-card .pill { background: rgba(245,132,38,0.1); color: #F5A870; border: 1px solid rgba(245,132,38,0.18); }
+    .f1-card  .pill { background: rgba(220,0,0,0.1);   color: #FF7070; border: 1px solid rgba(220,0,0,0.18); }
+    .cv-card  .pill { background: rgba(0,200,255,0.08); color: #70DEFF; border: 1px solid rgba(0,200,255,0.18); }
+
+    /* card buttons */
+    .card-btns { display: flex; gap: 8px; margin-top: auto; }
+    .card-btn {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
+      text-decoration: none; padding: 7px 14px; border-radius: 4px;
+      transition: opacity 0.2s, transform 0.12s;
+    }
+    .card-btn:hover { opacity: 0.8; transform: translateY(-1px); }
+    .nba-primary { background: var(--nba-orange); color: #fff; }
+    .f1-primary  { background: var(--f1-red); color: #fff; }
+    .cv-primary  { background: var(--cv-cyan); color: #001820; }
+    .btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,0.16); color: rgba(255,255,255,0.6); }
+
+    /* ── ABOUT ── */
+    #about { padding: 5rem 2rem; background: #111; }
+    .about-inner {
+      max-width: 1180px; margin: 0 auto;
+      display: grid; grid-template-columns: 260px 1fr;
+      gap: 4rem; align-items: center;
+    }
+    @media (max-width: 700px) { .about-inner { grid-template-columns: 1fr; } }
+    .about-img {
+      width: 100%; aspect-ratio: 1; object-fit: cover;
+      border-radius: 8px; border: 2px solid rgba(245,132,38,0.26);
+    }
+    .about-text .section-title { font-size: 2rem; }
+    .about-text p { color: rgba(255,255,255,0.58); font-size: 0.93rem; margin-bottom: 0.9rem; }
+    .about-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+
+    /* ── FOOTER ── */
+    footer { background: #0a0a0a; border-top: 1px solid #1a1a1a; padding: 2.5rem 2rem; text-align: center; }
+    .footer-links { display: flex; gap: 2rem; justify-content: center; margin-bottom: 1rem; flex-wrap: wrap; }
+    .footer-links a {
+      color: #555; text-decoration: none; font-size: 0.84rem;
+      font-weight: 700; letter-spacing: 0.05em; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--nba-orange); }
+    footer p { font-size: 0.78rem; color: #3a3a3a; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ HEADER ═══ -->
+  <header>
+    <a class="header-name" href="#">ELIJAH <span>WHITTLE</span></a>
+    <nav>
+      <a href="#nba">NBA</a>
+      <a href="#f1">F1</a>
+      <a href="#cv">Vision</a>
+      <a href="#about">About</a>
+    </nav>
+    <span class="status-pill">Open to Work</span>
+  </header>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <p class="hero-eyebrow">Sports Analytics · Computer Vision · Machine Learning</p>
+    <h1>Where <em>sports data</em><br>becomes the story.</h1>
+    <p>I build machine learning models, interactive visualizations, and computer vision systems — all toward understanding what makes athletes and teams win.</p>
+    <div class="hero-links">
+      <a class="btn btn-primary" href="https://github.com/Ewlisten/" target="_blank">GitHub</a>
+      <a class="btn btn-outline" href="https://www.linkedin.com/in/elijah-stats-data/" target="_blank">LinkedIn</a>
+      <a class="btn btn-outline" href="mailto:whittle.elijah@gmail.com">Email Me</a>
+    </div>
+  </section>
+
+  <!-- ═══ NBA SECTION ═══ -->
+  <section id="nba">
+    <div class="court-circle"></div>
+    <div class="section-inner">
+      <div class="accent-bar nba-accent"></div>
+      <p class="section-eyebrow nba-eyebrow">🏀 NBA Analytics</p>
+      <h2 class="section-title">On the hardwood.</h2>
+      <p class="section-sub">Three tools, one question: what does NBA data actually tell us about performance?</p>
+
+      <div class="cards">
+
+        <!-- CARD 1: Shot Chart Generator -->
+        <div class="card nba-card">
+          <div class="card-media-svg">
+            <!-- Half-court shot chart SVG -->
+            <svg viewBox="0 0 240 185" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:185px;display:block;">
+              <rect width="240" height="185" fill="#6b4218"/>
+              <!-- wood grain -->
+              <line x1="0" y1="46" x2="240" y2="46" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+              <line x1="0" y1="92" x2="240" y2="92" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+              <line x1="0" y1="138" x2="240" y2="138" stroke="rgba(255,255,255,0.025)" stroke-width="1"/>
+              <!-- court boundary -->
+              <rect x="2" y="2" width="236" height="181" fill="none" stroke="rgba(255,255,255,0.26)" stroke-width="1.2"/>
+              <!-- 3pt corner lines -->
+              <line x1="20" y1="185" x2="20" y2="108" stroke="rgba(255,255,255,0.3)" stroke-width="1.2"/>
+              <line x1="220" y1="185" x2="220" y2="108" stroke="rgba(255,255,255,0.3)" stroke-width="1.2"/>
+              <!-- 3pt arc -->
+              <path d="M 20,108 A 112,112 0 0,1 220,108" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.2"/>
+              <!-- paint -->
+              <rect x="88" y="112" width="64" height="73" fill="rgba(255,255,255,0.045)" stroke="rgba(255,255,255,0.26)" stroke-width="1.2"/>
+              <!-- free throw circle (dashed top half) -->
+              <path d="M 88,112 A 32,32 0 0,1 152,112" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="1.2" stroke-dasharray="4,3"/>
+              <!-- basket -->
+              <circle cx="120" cy="165" r="5" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+              <line x1="106" y1="165" x2="134" y2="165" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+              <!-- shot dots: orange=make, blue=miss, lighter=2pt zone -->
+              <circle cx="42" cy="90" r="5.5" fill="#F58426" opacity="0.93"/>
+              <circle cx="63" cy="62" r="5.5" fill="#F58426" opacity="0.93"/>
+              <circle cx="108" cy="40" r="5.5" fill="#F58426" opacity="0.86"/>
+              <circle cx="143" cy="37" r="5.5" fill="#F58426" opacity="0.86"/>
+              <circle cx="180" cy="58" r="5.5" fill="#F58426" opacity="0.93"/>
+              <circle cx="200" cy="90" r="5.5" fill="#F58426" opacity="0.93"/>
+              <circle cx="104" cy="88" r="5.5" fill="#F5C070" opacity="0.82"/>
+              <circle cx="136" cy="84" r="5.5" fill="#F5C070" opacity="0.82"/>
+              <circle cx="112" cy="135" r="5.5" fill="#F5C070" opacity="0.82"/>
+              <circle cx="128" cy="144" r="5.5" fill="#F5C070" opacity="0.82"/>
+              <circle cx="76" cy="83" r="5.5" fill="#4488cc" opacity="0.55"/>
+              <circle cx="168" cy="80" r="5.5" fill="#4488cc" opacity="0.55"/>
+              <circle cx="52" cy="130" r="5.5" fill="#4488cc" opacity="0.55"/>
+              <circle cx="192" cy="126" r="5.5" fill="#4488cc" opacity="0.55"/>
+              <circle cx="93" cy="115" r="5.5" fill="#4488cc" opacity="0.55"/>
+              <!-- legend -->
+              <circle cx="14" cy="13" r="4.5" fill="#F58426"/>
+              <text x="22" y="17" font-size="9" fill="rgba(255,255,255,0.62)" font-family="sans-serif">Made</text>
+              <circle cx="62" cy="13" r="4.5" fill="#4488cc"/>
+              <text x="70" y="17" font-size="9" fill="rgba(255,255,255,0.62)" font-family="sans-serif">Miss</text>
+            </svg>
+          </div>
+          <div class="card-body">
+            <p class="card-question">"Where does this player actually score from?"</p>
+            <p class="card-tag">Visualization Tool</p>
+            <h3>Shot Chart Generator</h3>
+            <div class="insight">
+              <div class="insight-dot"></div>
+              <span>Corner 3s and paint show highest efficiency — mid-range zones reveal where points leak.</span>
+            </div>
+            <p class="caption">Maps every shot attempt onto an interactive court, color-coded by make or miss. The spatial pattern tells a story that box-score stats can't — showing not just how many a player scores, but from where and how efficiently.</p>
+            <div class="pills">
+              <span class="pill">NBA API</span>
+              <span class="pill">Bokeh</span>
+              <span class="pill">pandas</span>
+            </div>
+            <div class="card-btns">
+              <a class="card-btn nba-primary" href="https://colab.research.google.com/drive/1GtG3zYOxrq-iBa53rytmQqT-W-vHz-Pp" target="_blank">View Project</a>
+              <a class="card-btn btn-ghost" href="https://github.com/Ewlisten/" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 2: ML Player Stat Prediction -->
+        <div class="card nba-card">
+          <div class="card-media-svg">
+            <!-- Pentagon radar comparison SVG -->
+            <svg viewBox="0 0 200 175" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:185px;display:block;">
+              <rect width="200" height="175" fill="#0d0800"/>
+              <!-- grid pentagons — 80%, 60%, 40% -->
+              <polygon points="100,51 141.8,81.4 125.8,130.6 74.2,130.6 58.2,81.4" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
+              <polygon points="100,62 131.4,84.8 119.4,121.7 80.6,121.7 68.6,84.8" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
+              <polygon points="100,73 120.9,88.2 112.9,112.8 87.1,112.8 79.1,88.2" fill="none" stroke="rgba(255,255,255,0.07)" stroke-width="0.8"/>
+              <!-- outer pentagon outline -->
+              <polygon points="100,40 152.3,78 132.3,139.5 67.7,139.5 47.7,78" fill="none" stroke="rgba(255,255,255,0.11)" stroke-width="1"/>
+              <!-- axis lines -->
+              <line x1="100" y1="95" x2="100" y2="40"     stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+              <line x1="100" y1="95" x2="152.3" y2="78"   stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+              <line x1="100" y1="95" x2="132.3" y2="139.5" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+              <line x1="100" y1="95" x2="67.7" y2="139.5" stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+              <line x1="100" y1="95" x2="47.7" y2="78"    stroke="rgba(255,255,255,0.08)" stroke-width="0.8"/>
+              <!-- Player A polygon (orange — predicted similar) -->
+              <polygon points="100,46.6 136.6,83.1 117.7,119.5 70.3,136 80.1,88.5"
+                fill="rgba(245,132,38,0.18)" stroke="#F58426" stroke-width="1.5" stroke-linejoin="round"/>
+              <!-- Player B polygon (muted — comparison) -->
+              <polygon points="100,55.4 143,81 128.4,134.2 85.5,115.2 58.7,81.6"
+                fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.28)" stroke-width="1.2" stroke-linejoin="round" stroke-dasharray="4,3"/>
+              <!-- center dot -->
+              <circle cx="100" cy="95" r="2.5" fill="rgba(255,255,255,0.3)"/>
+              <!-- axis labels -->
+              <text x="100" y="30" text-anchor="middle" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="sans-serif">PTS</text>
+              <text x="163" y="80" text-anchor="start"  font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="sans-serif">AST</text>
+              <text x="140" y="153" text-anchor="start" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="sans-serif">REB</text>
+              <text x="57" y="153" text-anchor="end"    font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="sans-serif">3P%</text>
+              <text x="36" y="80" text-anchor="end"     font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="sans-serif">BLK</text>
+              <!-- legend -->
+              <line x1="12" y1="12" x2="26" y2="12" stroke="#F58426" stroke-width="2"/>
+              <text x="30" y="16" font-size="8.5" fill="rgba(255,255,255,0.55)" font-family="sans-serif">Player</text>
+              <line x1="12" y1="24" x2="26" y2="24" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-dasharray="4,2"/>
+              <text x="30" y="28" font-size="8.5" fill="rgba(255,255,255,0.4)" font-family="sans-serif">Similar</text>
+            </svg>
+          </div>
+          <div class="card-body">
+            <p class="card-question">"Can we predict a player's trajectory before the season ends?"</p>
+            <p class="card-tag">Machine Learning</p>
+            <h3>ML Player Stat Prediction</h3>
+            <div class="insight">
+              <div class="insight-dot"></div>
+              <span>Cosine similarity on five-stat vectors surfaces comparables most scouts never consider together.</span>
+            </div>
+            <p class="caption">A scikit-learn pipeline that extracts player feature vectors, scores similarity across the league using cosine distance, and overlays two players' profiles on a radar chart. The visual gap between shapes is the story — telling you instantly where a player outperforms their comp and where they fall short.</p>
+            <div class="pills">
+              <span class="pill">scikit-learn</span>
+              <span class="pill">matplotlib</span>
+              <span class="pill">NBA API</span>
+            </div>
+            <div class="card-btns">
+              <a class="card-btn nba-primary" href="https://colab.research.google.com/drive/1GtG3zYOxrq-iBa53rytmQqT-W-vHz-Pp" target="_blank">View Project</a>
+              <a class="card-btn btn-ghost" href="https://github.com/Ewlisten/" target="_blank">GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD 3: Team Fingerprints -->
+        <div class="card nba-card">
+          <div class="card-media-svg">
+            <!-- Team Fingerprints: 4 teams x 5 style metrics as bar clusters -->
+            <svg viewBox="0 0 240 185" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:185px;display:block;">
+              <rect width="240" height="185" fill="#0d0800"/>
+              <!-- grid lines -->
+              <line x1="20" y1="45"  x2="220" y2="45"  stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+              <line x1="20" y1="70"  x2="220" y2="70"  stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+              <line x1="20" y1="95"  x2="220" y2="95"  stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+              <line x1="20" y1="120" x2="220" y2="120" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+              <line x1="20" y1="145" x2="220" y2="145" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/>
+              <!-- y-axis label -->
+              <text x="11" y="49"  text-anchor="middle" font-size="7" fill="rgba(255,255,255,0.22)" font-family="sans-serif" transform="rotate(-90,11,95)">Style score</text>
+              <!-- LAL bars (gold) — Pace:65 3PA:42 Paint:78 Def:55 Ast:68 -->
+              <text x="47" y="163" text-anchor="middle" font-size="8" fill="#F5A020" font-family="sans-serif" font-weight="700">LAL</text>
+              <rect x="27" y="110" width="8" height="35" fill="#F5A020" opacity="0.75" rx="1"/>
+              <rect x="37" y="128" width="8" height="17" fill="#F5A020" opacity="0.75" rx="1"/>
+              <rect x="47" y="96"  width="8" height="49" fill="#F5A020" opacity="0.9"  rx="1"/>
+              <rect x="57" y="117" width="8" height="28" fill="#F5A020" opacity="0.6"  rx="1"/>
+              <rect x="67" y="108" width="8" height="37" fill="#F5A020" opacity="0.75" rx="1"/>
+              <!-- BOS bars (green) — Pace:60 3PA:72 Paint:55 Def:88 Ast:74 -->
+              <text x="107" y="163" text-anchor="middle" font-size="8" fill="#34c76e" font-family="sans-serif" font-weight="700">BOS</text>
+              <rect x="87"  y="115" width="8" height="30" fill="#34c76e" opacity="0.72" rx="1"/>
+              <rect x="97"  y="99"  width="8" height="46" fill="#34c76e" opacity="0.85" rx="1"/>
+              <rect x="107" y="117" width="8" height="28" fill="#34c76e" opacity="0.65" rx="1"/>
+              <rect x="117" y="89"  width="8" height="56" fill="#34c76e" opacity="0.95" rx="1"/>
+              <rect x="127" y="98"  width="8" height="47" fill="#34c76e" opacity="0.88" rx="1"/>
+              <!-- GSW bars (blue) — Pace:88 3PA:96 Paint:52 Def:66 Ast:82 -->
+              <text x="167" y="163" text-anchor="middle" font-size="8" fill="#5599ee" font-family="sans-serif" font-weight="700">GSW</text>
+              <rect x="147" y="100" width="8" height="45" fill="#5599ee" opacity="0.85" rx="1"/>
+              <rect x="157" y="92"  width="8" height="53" fill="#5599ee" opacity="0.95" rx="1"/>
+              <rect x="167" y="118" width="8" height="27" fill="#5599ee" opacity="0.6"  rx="1"/>
+              <rect x="177" y="110" width="8" height="35" fill="#5599ee" opacity="0.72" rx="1"/>
+              <rect x="187" y="97"  width="8" height="48" fill="#5599ee" opacity="0.88" rx="1"/>
+              <!-- legend labels at bottom -->
+              <text x="41"  y="174" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.3)" font-family="sans-serif">Pace</text>
+              <text x="51"  y="174" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.3)" font-family="sans-serif">3PA</text>
+              <text x="61"  y="174" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.3)" font-family="sans-serif">Paint</text>
+              <text x="71"  y="174" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.3)" font-family="sans-serif">Def</text>
+              <text x="81"  y="174" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,0.3)" font-family="sans-serif">Ast</text>
+              <!-- title annotation -->
+              <text x="120" y="20" text-anchor="middle" font-size="9" fill="rgba(255,255,255,0.5)" font-family="sans-serif">Team playing-style profile</text>
+              <line x1="40" y1="26" x2="200" y2="26" stroke="rgba(255,255,255,0.06)" stroke-width="0.5"/>
+            </svg>
+          </div>
+          <div class="card-body">
+            <p class="card-question">"What does a team's identity actually look like in data?"</p>
+            <p class="card-tag">Exploratory Analysis</p>
+            <h3>Team Fingerprints</h3>
+            <div class="insight">
+              <div class="insight-dot"></div>
+              <span>GSW's 3PA spike vs. LAL's paint dominance — opposite identities, visible at a glance.</span>
+            </div>
+            <p class="caption">Profiles each team across five style dimensions — pace, three-point volume, paint scoring, defensive intensity, and assist rate — creating a "fingerprint" bar cluster unique to each franchise. Side-by-side, you can see how philosophy, not just talent, shapes outcomes.</p>
+            <div class="pills">
+              <span class="pill">pandas</span>
+              <span class="pill">seaborn</span>
+              <span class="pill">NBA API</span>
+            </div>
+            <div class="card-btns">
+              <a class="card-btn nba-primary" href="https://github.com/Ewlisten/" target="_blank">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /cards -->
+    </div><!-- /section-inner -->
+  </section>
+
+  <!-- ═══ F1 SECTION ═══ -->
+  <section id="f1">
+    <div class="section-inner">
+      <div class="accent-bar f1-accent"></div>
+      <p class="section-eyebrow f1-eyebrow">🏎️ Formula 1 Analytics</p>
+      <h2 class="section-title">Full throttle.</h2>
+      <p class="section-sub">Telemetry doesn't lie. These tools let the lap times speak.</p>
+
+      <div class="cards">
+
+        <div class="card f1-card">
+          <img src="f1cars.jpg" alt="F1 Lap Analysis" class="card-media">
+          <div class="card-body">
+            <p class="card-question">"Who's fastest — and where on the track does it actually happen?"</p>
+            <p class="card-tag">Telemetry Analysis</p>
+            <h3>Lap Time Analyzer</h3>
+            <div class="insight">
+              <div class="insight-dot"></div>
+              <span>Sector 2 deltas often reveal more than final lap times — it's where strategy decisions live.</span>
+            </div>
+            <p class="caption">Pulls raw race telemetry via FastF1 to break down every lap by sector, tire compound, and stint. The tool makes the invisible visible — turning a two-second gap into a clear picture of where and why it opened up.</p>
+            <div class="pills">
+              <span class="pill">FastF1</span>
+              <span class="pill">pandas</span>
+              <span class="pill">matplotlib</span>
+            </div>
+            <div class="card-btns">
+              <a class="card-btn f1-primary" href="https://github.com/Ewlisten/" target="_blank">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card f1-card">
+          <img src="f1flag.jpg" alt="F1 Driver Comparison" class="card-media">
+          <div class="card-body">
+            <p class="card-question">"When two drivers share the same car, what does the data reveal about each of them?"</p>
+            <p class="card-tag">Driver Comparison</p>
+            <h3>Driver vs. Teammate Tool</h3>
+            <div class="insight">
+              <div class="insight-dot"></div>
+              <span>Controlling for car performance isolates pure driver skill — the most honest comparison in the sport.</span>
+            </div>
+            <p class="caption">Compares teammates across qualifying and race pace, neutralizing the car advantage to surface individual driver differences. It's the cleanest way to answer one of F1's oldest questions: is the driver faster than the machinery?</p>
+            <div class="pills">
+              <span class="pill">FastF1</span>
+              <span class="pill">Bokeh</span>
+              <span class="pill">NumPy</span>
+            </div>
+            <div class="card-btns">
+              <a class="card-btn f1-primary" href="https://github.com/Ewlisten/" target="_blank">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPUTER VISION SECTION ═══ -->
+  <section id="cv">
+    <div class="section-inner">
+      <div class="accent-bar cv-accent"></div>
+      <p class="section-eyebrow cv-eyebrow">👁 Computer Vision</p>
+      <h2 class="section-title">What the camera sees.</h2>
+      <p class="section-sub">Teaching a model to read sports footage the way an analyst would — one frame at a time.</p>
+
+      <div class="cards">
+
+        <div class="card cv-card">
+          <video class="card-media" controls muted loop playsinline>
+            <source src="motion_tracking_demo.mp4" type="video/mp4">
+          </video>
+          <div class="card-body">
+            <p class="card-question">"Can a model learn to see what analysts spend hours watching?"</p>
+            <p class="card-tag">Object Detection · Tracking</p>
+            <h3>Basketball Motion Tracking</h3>
+            <div class="insight">
+              <div class="insight-dot"></div>
+              <span>YOLO + SORT combination achieves stable multi-object tracking across fast, chaotic game footage.</span>
+            </div>
+            <p class="caption">A full computer vision pipeline built for sports footage — YOLO detects objects frame by frame, SORT assigns and maintains IDs across frames, and the output is annotated video with bounding boxes and tracking trails. This is the foundation for any automated game-film analysis system.</p>
+            <div class="pills">
+              <span class="pill">YOLO</span>
+              <span class="pill">SORT</span>
+              <span class="pill">OpenCV</span>
+              <span class="pill">Python</span>
+            </div>
+            <div class="card-btns">
+              <a class="card-btn cv-primary" href="https://github.com/Ewlisten/" target="_blank">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="card cv-card">
+          <video class="card-media" controls muted loop playsinline>
+            <source src="Player_Tracking.mp4" type="video/mp4">
+          </video>
+          <div class="card-body">
+            <p class="card-question">"What happens when every player on the court gets a persistent ID?"</p>
+            <p class="card-tag">Player Tracking · Persistent IDs</p>
+            <h3>Player Tracking System</h3>
+            <div class="insight">
+              <div class="insight-dot"></div>
+              <span>Persistent IDs through occlusions unlock movement data that hand-coded systems can't capture at scale.</span>
+            </div>
+            <p class="caption">Extends object detection into full player tracking — assigning each athlete a consistent ID throughout the clip, even across collisions and screen interactions. Once every player is tracked frame-to-frame, you can start measuring spacing, rotations, and off-ball movement that no box score captures.</p>
+            <div class="pills">
+              <span class="pill">YOLO</span>
+              <span class="pill">DeepSORT</span>
+              <span class="pill">OpenCV</span>
+            </div>
+            <div class="card-btns">
+              <a class="card-btn cv-primary" href="https://github.com/Ewlisten/" target="_blank">View on GitHub</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section id="about">
+    <div class="about-inner">
+      <img src="ELIpfp.jpg" alt="Elijah Whittle" class="about-img">
+      <div class="about-text">
+        <div class="accent-bar nba-accent"></div>
+        <p class="section-eyebrow nba-eyebrow">About</p>
+        <h2 class="section-title">Elijah Whittle</h2>
+        <p>I'm a Computer Science student at the University of the District of Columbia (graduating 2027) focused on sports analytics and machine learning. I believe sports data is one of the most underutilized sources of insight in the world.</p>
+        <p>By day I work as a Live Event Operator at EDGIO, collaborating with major national sports broadcasters to deliver seamless live programming. That front-row seat to how sports media works drives everything I build off the clock.</p>
+        <div class="about-links">
+          <a class="btn btn-primary" href="https://github.com/Ewlisten/" target="_blank">GitHub</a>
+          <a class="btn btn-outline" href="https://www.linkedin.com/in/elijah-stats-data/" target="_blank">LinkedIn</a>
+          <a class="btn btn-outline" href="mailto:whittle.elijah@gmail.com">Email Me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="footer-links">
+      <a href="https://github.com/Ewlisten/" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/elijah-stats-data/" target="_blank">LinkedIn</a>
+      <a href="mailto:whittle.elijah@gmail.com">whittle.elijah@gmail.com</a>
+    </div>
+    <p>&copy; 2026 Elijah Whittle — Built with purpose.</p>
+  </footer>
+
+</body>
+</html>

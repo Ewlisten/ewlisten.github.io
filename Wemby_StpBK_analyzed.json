@@ -1,0 +1,20 @@
+{
+  "video": "Wemby_StpBK_Traject.mov",
+  "fps": 59.08529048207664,
+  "shots": [
+    {
+      "frame": 423,
+      "result": "MADE",
+      "ball_pos": [
+        1508,
+        547
+      ],
+      "rim_bbox": [
+        1396,
+        276,
+        1469,
+        364
+      ]
+    }
+  ]
+}

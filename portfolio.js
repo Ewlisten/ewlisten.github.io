@@ -1848,6 +1848,7 @@ function tlmInit() {
 // ── MLB BATTED BALL ANALYTICS ─────────────────────────────────────────────────
 
 var mlbInited = false;
+var pitInited = false;
 
 var MLB_PLAYERS = {
   harper: { label:'Bryce Harper',  abbr:'HARPER', file:'harper_batted_balls.json',  color:'#E81828' },
@@ -2314,6 +2315,433 @@ function mlbInit() {
 }
 
 
+// ═══════════════════════════════════════════════════════════════════════════════════════════
+// PITCHER RELEASE-LOCATION MODULE  (standalone section below the batted-ball lab)
+// ═══════════════════════════════════════════════════════════════════════════════════════════
+
+var PIT_PLAYERS = {
+  skenes:   { label:'Paul Skenes',        abbr:'SKENES',   file:'PaSk_pitches.json',  color:'#FDB827' },
+  yamamoto: { label:'Yoshinobu Yamamoto', abbr:'YAMAMOTO', file:'YY_pitches.json',    color:'#005A9C' },
+  gausman:  { label:'Kevin Gausman',      abbr:'GAUSMAN',  file:'KevG_pitches.json',  color:'#134A8E' },
+  peralta:  { label:'Freddy Peralta',     abbr:'PERALTA',  file:'FredP_pitches.json', color:'#FFC52F' },
+  miller:   { label:'Mason Miller',       abbr:'MILLER',   file:'MaMill_pitches.json',color:'#EFB21E' },
+};
+
+// Pitch-type colours (Statcast-style)
+var PIT_COLORS = {
+  FF:'#E4572E', SI:'#F2A900', FC:'#9B5DE5', SL:'#F5D547', ST:'#00BBF9',
+  CU:'#4361EE', CS:'#4CC9F0', CH:'#43AA8B', FS:'#F15BB5', KC:'#7209B7', SV:'#00BBF9',
+};
+function pitColor(pt) { return PIT_COLORS[pt] || '#8A94A6'; }
+
+var PIT_PITCH_NAMES = {
+  FF:'4-Seam', SI:'Sinker', FC:'Cutter', SL:'Slider', ST:'Sweeper',
+  CU:'Curve', CS:'Slow Curve', CH:'Changeup', FS:'Splitter', KC:'Knuckle Curve', SV:'Slurve',
+};
+
+var PIT_RESULT_MAP = {
+  ball:'Ball', blocked_ball:'Ball',
+  called_strike:'Called', automatic_strike:'Called',
+  swinging_strike:'Whiff', swinging_strike_blocked:'Whiff', foul_tip:'Whiff', bunt_foul_tip:'Whiff',
+  foul:'Foul', foul_bunt:'Foul', missed_bunt:'Foul',
+  hit_into_play:'In Play', hit_by_pitch:'HBP',
+};
+function pitResultBucket(r) { return PIT_RESULT_MAP[r] || 'Other'; }
+var PIT_RES_ORDER = ['Ball','Called','Whiff','Foul','In Play','HBP','Other'];
+
+var PIT = {
+  scatter:null, sCtx:null,
+  vector:null,  vCtx:null,
+  player:'skenes',
+  data:[], filtered:[],
+  selectedIdx:null, hoverIdx:null,
+  activePitch:null, activeRes:null,
+  allPitch:[], allRes:[],
+  PAD:{ L:52, R:18, T:22, B:46 },
+  X_MIN:-5, X_MAX:1, Y_MIN:4, Y_MAX:7,
+  MPAD:{ L:34, R:14, T:16, B:26 },   // movement-chart padding
+  M_LIM:26,                          // movement axis limit (inches)
+};
+
+// ── coordinate helpers (release scatter, left canvas) ──
+function pitSX(v) { var c = PIT.scatter, P = PIT.PAD; return P.L + (v - PIT.X_MIN)/(PIT.X_MAX - PIT.X_MIN)*(c.width - P.L - P.R); }
+function pitSY(v) { var c = PIT.scatter, P = PIT.PAD; return c.height - P.B - (v - PIT.Y_MIN)/(PIT.Y_MAX - PIT.Y_MIN)*(c.height - P.T - P.B); }
+// ── movement chart helpers (right canvas, inches) ──
+function pitMX(v) { var c = PIT.vector, P = PIT.MPAD; return P.L + (v + PIT.M_LIM)/(2*PIT.M_LIM)*(c.width - P.L - P.R); }
+function pitMY(v) { var c = PIT.vector, P = PIT.MPAD; return c.height - P.B - (v + PIT.M_LIM)/(2*PIT.M_LIM)*(c.height - P.T - P.B); }
+
+function pitApplyFilter() {
+  PIT.filtered = PIT.data.filter(function(row) {
+    var ok1 = !PIT.activePitch || PIT.activePitch[row.pitch_type];
+    var ok2 = !PIT.activeRes   || PIT.activeRes[row.resBucket];
+    return ok1 && ok2;
+  });
+  PIT.selectedIdx = null;
+  PIT.hoverIdx = null;
+  pitUpdateStatRow(null);
+  pitDrawScatter();
+  pitDrawMovement();
+}
+
+function pitNiceTicks(lo, hi, n) {
+  var step = (hi - lo) / n, out = [];
+  for (var i = 0; i <= n; i++) out.push(lo + step * i);
+  return out;
+}
+
+function pitDrawScatter() {
+  var canvas = PIT.scatter, ctx = PIT.sCtx;
+  if (!ctx || !canvas || !canvas.width) return;
+  var W = canvas.width, H = canvas.height, P = PIT.PAD;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#050A12'; ctx.fillRect(0, 0, W, H);
+
+  // Grid – X (horizontal release)
+  pitNiceTicks(PIT.X_MIN, PIT.X_MAX, 5).forEach(function(v) {
+    var x = pitSX(v);
+    ctx.strokeStyle = '#090F1C'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(x, P.T); ctx.lineTo(x, H - P.B); ctx.stroke();
+    ctx.fillStyle = 'rgba(255,255,255,.14)';
+    ctx.font = '8px "Roboto Mono",monospace'; ctx.textAlign = 'center';
+    ctx.fillText(v.toFixed(1), x, H - P.B + 14);
+  });
+  // Grid – Y (vertical release)
+  pitNiceTicks(PIT.Y_MIN, PIT.Y_MAX, 4).forEach(function(v) {
+    var y = pitSY(v);
+    ctx.strokeStyle = '#090F1C'; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(P.L, y); ctx.lineTo(W - P.R, y); ctx.stroke();
+    ctx.fillStyle = 'rgba(255,255,255,.14)';
+    ctx.font = '8px "Roboto Mono",monospace'; ctx.textAlign = 'right';
+    ctx.fillText(v.toFixed(1), P.L - 5, y + 3);
+  });
+
+  // Axis labels
+  ctx.fillStyle = 'rgba(255,255,255,.16)';
+  ctx.font = '7px "Roboto Mono",monospace'; ctx.textAlign = 'center';
+  ctx.fillText('HORIZONTAL RELEASE (ft) · CATCHER POV', W / 2, H - 6);
+  ctx.save(); ctx.translate(11, H / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('RELEASE HEIGHT (ft)', 0, 0); ctx.restore();
+
+  // Points, coloured by pitch type
+  PIT.filtered.forEach(function(row, i) {
+    if (i === PIT.selectedIdx) return;
+    var hovered = i === PIT.hoverIdx;
+    ctx.beginPath();
+    ctx.arc(pitSX(row.rx), pitSY(row.rz), hovered ? 4.6 : 3.4, 0, Math.PI * 2);
+    ctx.fillStyle = pitColor(row.pitch_type);
+    ctx.globalAlpha = hovered ? 0.95 : 0.55;
+    ctx.fill();
+    if (hovered) { ctx.strokeStyle = 'rgba(255,255,255,.7)'; ctx.lineWidth = 1.2; ctx.stroke(); }
+    ctx.globalAlpha = 1;
+  });
+
+  // Selected point
+  if (PIT.selectedIdx !== null) {
+    var r = PIT.filtered[PIT.selectedIdx];
+    if (r) {
+      var sx = pitSX(r.rx), sy = pitSY(r.rz), col = pitColor(r.pitch_type);
+      ctx.beginPath(); ctx.arc(sx, sy, 9, 0, Math.PI * 2);
+      ctx.fillStyle = col; ctx.globalAlpha = 0.16; ctx.fill(); ctx.globalAlpha = 1;
+      ctx.beginPath(); ctx.arc(sx, sy, 5.5, 0, Math.PI * 2);
+      ctx.fillStyle = col; ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,.55)'; ctx.lineWidth = 1.5; ctx.stroke();
+    }
+  }
+
+  pitDrawLegend();
+}
+
+function pitDrawLegend() {
+  var ctx = PIT.sCtx, W = PIT.scatter.width, P = PIT.PAD;
+  var x = W - P.R - 6, y = P.T + 8;
+  ctx.textAlign = 'right';
+  PIT.allPitch.forEach(function(pt) {
+    var on = !PIT.activePitch || PIT.activePitch[pt];
+    ctx.globalAlpha = on ? 1 : 0.28;
+    ctx.fillStyle = pitColor(pt);
+    ctx.beginPath(); ctx.arc(x - 2, y - 2.5, 3, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = 'rgba(255,255,255,.5)';
+    ctx.font = '7px "Roboto Mono",monospace';
+    ctx.fillText(pt, x - 9, y);
+    ctx.globalAlpha = 1;
+    y += 12;
+  });
+}
+
+function pitDrawMovement() {
+  var canvas = PIT.vector, ctx = PIT.vCtx;
+  if (!ctx || !canvas || !canvas.width) return;
+  var W = canvas.width, H = canvas.height, P = PIT.MPAD;
+
+  ctx.clearRect(0, 0, W, H);
+  ctx.fillStyle = '#050A12'; ctx.fillRect(0, 0, W, H);
+
+  // Grid rings/lines at 0 axes
+  var cx = pitMX(0), cy = pitMY(0);
+  ctx.strokeStyle = 'rgba(255,255,255,.10)'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(P.L, cy); ctx.lineTo(W - P.R, cy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx, P.T); ctx.lineTo(cx, H - P.B); ctx.stroke();
+
+  // Tick labels
+  ctx.fillStyle = 'rgba(255,255,255,.14)';
+  ctx.font = '7px "Roboto Mono",monospace'; ctx.textAlign = 'center';
+  [-20, -10, 10, 20].forEach(function(v) {
+    ctx.fillText(v, pitMX(v), H - P.B + 12);
+    ctx.textAlign = 'right';
+    ctx.fillText(v, P.L - 4, pitMY(v) + 3);
+    ctx.textAlign = 'center';
+  });
+
+  ctx.fillStyle = 'rgba(255,255,255,.16)';
+  ctx.fillText('HORIZONTAL BREAK (in)', W / 2, H - 4);
+  ctx.save(); ctx.translate(9, H / 2); ctx.rotate(-Math.PI / 2);
+  ctx.fillText('VERTICAL BREAK (in)', 0, 0); ctx.restore();
+
+  // All filtered pitches as break dots
+  PIT.filtered.forEach(function(row, i) {
+    if (i === PIT.selectedIdx) return;
+    ctx.beginPath();
+    ctx.arc(pitMX(row.hmov * 12), pitMY(row.vmov * 12), 2.6, 0, Math.PI * 2);
+    ctx.fillStyle = pitColor(row.pitch_type);
+    ctx.globalAlpha = i === PIT.hoverIdx ? 0.95 : 0.4;
+    ctx.fill();
+    ctx.globalAlpha = 1;
+  });
+
+  // Selected
+  if (PIT.selectedIdx !== null) {
+    var r = PIT.filtered[PIT.selectedIdx];
+    if (r) {
+      var mx = pitMX(r.hmov * 12), my = pitMY(r.vmov * 12), col = pitColor(r.pitch_type);
+      ctx.strokeStyle = 'rgba(255,255,255,.25)'; ctx.lineWidth = 1; ctx.setLineDash([2, 3]);
+      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(mx, my); ctx.stroke(); ctx.setLineDash([]);
+      ctx.beginPath(); ctx.arc(mx, my, 5.5, 0, Math.PI * 2);
+      ctx.fillStyle = col; ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,.6)'; ctx.lineWidth = 1.4; ctx.stroke();
+
+      ctx.fillStyle = col; ctx.textAlign = 'left';
+      ctx.font = '700 13px "Oswald",sans-serif';
+      ctx.fillText((PIT_PITCH_NAMES[r.pitch_type] || r.pitch_type), P.L + 2, P.T + 6);
+      ctx.fillStyle = 'rgba(255,255,255,.38)';
+      ctx.font = '8px "Roboto Mono",monospace';
+      ctx.fillText(r.release_speed.toFixed(1) + ' mph · ' + Math.round(r.spin_rate) + ' rpm', P.L + 2, P.T + 20);
+    }
+  } else {
+    ctx.fillStyle = 'rgba(255,255,255,.09)';
+    ctx.font = '9px "Roboto Mono",monospace'; ctx.textAlign = 'center';
+    ctx.fillText('click a pitch', W / 2, P.T + 16);
+  }
+}
+
+function pitUpdateStatRow(row) {
+  var ids = ['pit-s-velo','pit-s-spin','pit-s-pt','pit-s-hb','pit-s-vb'];
+  var els = ids.map(function(id) { return document.getElementById(id); });
+  if (!row) {
+    els.forEach(function(e) { if (e) { e.textContent = '—'; e.classList.remove('ev-hard'); } });
+    return;
+  }
+  if (els[0]) els[0].textContent = row.release_speed.toFixed(1) + ' mph';
+  if (els[1]) els[1].textContent = Math.round(row.spin_rate) + ' rpm';
+  if (els[2]) els[2].textContent = (PIT_PITCH_NAMES[row.pitch_type] || row.pitch_type);
+  if (els[3]) els[3].textContent = (row.hmov * 12).toFixed(1) + '"';
+  if (els[4]) els[4].textContent = (row.vmov * 12).toFixed(1) + '"';
+}
+
+function pitBuildFilters() {
+  var pc = document.getElementById('pit-pitch-filters');
+  var bc = document.getElementById('pit-res-filters');
+  if (!pc || !bc) return;
+  pc.innerHTML = ''; bc.innerHTML = '';
+
+  PIT.activePitch = {};
+  PIT.activeRes = {};
+
+  PIT.allPitch.forEach(function(pt) {
+    PIT.activePitch[pt] = true;
+    var btn = document.createElement('button');
+    btn.className = 'mlb-pill active';
+    btn.textContent = pt;
+    btn.style.borderColor = pitColor(pt);
+    btn.onclick = (function(p, b) { return function() { pitTogglePitch(p, b); }; })(pt, btn);
+    pc.appendChild(btn);
+  });
+
+  PIT.allRes.forEach(function(rs) {
+    PIT.activeRes[rs] = true;
+    var btn = document.createElement('button');
+    btn.className = 'mlb-pill active';
+    btn.textContent = rs;
+    btn.onclick = (function(r, el) { return function() { pitToggleRes(r, el); }; })(rs, btn);
+    bc.appendChild(btn);
+  });
+}
+
+function pitTogglePitch(type, btn) {
+  var a = PIT.activePitch;
+  if (a[type]) {
+    var n = Object.keys(a).filter(function(k) { return a[k]; }).length;
+    if (n <= 1) return;
+    a[type] = false; btn.classList.remove('active');
+  } else { a[type] = true; btn.classList.add('active'); }
+  PIT.selectedIdx = null; pitApplyFilter();
+}
+
+function pitToggleRes(type, btn) {
+  var a = PIT.activeRes;
+  if (a[type]) {
+    var n = Object.keys(a).filter(function(k) { return a[k]; }).length;
+    if (n <= 1) return;
+    a[type] = false; btn.classList.remove('active');
+  } else { a[type] = true; btn.classList.add('active'); }
+  PIT.selectedIdx = null; pitApplyFilter();
+}
+
+function pitSelectPlayer(key, btn) {
+  if (!PIT_PLAYERS[key]) return;
+  PIT.player = key;
+  document.querySelectorAll('#pit-player-btns .mlb-player-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  pitLoad(key);
+}
+
+function pitLoad(key) {
+  var cfg = PIT_PLAYERS[key]; if (!cfg) return;
+  PIT.data = []; PIT.filtered = [];
+  PIT.selectedIdx = null; PIT.hoverIdx = null;
+  PIT.activePitch = null; PIT.activeRes = null;
+
+  var pc = document.getElementById('pit-pitch-filters');
+  var bc = document.getElementById('pit-res-filters');
+  if (pc) pc.innerHTML = '<span style="font-family:\'Roboto Mono\',monospace;font-size:.48rem;color:rgba(255,255,255,.18);">loading…</span>';
+  if (bc) bc.innerHTML = '';
+
+  function processPitData(raw) {
+    PIT.data = (Array.isArray(raw) ? raw : []).map(function(row) {
+      return {
+        pitch_type:    String(row.pitch_type || '??'),
+        release_speed: +(row.release_speed || 0),
+        spin_rate:     +(row.spin_rate || 0),
+        hmov:          +(row.hmov || 0),
+        vmov:          +(row.vmov || 0),
+        rx:            +(row.rx || 0),
+        rz:            +(row.rz || 0),
+        resBucket:     pitResultBucket(String(row.result || '')),
+      };
+    }).filter(function(row) { return row.release_speed > 0 && row.rz > 0; });
+
+    // Autoscale release axes with padding
+    var xs = PIT.data.map(function(r){return r.rx;}), zs = PIT.data.map(function(r){return r.rz;});
+    var xlo = Math.min.apply(null, xs), xhi = Math.max.apply(null, xs);
+    var zlo = Math.min.apply(null, zs), zhi = Math.max.apply(null, zs);
+    var xpad = Math.max(0.3, (xhi - xlo) * 0.15), zpad = Math.max(0.2, (zhi - zlo) * 0.2);
+    PIT.X_MIN = xlo - xpad; PIT.X_MAX = xhi + xpad;
+    PIT.Y_MIN = zlo - zpad; PIT.Y_MAX = zhi + zpad;
+
+    var pSet = {}, rSet = {};
+    PIT.data.forEach(function(r) { pSet[r.pitch_type] = true; rSet[r.resBucket] = true; });
+    PIT.allPitch = Object.keys(pSet).sort();
+    PIT.allRes = PIT_RES_ORDER.filter(function(r) { return rSet[r]; });
+    pitBuildFilters();
+    pitApplyFilter();
+  }
+
+  var inline = window.PIT_INLINE_DATA && window.PIT_INLINE_DATA[key];
+  if (inline) { processPitData(inline); return; }
+
+  fetch(cfg.file)
+    .then(function(r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+    .then(processPitData)
+    .catch(function(err) {
+      console.warn('PIT load error:', err);
+      if (pc) pc.innerHTML = '<span style="font-family:\'Roboto Mono\',monospace;font-size:.48rem;color:rgba(255,80,80,.5);">data file not found</span>';
+    });
+}
+
+// nearest filtered pitch to canvas coords (release scatter)
+function pitNearest(mx, my, tol) {
+  var best = -1, bestD = tol;
+  PIT.filtered.forEach(function(row, i) {
+    var dx = mx - pitSX(row.rx), dy = my - pitSY(row.rz);
+    var d = Math.sqrt(dx*dx + dy*dy);
+    if (d < bestD) { bestD = d; best = i; }
+  });
+  return best;
+}
+
+function pitHover(e) {
+  var rect = PIT.scatter.getBoundingClientRect();
+  var sc = PIT.scatter.width / rect.width;
+  var mx = (e.clientX - rect.left) * sc, my = (e.clientY - rect.top) * sc;
+  var best = pitNearest(mx, my, 11 * sc);
+  var changed = PIT.hoverIdx !== (best >= 0 ? best : null);
+  PIT.hoverIdx = best >= 0 ? best : null;
+  PIT.scatter.style.cursor = best >= 0 ? 'pointer' : 'crosshair';
+
+  var tt = document.getElementById('pit-tooltip');
+  if (tt) {
+    if (best >= 0) {
+      var row = PIT.filtered[best];
+      tt.innerHTML =
+        '<span style="color:' + pitColor(row.pitch_type) + ';letter-spacing:.1em;">' + (PIT_PITCH_NAMES[row.pitch_type] || row.pitch_type) + '</span><br>' +
+        'Velo <b>' + row.release_speed.toFixed(1) + '</b> mph<br>' +
+        'Spin <b>' + Math.round(row.spin_rate) + '</b> rpm<br>' +
+        '<span style="color:rgba(255,255,255,.3);">' + row.resBucket + '</span>';
+      var sr = document.getElementById('pit-scatter-stage').getBoundingClientRect();
+      tt.style.left = (e.clientX - sr.left + 14) + 'px';
+      tt.style.top = (e.clientY - sr.top - 12) + 'px';
+      tt.style.opacity = '1';
+    } else { tt.style.opacity = '0'; }
+  }
+  if (changed) { pitDrawScatter(); pitDrawMovement(); }
+}
+
+function pitClick(e) {
+  var rect = PIT.scatter.getBoundingClientRect();
+  var sc = PIT.scatter.width / rect.width;
+  var mx = (e.clientX - rect.left) * sc, my = (e.clientY - rect.top) * sc;
+  var best = pitNearest(mx, my, 15 * sc);
+  if (best >= 0) {
+    PIT.selectedIdx = best;
+    pitUpdateStatRow(PIT.filtered[best]);
+    pitDrawScatter();
+    pitDrawMovement();
+  }
+}
+
+function pitInit() {
+  PIT.scatter = document.getElementById('pit-scatter-canvas');
+  PIT.vector  = document.getElementById('pit-vector-canvas');
+  if (!PIT.scatter || !PIT.vector) return;
+  PIT.sCtx = PIT.scatter.getContext('2d');
+  PIT.vCtx = PIT.vector.getContext('2d');
+
+  var scStage  = document.getElementById('pit-scatter-stage');
+  var vecStage = document.getElementById('pit-vector-stage');
+  if (scStage)  { PIT.scatter.width = scStage.offsetWidth;  PIT.scatter.height = 320; }
+  if (vecStage) { PIT.vector.width  = vecStage.offsetWidth; PIT.vector.height  = 320; }
+
+  PIT.scatter.addEventListener('mousemove', pitHover);
+  PIT.scatter.addEventListener('mouseleave', function() {
+    PIT.hoverIdx = null;
+    var tt = document.getElementById('pit-tooltip');
+    if (tt) tt.style.opacity = '0';
+    pitDrawScatter(); pitDrawMovement();
+  });
+  PIT.scatter.addEventListener('click', pitClick);
+
+  window.addEventListener('resize', function() {
+    var ss = document.getElementById('pit-scatter-stage');
+    var vs = document.getElementById('pit-vector-stage');
+    if (ss && PIT.scatter) PIT.scatter.width = ss.offsetWidth;
+    if (vs && PIT.vector)  PIT.vector.width  = vs.offsetWidth;
+    pitDrawScatter(); pitDrawMovement();
+  });
+
+  pitLoad(PIT.player);
+}
+
+
 // ── OVERLAY HOOK ─────────────────────────────────────────────────────────────────────────
 
 var _origOpenOverlay = openOverlay;
@@ -2356,6 +2784,10 @@ openOverlay = function(name) {
     if (!mlbInited) {
       mlbInited = true;
       setTimeout(function() { mlbInit(); }, 400);
+    }
+    if (!pitInited) {
+      pitInited = true;
+      setTimeout(function() { pitInit(); }, 500);
     }
   }
 };

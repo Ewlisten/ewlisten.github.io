@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D9VRXZK9Y6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D9VRXZK9Y6');
+</script>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Elijah Whittle — Sports Analytics</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Lato:wght@300;400;700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="portfolio.css">
+</head>
+<body>
+
+<!-- ════ SITE HEADER ════ -->
+<div class="site-header">
+  <span class="logo">E—W</span>
+  <span class="tagline">Sports Analytics · Computer Vision · 2026</span>
+</div>
+
+<!-- ════ MOSAIC GRID ════ -->
+<div class="mosaic">
+
+  <!-- PANEL 1: NBA -->
+  <div class="panel nba-panel" onclick="openOverlay('nba')">
+    <div class="panel-content">
+      <div class="panel-num">01 / NBA</div>
+      <div class="panel-sport">NBA</div>
+      <div class="panel-sub">Analytics</div>
+      <div class="panel-hint">Shot Charts · ML Prediction · Team Fingerprints</div>
+    </div>
+  </div>
+
+  <!-- PANEL 2: F1 -->
+  <div class="panel f1-panel" onclick="openOverlay('f1')">
+    <div class="panel-content">
+      <div class="panel-num">02 / F1</div>
+      <div class="panel-sport">F—1</div>
+      <div class="panel-sub">Formula One</div>
+      <div class="panel-hint">Telemetry · Lap Analysis · Driver Comparison</div>
+    </div>
+  </div>
+
+  <!-- PANEL 3: CV -->
+  <div class="panel cv-panel" onclick="openOverlay('cv')">
+    <video class="cv-video-bg" autoplay muted loop playsinline>
+      <source src="motion_tracking_demo.mp4" type="video/mp4">
+    </video>
+    <div class="panel-content">
+      <div class="panel-num">03 / CV</div>
+      <div class="panel-sport">VISION</div>
+      <div class="panel-sub">Computer Vision</div>
+      <div class="panel-hint">YOLO · SORT · DeepSORT · OpenCV</div>
+    </div>
+  </div>
+
+  <!-- PANEL 4: About -->
+  <div class="panel about-panel" onclick="openOverlay('about')">
+    <div class="panel-content">
+      <div class="panel-num">04 / EW</div>
+      <div class="panel-sport">ELIJAH<br>WHITTLE</div>
+      <div class="panel-sub">CS Student · Data Scientist</div>
+      <div class="panel-hint">University of DC · EDGIO · Open to Work</div>
+    </div>
+  </div>
+
+</div><!-- /mosaic -->
+
+
+<!-- ════ OVERLAY: NBA ════ -->
+<div class="overlay" id="overlay-nba">
+  <button class="ov-close" onclick="closeOverlay(event)">
+    <div class="ov-close-left">
+      <span class="ov-close-x">✕</span>
+      <span class="ov-close-label">Back to overview</span>
+    </div>
+    <span class="ov-close-right">01 / NBA Analytics</span>
+  </button>
+
+  <!-- Hero -->
+  <div class="ov-hero">
+    <div class="ov-eyebrow"><div class="ov-eyebrow-line"></div>NBA Analytics</div>
+    <div class="ov-big-title">NBA<br>ANALYTICS</div>
+    <p class="ov-question">"Three tools built on one belief — that the data already knows what the game is trying to say."</p>
+  </div>
+
+  <!-- Shot Chart: Interactive Wembanyama Viewer -->
+  <div class="ov-fullbleed">
+    <div class="ov-fullbleed-inner">
+
+      <!-- Header row -->
+      <div class="wemby-header">
+        <div>
+          <div class="ov-eyebrow" style="margin-bottom:.35rem;"><div class="ov-eyebrow-line"></div>Shot Chart Generator</div>
+          <h3 class="ov-h3" style="margin:0;">Victor Wembanyama · 2025–26</h3>
+        </div>
+        <button class="wemby-replay-btn" onclick="wembyReplay()">↺ Replay</button>
+      </div>
+
+      <!-- Player + view controls -->
+      <div class="wemby-controls">
+        <div class="wemby-ctrl-group">
+          <button class="wemby-pswitch-btn active" id="wps-wemby" onclick="wembySwitchPlayer('wemby')">WEMBY</button>
+          <button class="wemby-pswitch-btn" id="wps-maxey" onclick="wembySwitchPlayer('maxey')">MAXEY</button>
+        </div>
+        <div class="wemby-ctrl-group">
+          <button class="wemby-view-btn active" id="wvb-shots" onclick="wembySetView('shots')">SHOTS</button>
+          <button class="wemby-view-btn" id="wvb-zones" onclick="wembySetView('zones')">ZONES</button>
+        </div>
+      </div>
+
+      <!-- Game selector -->
+      <div class="wemby-games" id="wemby-games"></div>
+
+      <!-- Filter pills -->
+      <div class="wemby-filters" id="wemby-filters">
+        <button class="wf-pill" data-filter="result" data-val="made"   onclick="wembyToggleFilter('result','made',this)">MADE</button>
+        <button class="wf-pill" data-filter="result" data-val="missed" onclick="wembyToggleFilter('result','missed',this)">MISSED</button>
+        <div class="wf-sep"></div>
+        <button class="wf-pill" data-filter="type" data-val="2pt" onclick="wembyToggleFilter('type','2pt',this)">2PT</button>
+        <button class="wf-pill" data-filter="type" data-val="3pt" onclick="wembyToggleFilter('type','3pt',this)">3PT</button>
+        <div class="wf-sep"></div>
+        <button class="wf-pill" data-filter="zone" data-val="Restricted Area"          onclick="wembyToggleFilter('zone','Restricted Area',this)">RA</button>
+        <button class="wf-pill" data-filter="zone" data-val="In The Paint (Non-RA)"    onclick="wembyToggleFilter('zone','In The Paint (Non-RA)',this)">PAINT</button>
+        <button class="wf-pill" data-filter="zone" data-val="Mid-Range"                onclick="wembyToggleFilter('zone','Mid-Range',this)">MID</button>
+        <button class="wf-pill" data-filter="zone" data-val="corner3"                  onclick="wembyToggleFilter('zone','corner3',this)">CORNER 3</button>
+        <button class="wf-pill" data-filter="zone" data-val="Above the Break 3"        onclick="wembyToggleFilter('zone','Above the Break 3',this)">ATB 3</button>
+      </div>
+
+      <!-- Summary strip — updates on hover + filter -->
+      <div class="wemby-summary" id="wemby-summary">
+        <span class="ws-zone" id="ws-zone-lbl"></span>
+        <span class="ws-stat" id="ws-stats"></span>
+      </div>
+
+      <!-- Court + Stats -->
+      <div class="wemby-chart-wrap">
+
+        <!-- SVG court -->
+        <div style="position:relative;">
+          <svg id="wemby-court" viewBox="0 0 500 472" width="500" style="display:block;max-width:100%;"></svg>
+          <div id="wemby-tooltip" style="position:absolute;pointer-events:none;opacity:0;background:#1a1a0a;border:1px solid #2a2a14;padding:7px 11px;font-family:'Roboto Mono',monospace;font-size:.65rem;color:#bbb;line-height:1.65;border-radius:2px;transition:opacity .12s;white-space:nowrap;z-index:10;"></div>
+        </div>
+
+        <!-- Stats panel -->
+        <div class="wemby-stat-panel" id="wemby-panel">
+          <div class="wemby-player-name" id="wemby-player-name">Victor Wembanyama</div>
+          <div class="wemby-season" id="wemby-player-season">2025–26 · San Antonio Spurs</div>
+          <div class="wemby-stat-grid">
+            <div class="wemby-stat"><div class="wemby-stat-n" id="ws-fga">—</div><div class="wemby-stat-l">FGA</div></div>
+            <div class="wemby-stat"><div class="wemby-stat-n" id="ws-fgm">—</div><div class="wemby-stat-l">FGM</div></div>
+            <div class="wemby-stat"><div class="wemby-stat-n" id="ws-fgp" style="color:#F58426">—</div><div class="wemby-stat-l">FG%</div></div>
+            <div class="wemby-stat"><div class="wemby-stat-n" id="ws-3pa">—</div><div class="wemby-stat-l">3PA</div></div>
+            <div class="wemby-stat"><div class="wemby-stat-n" id="ws-3pm">—</div><div class="wemby-stat-l">3PM</div></div>
+            <div class="wemby-stat"><div class="wemby-stat-n" id="ws-3pp" style="color:#F58426">—</div><div class="wemby-stat-l">3P%</div></div>
+            <div class="wemby-stat wemby-pts-stat"><div class="wemby-stat-n" id="ws-pts">—</div><div class="wemby-stat-l">Est. Points</div></div>
+          </div>
+          <div class="wemby-legend" id="wemby-shots-legend">
+            <div class="wemby-leg-item"><div class="wemby-leg-dot" style="background:#F58426;"></div>Made</div>
+            <div class="wemby-leg-item"><div class="wemby-leg-dot" style="background:transparent;border:1.5px solid #F58426;opacity:.45;"></div>Missed</div>
+            <div class="wemby-leg-item"><div class="wemby-leg-dot" style="width:11px;height:11px;border-radius:50%;background:transparent;border:1.5px solid #F58426;"></div>3PT</div>
+          </div>
+          <div class="wemby-legend" id="wemby-zones-legend" style="display:none;flex-wrap:wrap;">
+            <div class="wemby-leg-item"><div class="wemby-leg-dot" style="background:rgba(245,132,38,0.7);border:none;border-radius:2px;"></div>60%+</div>
+            <div class="wemby-leg-item"><div class="wemby-leg-dot" style="background:rgba(245,190,80,0.65);border:none;border-radius:2px;"></div>48–60%</div>
+            <div class="wemby-leg-item"><div class="wemby-leg-dot" style="background:rgba(150,150,120,0.55);border:none;border-radius:2px;"></div>36–48%</div>
+            <div class="wemby-leg-item"><div class="wemby-leg-dot" style="background:rgba(60,120,220,0.6);border:none;border-radius:2px;"></div>24–36%</div>
+            <div class="wemby-leg-item"><div class="wemby-leg-dot" style="background:rgba(30,70,200,0.7);border:none;border-radius:2px;"></div>&lt;24%</div>
+          </div>
+        </div>
+
+      </div><!-- /chart-wrap -->
+
+      <p class="ov-caption" id="wemby-caption">Fig 01 — Select a game above to animate Wembanyama's shot attempts on a real NBA half-court. Data via NBA Stats API. Orange filled = made · Ring = missed · Hover any dot for shot details.</p>
+    </div>
+  </div>
+
+  <!-- Shot chart editorial text -->
+  <div class="ov-prose">
+    <div class="ov-prose-inner">
+      <h3 class="ov-h3">Where does he score from?</h3>
+      <p class="ov-body">The shot chart doesn't just show makes and misses. It shows the geometry of a player's game — the zones they dominate, the spots they avoid, the corners where they're quietly more efficient than anyone mentions. With Wembanyama, the shape is unlike any player the league has seen: rim finishes, corner threes, and pull-up threes from step-back range coexist in a single season profile. Every dot is a decision. The pattern is the player.</p>
+      <div class="ov-callout nba-call">Wembanyama's post-All-Star shot profile shifts measurably — more above-break threes, fewer mid-range attempts. The chart makes that evolution visible without a single word of commentary.</div>
+    </div>
+  </div>
+
+  <!-- ML Prediction: text + radar -->
+  <div class="ov-section">
+    <div class="ov-cols">
+      <div>
+        <h3 class="ov-h3">Who does the data say he's becoming?</h3>
+        <p class="ov-body">The ML model maps every player in the league as a vector across five dimensions, then surfaces who they most resemble using cosine similarity. When the comparisons return unexpected names — a sophomore who moves statistically like a veteran All-Star — you've found something the box score obscured.</p>
+        <p class="ov-body">The radar makes the gap visual. The orange shape is the subject. The ghost shape is their nearest comparable. The space between them is the question the model is answering.</p>
+        <div class="ov-callout nba-call">A 12% cosine distance can mean everything — or nothing. The chart forces you to decide which stats actually drive the comparison.</div>
+        <div class="ov-pills">
+          <span class="ov-pill np">scikit-learn</span>
+          <span class="ov-pill np">NBA API</span>
+          <span class="ov-pill np">matplotlib</span>
+          <span class="ov-pill np">pandas</span>
+        </div>
+      </div>
+      <div>
+        <!-- Radar comparison SVG -->
+        <svg viewBox="0 0 420 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+          <rect width="420" height="400" fill="#0c0800"/>
+          <!-- grid pentagons center (210,210) R=120 -->
+          <polygon points="210,90 324.2,177.8 281.8,314.2 138.2,314.2 95.8,177.8" fill="none" stroke="rgba(255,255,255,.07)" stroke-width=".8"/>
+          <polygon points="210,114 307.4,193.4 271.4,295.4 148.6,295.4 112.6,193.4" fill="none" stroke="rgba(255,255,255,.06)" stroke-width=".8"/>
+          <polygon points="210,138 290.6,209 261,276.6 159,276.6 129.4,209" fill="none" stroke="rgba(255,255,255,.06)" stroke-width=".8"/>
+          <polygon points="210,162 273.8,224.6 250.6,257.8 169.4,257.8 146.2,224.6" fill="none" stroke="rgba(255,255,255,.05)" stroke-width=".8"/>
+          <!-- axes -->
+          <line x1="210" y1="210" x2="210" y2="90"     stroke="rgba(255,255,255,.07)" stroke-width=".8"/>
+          <line x1="210" y1="210" x2="324.2" y2="177.8" stroke="rgba(255,255,255,.07)" stroke-width=".8"/>
+          <line x1="210" y1="210" x2="281.8" y2="314.2" stroke="rgba(255,255,255,.07)" stroke-width=".8"/>
+          <line x1="210" y1="210" x2="138.2" y2="314.2" stroke="rgba(255,255,255,.07)" stroke-width=".8"/>
+          <line x1="210" y1="210" x2="95.8"  y2="177.8" stroke="rgba(255,255,255,.07)" stroke-width=".8"/>
+          <!-- Player A (subject, orange) — PTS88 AST70 REB58 3P92 BLK38 -->
+          <polygon points="210,104.4 315.7,194.4 279.4,314.2 141.4,322.4 163.4,193.6"
+            fill="rgba(245,132,38,.16)" stroke="#F58426" stroke-width="2" stroke-linejoin="round"/>
+          <!-- Player B (comp, ghost) — PTS72 AST85 REB88 3P45 BLK80 -->
+          <polygon points="210,123.6 311.6,187.6 271.9,315.6 177.5,283.8 113.8,193.4"
+            fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.25)" stroke-width="1.4" stroke-linejoin="round" stroke-dasharray="5,3"/>
+          <circle cx="210" cy="210" r="3" fill="rgba(255,255,255,.25)"/>
+          <!-- labels -->
+          <text x="210" y="76" text-anchor="middle" font-size="11" fill="rgba(255,255,255,.5)" font-family="sans-serif">PTS</text>
+          <text x="338" y="180" text-anchor="start"  font-size="11" fill="rgba(255,255,255,.5)" font-family="sans-serif">AST</text>
+          <text x="290" y="332" text-anchor="start"  font-size="11" fill="rgba(255,255,255,.5)" font-family="sans-serif">REB</text>
+          <text x="128" y="332" text-anchor="end"    font-size="11" fill="rgba(255,255,255,.5)" font-family="sans-serif">3P%</text>
+          <text x="80"  y="180" text-anchor="end"    font-size="11" fill="rgba(255,255,255,.5)" font-family="sans-serif">BLK</text>
+          <!-- legend -->
+          <line x1="22" y1="20" x2="44" y2="20" stroke="#F58426" stroke-width="2.5"/>
+          <text x="50" y="24" font-size="10" fill="rgba(255,255,255,.5)" font-family="sans-serif">Subject</text>
+          <line x1="22" y1="36" x2="44" y2="36" stroke="rgba(255,255,255,.3)" stroke-width="1.5" stroke-dasharray="5,3"/>
+          <text x="50" y="40" font-size="10" fill="rgba(255,255,255,.35)" font-family="sans-serif">Nearest comp</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Career Comparison: Interactive -->
+  <div class="ov-fullbleed">
+    <div class="ov-fullbleed-inner">
+
+      <div class="cc-header">
+        <div>
+          <div class="ov-eyebrow" style="margin-bottom:.35rem;"><div class="ov-eyebrow-line"></div>ML Career Score Model</div>
+          <h3 class="ov-h3" style="margin:0;">Who is closest to who?</h3>
+        </div>
+        <button class="cc-reset-btn" id="cc-reset">↺ Reset</button>
+      </div>
+
+      <p class="ov-body" style="margin-bottom:1.5rem;font-size:.85rem;max-width:620px;">Each dot is a player positioned by their career score — a composite metric from my ML model. Hover to explore. Click any dot to see who they're statistically closest to.</p>
+
+      <div class="cc-stage" id="cc-stage">
+        <canvas id="cc-canvas"></canvas>
+      </div>
+
+      <div class="cc-info" id="cc-info"></div>
+
+      <p class="ov-caption">Fig 02 — Career Score Comparison. Scores computed by ML model trained on per-game stats, games played, and award history. Click any dot to animate nearest neighbors.</p>
+    </div>
+  </div>
+
+  <!-- Career comparison editorial text + links -->
+  <div class="ov-prose">
+    <div class="ov-prose-inner">
+      <p class="ov-body">The model produces a single number that collapses a career into something comparable. It's not perfect — no number is — but when you click a player and see who slides toward them, you're seeing the model's opinion about statistical kinship. Sometimes it confirms what everyone knows. Sometimes it surprises you.</p>
+      <div class="ov-callout nba-call">The score doesn't just reflect points. It weights longevity, awards, and multi-dimensional production. A player with 1,500 games at 17 PPG can score higher than a 30-PPG star who only played 600 games.</div>
+      <div class="ov-links">
+        <a class="ov-link nl" href="https://colab.research.google.com/drive/1GtG3zYOxrq-iBa53rytmQqT-W-vHz-Pp" target="_blank">View in Colab</a>
+        <a class="ov-link gl" href="https://github.com/Ewlisten/" target="_blank">GitHub</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- bottom nav -->
+  <div class="ov-bnav">
+    <div>
+      <div class="ov-bn-l">Next project</div>
+      <button class="ov-bn-next fb" onclick="switchOverlay('nba','f1')">F—1 Analytics →</button>
+    </div>
+  </div>
+</div><!-- /overlay-nba -->
+
+
+<!-- ════ OVERLAY: F1 ════ -->
+<div class="overlay" id="overlay-f1">
+  <button class="ov-close" onclick="closeOverlay(event)">
+    <div class="ov-close-left">
+      <span class="ov-close-x">✕</span>
+      <span class="ov-close-label">Back to overview</span>
+    </div>
+    <span class="ov-close-right">02 / Formula One</span>
+  </button>
+
+  <div class="ov-hero">
+    <div class="ov-eyebrow"><div class="ov-eyebrow-line"></div>Formula One Analytics</div>
+    <div class="ov-big-title">F—1</div>
+    <p class="ov-question">"The stopwatch captures everything. These tools are how we listen to it."</p>
+  </div>
+
+  <!-- Monaco Draft Animation video — full bleed -->
+  <div class="ov-fullbleed">
+    <div class="ov-fullbleed-inner">
+      <video class="ov-video" controls muted loop playsinline style="max-height:540px;">
+        <source src="Monaco%20Draft%20Animation.mp4" type="video/mp4">
+      </video>
+      <p class="ov-caption">Fig 01 — Monaco Draft Animation. Animated visualization of racing lines and drafting windows through the Monaco street circuit, built from FastF1 telemetry data.</p>
+    </div>
+  </div>
+
+  <!-- Lap Delta: Interactive Canvas -->
+  <div class="ov-fullbleed">
+    <div class="ov-fullbleed-inner">
+
+      <div class="ld-header">
+        <div>
+          <div class="ov-eyebrow" style="margin-bottom:.35rem;"><div class="ov-eyebrow-line"></div>Lap Delta Analyzer</div>
+          <h3 class="ov-h3" style="margin:0;">Monaco 2024 — where does the gap open?</h3>
+        </div>
+        <div class="ld-driver-row">
+          <div class="ld-drv-tag"><span class="ld-drv-dot" style="background:#F58426;"></span><span>VER</span></div>
+          <div class="ld-drv-tag"><span class="ld-drv-dot" style="background:#DC0000;"></span><span>LEC</span></div>
+          <button class="wemby-replay-btn" onclick="ldReplay()">↺ Replay</button>
+        </div>
+      </div>
+
+      <div class="ld-stage" id="ld-stage">
+        <canvas id="ld-canvas"></canvas>
+      </div>
+
+      <div class="ld-hover-panel" id="ld-hover-panel">
+        <span class="ld-hp-lap" id="ld-hp-lap">Hover a bar</span>
+        <span class="ld-hp-delta" id="ld-hp-delta">—</span>
+        <span class="ld-hp-sep">·</span>
+        <span class="ld-hp-sector" id="ld-hp-s1">S1 —</span>
+        <span class="ld-hp-sector" id="ld-hp-s2">S2 —</span>
+        <span class="ld-hp-sector" id="ld-hp-s3">S3 —</span>
+        <span class="ld-hp-sep">·</span>
+        <span class="ld-hp-tyre" id="ld-hp-tyre">—</span>
+      </div>
+
+      <p class="ov-caption">Fig 02 — Monaco GP 2024 · Per-lap time delta. Orange = VER faster · Red = LEC faster · Tire compound shown bottom rail · Hover any bar for sector split. Sample data shaped from FastF1 telemetry output.</p>
+    </div>
+  </div>
+
+  <!-- Lap analyzer text -->
+  <div class="ov-prose">
+    <div class="ov-prose-inner">
+      <h3 class="ov-h3">Where on the track does the gap actually open up?</h3>
+      <p class="ov-body">A two-second gap at the flag looks like one thing in the standings and a completely different thing in the data. The Lap Time Analyzer pulls real race telemetry via FastF1 and breaks every lap into sectors — showing not just who was faster, but at which corner, on which lap, under which tire compound the delta grew.</p>
+      <div class="ov-callout f1-call">Sector 2 deltas often reveal more than overall lap time. It's where setup decisions, brake bias, and driver commitment intersect — the invisible part of the race.</div>
+    </div>
+  </div>
+
+  <!-- Driver comparison: image + text -->
+  <div class="ov-section">
+    <div class="ov-cols flip">
+      <div>
+        <h3 class="ov-h3">Same car. What does the data reveal?</h3>
+        <p class="ov-body">The teammate comparison is the cleanest experiment in motorsport — same machinery, same strategy, different driver. The Driver vs. Teammate Tool neutralizes the car advantage and isolates individual pace across qualifying and race stints.</p>
+        <p class="ov-body">When one driver is consistently 0.3s faster through the high-speed complex and 0.1s slower under braking, that's not noise. That's a skill profile.</p>
+        <div class="ov-callout f1-call">Controlling for car performance is the key move. Without it, you're comparing driver talent plus machinery — which tells you nothing about either.</div>
+        <div class="ov-pills">
+          <span class="ov-pill fp">FastF1</span>
+          <span class="ov-pill fp">pandas</span>
+          <span class="ov-pill fp">matplotlib</span>
+          <span class="ov-pill fp">Bokeh</span>
+          <span class="ov-pill fp">NumPy</span>
+        </div>
+        <div class="ov-links">
+          <a class="ov-link fl" href="https://github.com/Ewlisten/" target="_blank">View on GitHub</a>
+        </div>
+      </div>
+      <div>
+        <img src="f1flag.jpg" alt="F1 Flag" class="ov-img" style="max-height:420px;object-fit:cover;">
+      </div>
+    </div>
+  </div>
+
+  <div class="ov-bnav">
+    <div>
+      <div class="ov-bn-l">Next project</div>
+      <button class="ov-bn-next cb" onclick="switchOverlay('f1','cv')">Computer Vision →</button>
+    </div>
+  </div>
+</div><!-- /overlay-f1 -->
+
+
+<!-- ════ OVERLAY: CV ════ -->
+<div class="overlay" id="overlay-cv">
+  <button class="ov-close" onclick="closeOverlay(event)">
+    <div class="ov-close-left">
+      <span class="ov-close-x">✕</span>
+      <span class="ov-close-label">Back to overview</span>
+    </div>
+    <span class="ov-close-right">03 / Computer Vision</span>
+  </button>
+
+  <div class="ov-hero">
+    <div class="ov-eyebrow"><div class="ov-eyebrow-line"></div>Computer Vision</div>
+    <div class="ov-big-title">COM&shy;PUTER<br>VISION</div>
+    <p class="ov-question">"The camera was always watching. We built the pipeline to make it see."</p>
+  </div>
+
+  <!-- Wemby trajectory video — full bleed -->
+  <div class="ov-fullbleed">
+    <div class="ov-fullbleed-inner">
+      <video class="ov-video" controls muted loop playsinline style="max-height:520px;">
+        <source src="Wemby_StpBK_TrajectOV.mov" type="video/mp4">
+        <source src="Wemby_StpBK_TrajectOV.mov" type="video/quicktime">
+      </video>
+      <p class="ov-caption">Fig 01 — Wembanyama Step-Back Trajectory Overview. Ball flight path annotated frame by frame: release angle, arc peak, and landing zone mapped onto court coordinates.</p>
+    </div>
+  </div>
+
+  <!-- Trajectory Replay Canvas -->
+  <div class="ov-fullbleed">
+    <div class="ov-fullbleed-inner">
+
+      <div class="tr-header">
+        <div>
+          <div class="ov-eyebrow" style="margin-bottom:.35rem;"><div class="ov-eyebrow-line"></div>Shot Trajectory Model</div>
+          <h3 class="ov-h3" style="margin:0;">Arc geometry — frame by frame</h3>
+        </div>
+        <button class="wemby-replay-btn" onclick="trReplay()">↺ Replay</button>
+      </div>
+
+      <div class="tr-wrap">
+        <div class="tr-canvas-wrap">
+          <canvas id="tr-canvas"></canvas>
+        </div>
+        <div class="tr-stat-panel" id="tr-stats">
+          <div class="tr-stat"><div class="tr-stat-n" id="tr-angle">51°</div><div class="tr-stat-l">Release Angle</div></div>
+          <div class="tr-stat"><div class="tr-stat-n" id="tr-peak">14.2</div><div class="tr-stat-l">Arc Peak (ft)</div></div>
+          <div class="tr-stat"><div class="tr-stat-n" id="tr-dist">27</div><div class="tr-stat-l">Shot Dist (ft)</div></div>
+          <div class="tr-stat"><div class="tr-stat-n" id="tr-frame">—</div><div class="tr-stat-l">Frame</div></div>
+          <div class="tr-phases">
+            <div class="tr-phase" id="trp-release">RELEASE</div>
+            <div class="tr-phase" id="trp-apex">APEX</div>
+            <div class="tr-phase" id="trp-entry">ENTRY</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="ov-caption">Fig 02 — Wembanyama step-back trajectory model. Release angle, arc peak, and basket entry extracted frame-by-frame via OpenCV pipeline. 3PT step-back · 27 ft · 51° release · 14.2 ft apex.</p>
+    </div>
+  </div>
+
+  <!-- Wemby text -->
+  <div class="ov-prose">
+    <div class="ov-prose-inner">
+      <h3 class="ov-h3">Can a model trace the exact arc of a Wembanyama step-back?</h3>
+      <p class="ov-body">This pipeline applies computer vision to one of the most unguardable shots in the NBA — Wembanyama's step-back jumper. Frame by frame, it extracts ball position, calculates trajectory, and annotates the flight path with release angle and arc data. The output makes visible what broadcast angles obscure: the precise geometry that makes this shot so hard to contest.</p>
+      <div class="ov-callout cv-call">Trajectory modeling at the player level turns broadcast footage into measurement data — the same kind that coaching staffs pay millions to collect manually.</div>
+    </div>
+  </div>
+
+  <!-- Player tracking: text + video -->
+  <div class="ov-section">
+    <div class="ov-cols">
+      <div>
+        <h3 class="ov-h3">Tracking Tyrese Maxey — one of the fastest players alive</h3>
+        <p class="ov-body">Applied YOLO detection and SORT tracking to Tyrese Maxey footage, locking a persistent bounding box onto him through contact, screens, and full-speed cuts. At Maxey's pace, maintaining ID integrity across frames is a genuine technical challenge — one that pure detection models fail under pressure.</p>
+        <p class="ov-body">The annotated output logs position and proximity to other tracked players on every frame — the raw material for automated spacing and off-ball movement analysis that no box score captures.</p>
+        <div class="ov-callout cv-call">When the tracker holds lock at 40+ mph cutting speed without re-assigning IDs, the model is generalizing — not memorizing camera angles.</div>
+        <div class="ov-pills">
+          <span class="ov-pill cp">YOLO</span>
+          <span class="ov-pill cp">SORT</span>
+          <span class="ov-pill cp">DeepSORT</span>
+          <span class="ov-pill cp">OpenCV</span>
+          <span class="ov-pill cp">Python</span>
+        </div>
+        <div class="ov-links">
+          <a class="ov-link cl" href="https://github.com/Ewlisten/" target="_blank">View on GitHub</a>
+        </div>
+      </div>
+      <div>
+        <video class="ov-video" controls muted loop playsinline style="max-height:420px;">
+          <source src="TyMax_3.avi" type="video/x-msvideo">
+          <source src="TyMax_3.avi" type="video/avi">
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <div class="ov-bnav">
+    <div>
+      <div class="ov-bn-l">Next</div>
+      <button class="ov-bn-next" onclick="switchOverlay('cv','about')">Elijah Whittle →</button>
+    </div>
+  </div>
+</div><!-- /overlay-cv -->
+
+
+<!-- ════ OVERLAY: ABOUT ════ -->
+<div class="overlay" id="overlay-about">
+  <button class="ov-close" onclick="closeOverlay(event)">
+    <div class="ov-close-left">
+      <span class="ov-close-x">✕</span>
+      <span class="ov-close-label">Back to overview</span>
+    </div>
+    <span class="ov-close-right">04 / Elijah Whittle</span>
+  </button>
+
+  <div class="ov-hero">
+    <div class="ov-eyebrow"><div class="ov-eyebrow-line"></div>About</div>
+    <div class="ov-big-title">ELIJAH<br>WHITTLE</div>
+    <p class="ov-question">CS student, data scientist, live sports broadcaster — in that order, depending on the day.</p>
+  </div>
+
+  <div class="ov-section">
+    <div class="ov-cols">
+      <div>
+        <h3 class="ov-h3">The work</h3>
+        <p class="ov-body">I build machine learning pipelines, interactive visualizations, and computer vision systems for sports data. The focus is always the same: take something the game produces — shot coordinates, lap telemetry, video footage — and turn it into something you can actually see and reason about.</p>
+        <p class="ov-body">I believe sports produce some of the richest, most underutilized data in the world. Every play, lap, and sprint is a measurement. My job is to make those measurements speak.</p>
+        <div class="ov-callout nba-call">"The data already knows what the game is trying to say. The tool is just how you listen."</div>
+        <div class="ov-pills" style="margin-top:1.25rem;">
+          <span class="ov-pill np">Python</span>
+          <span class="ov-pill np">scikit-learn</span>
+          <span class="ov-pill np">pandas</span>
+          <span class="ov-pill np">OpenCV</span>
+          <span class="ov-pill np">YOLO</span>
+          <span class="ov-pill np">FastF1</span>
+          <span class="ov-pill np">NBA API</span>
+          <span class="ov-pill np">Bokeh</span>
+          <span class="ov-pill np">SQL</span>
+          <span class="ov-pill np">C++</span>
+        </div>
+      </div>
+      <div>
+        <img src="ELIpfp.jpg" alt="Elijah Whittle" class="ov-img" style="max-height:460px;border-radius:2px;">
+      </div>
+    </div>
+  </div>
+
+  <div class="ov-section">
+    <div class="ov-cols">
+      <div>
+        <h3 class="ov-h3">Experience</h3>
+        <p class="ov-body" style="margin-bottom:.4rem;color:rgba(255,255,255,.7);font-weight:700;">Live Event Operator — EDGIO</p>
+        <p class="ov-body" style="margin-bottom:1.25rem;font-size:.8rem;color:rgba(255,255,255,.3);letter-spacing:.06em;">September 2020 – Present · Remote</p>
+        <p class="ov-body">Collaborates with major national sports broadcasters on live programming delivery. Manages software tools for live transitions, ensuring minimal downtime under real broadcast pressure. Front-row seat to how sports media actually operates.</p>
+      </div>
+      <div>
+        <h3 class="ov-h3">Education</h3>
+        <p class="ov-body" style="margin-bottom:.4rem;color:rgba(255,255,255,.7);font-weight:700;">University of the District of Columbia</p>
+        <p class="ov-body" style="margin-bottom:1.5rem;font-size:.8rem;color:rgba(255,255,255,.3);letter-spacing:.06em;">B.S. Computer Science · Expected 2027 · GPA 3.0</p>
+        <p class="ov-body" style="margin-bottom:.4rem;color:rgba(255,255,255,.7);font-weight:700;">Duke Ellington School of the Arts</p>
+        <p class="ov-body" style="font-size:.8rem;color:rgba(255,255,255,.3);letter-spacing:.06em;">Graduated 2017</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="ov-prose">
+    <div class="ov-prose-inner">
+      <h3 class="ov-h3">Get in touch</h3>
+      <p class="ov-body">Open to work, collaborations, and conversations about sports data.</p>
+      <div class="ov-links" style="margin-top:1.25rem;">
+        <a class="ov-link nl" href="mailto:whittle.elijah@gmail.com">whittle.elijah@gmail.com</a>
+        <a class="ov-link gl" href="https://github.com/Ewlisten/" target="_blank">GitHub</a>
+        <a class="ov-link gl" href="https://www.linkedin.com/in/elijah-stats-data/" target="_blank">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="ov-bnav">
+    <div>
+      <div class="ov-bn-l">Back to start</div>
+      <button class="ov-bn-next nb" onclick="switchOverlay('about','nba')">NBA Analytics →</button>
+    </div>
+  </div>
+</div><!-- /overlay-about -->
+
+
+<script src="portfolio.js"></script>
+</body>
+</html>

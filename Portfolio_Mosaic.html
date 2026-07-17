@@ -6,6 +6,14 @@
 <title>Elijah Whittle — Analytics</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Lato:wght@300;400;700&family=Roboto+Mono:wght@400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="portfolio.css">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-D9VRXZK9Y6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-D9VRXZK9Y6');
+</script>
 </head>
 <body>
 
@@ -564,9 +572,16 @@
   <div class="ov-hero">
     <div class="ov-eyebrow"><div class="ov-eyebrow-line"></div>MLB Analytics</div>
     <div class="ov-big-title">MLB</div>
-    <p class="ov-question">This scouting lab breaks down hitter performance using Statcast data. Use the zone grid to see where a player makes contact, the EV histogram to assess bat speed, and the stats table to compare month-to-month trends. Higher barrel% and hard-hit% indicate quality contact.</p>
+    <p class="ov-question">This scouting lab breaks down MLB performance using Statcast data. Designed to analyze player performance and trends, it provides insights into hitting and pitching metrics.</p>
   </div>
-
+  <!-- Hitting editorial text -->
+  <div class="ov-prose">
+    <div class="ov-prose-inner">
+      <h3 class="ov-h3">What happens when the ball leaves the bat?</h3>
+      <p class="ov-body">Exit velocity and launch angle are the two numbers that turn contact into an outcome. This lab plots every batted ball by the pitch speed it was thrown at against how hard it came off the bat, then lets you click into any single event to see the launch angle profile behind it — the shape of the swing, not just the result on the scoreboard.</p>
+      <div class="ov-callout mlb-call">Hard contact is repeatable barrel control against velocity, not luck. The scatter shows who handles heat; the launch angle view shows whether that contact gets lofted for extra bases or beaten into the ground.</div>
+    </div>
+  </div>
   <!-- Batted Ball Profile -->
   <div class="ov-fullbleed">
     <div class="ov-fullbleed-inner">
@@ -638,6 +653,85 @@
     </div>
   </div>
 
+  <!-- Pitching editorial text -->
+  <div class="ov-prose">
+    <div class="ov-prose-inner">
+      <h3 class="ov-h3">What does his arsenal look like?</h3>
+      <p class="ov-body">Hitting is only half the matchup. A pitcher's identity lives in where the ball leaves his hand and how it moves on the way to the plate. Release point reveals arm slot and repeatability — a tight cluster means a delivery a hitter can't read pitch-to-pitch. Movement separates the arsenal: which offerings ride, which sweep, which drop off the table. Together they explain why the same velocity plays completely differently from two different arms.</p>
+      <div class="ov-callout mlb-call">Elite arms disguise their pitches by releasing everything from the same tunnel, then letting movement do the work in the final feet. The release chart shows the disguise; the break chart shows the payoff.</div>
+    </div>
+  </div>
+
+  <!-- Pitch Arsenal Profile -->
+  <div class="ov-fullbleed">
+    <div class="ov-fullbleed-inner">
+
+      <div class="mlb-header">
+        <div>
+          <div class="ov-eyebrow" style="margin-bottom:.35rem;"><div class="ov-eyebrow-line"></div>Pitch Arsenal</div>
+          <h3 class="ov-h3" style="margin:0;">Release Point & Movement · Click a pitch</h3>
+        </div>
+        <div class="mlb-player-btns" id="pit-player-btns">
+          <button class="mlb-player-btn active" onclick="pitSelectPlayer('skenes',this)">SKENES</button>
+          <button class="mlb-player-btn" onclick="pitSelectPlayer('yamamoto',this)">YAMAMOTO</button>
+          <button class="mlb-player-btn" onclick="pitSelectPlayer('gausman',this)">GAUSMAN</button>
+          <button class="mlb-player-btn" onclick="pitSelectPlayer('peralta',this)">PERALTA</button>
+          <button class="mlb-player-btn" onclick="pitSelectPlayer('miller',this)">MILLER</button>
+        </div>
+      </div>
+
+      <div class="mlb-filter-row">
+        <div class="mlb-filter-group">
+          <span class="mlb-filter-label">PITCH</span>
+          <div class="mlb-pills" id="pit-pitch-filters"></div>
+        </div>
+        <div class="mlb-filter-group">
+          <span class="mlb-filter-label">RESULT</span>
+          <div class="mlb-pills" id="pit-res-filters"></div>
+        </div>
+      </div>
+
+      <div class="mlb-canvas-row">
+        <div class="mlb-scatter-stage" id="pit-scatter-stage">
+          <canvas id="pit-scatter-canvas"></canvas>
+          <div class="mlb-tooltip" id="pit-tooltip"></div>
+        </div>
+        <div class="mlb-vector-stage" id="pit-vector-stage">
+          <canvas id="pit-vector-canvas"></canvas>
+        </div>
+      </div>
+
+      <div class="mlb-statrow">
+        <div class="mlb-stat-item">
+          <span class="mlb-stat-lbl">Velocity</span>
+          <span class="mlb-stat-val" id="pit-s-velo">—</span>
+        </div>
+        <div class="mlb-stat-sep"></div>
+        <div class="mlb-stat-item">
+          <span class="mlb-stat-lbl">Spin Rate</span>
+          <span class="mlb-stat-val" id="pit-s-spin">—</span>
+        </div>
+        <div class="mlb-stat-sep"></div>
+        <div class="mlb-stat-item">
+          <span class="mlb-stat-lbl">Pitch Type</span>
+          <span class="mlb-stat-val" id="pit-s-pt">—</span>
+        </div>
+        <div class="mlb-stat-sep"></div>
+        <div class="mlb-stat-item">
+          <span class="mlb-stat-lbl">H-Break</span>
+          <span class="mlb-stat-val" id="pit-s-hb">—</span>
+        </div>
+        <div class="mlb-stat-sep"></div>
+        <div class="mlb-stat-item">
+          <span class="mlb-stat-lbl">V-Break</span>
+          <span class="mlb-stat-val" id="pit-s-vb">—</span>
+        </div>
+      </div>
+
+      <p class="ov-caption">Fig 02 — Statcast pitch data · Left: release point from the catcher’s POV, coloured by pitch type · Right: horizontal vs vertical break (inches) · Click a pitch to inspect velo, spin and movement · Filter by pitch type or result above.</p>
+    </div>
+  </div>
+
   <!-- Bottom nav -->
   <div class="ov-bnav">
     <div>
@@ -649,6 +743,7 @@
 </div><!-- /overlay-mlb -->
 
 <script src="mlb_data.js"></script>
+<script src="pit_data.js"></script>
 <script src="portfolio.js"></script>
 </body>
 </html>
