@@ -1,3 +1,9 @@
+// ── ANALYTICS ──────────────────────────────────────────────────────────────
+
+function trackEvent(name, params) {
+  if (typeof gtag === 'function') gtag('event', name, params || {});
+}
+
 // ── OVERLAY CONTROLS ──────────────────────────────────────────────────────────
 
 function openOverlay(name) {
@@ -5,6 +11,7 @@ function openOverlay(name) {
   document.body.style.overflow = 'hidden';
   var el = document.getElementById('overlay-' + name);
   el.scrollTop = 0;
+  trackEvent('view_section', { section: name });
 }
 
 function closeOverlay(e) {
@@ -20,7 +27,27 @@ function switchOverlay(from, to) {
   var el = document.getElementById('overlay-' + to);
   el.classList.add('active');
   el.scrollTop = 0;
+  trackEvent('view_section', { section: to, from_section: from });
 }
+
+// Outbound link clicks (GitHub, LinkedIn, mailto, etc.)
+document.addEventListener('click', function(e) {
+  var a = e.target.closest('a[href]');
+  if (!a) return;
+  var href = a.getAttribute('href');
+  if (href.indexOf('mailto:') === 0) {
+    trackEvent('contact_click', { method: 'email' });
+  } else if (a.target === '_blank' && /^https?:\/\//.test(href)) {
+    trackEvent('outbound_click', { url: href, link_text: (a.textContent || '').trim() });
+  }
+});
+
+// Video plays
+document.addEventListener('play', function(e) {
+  if (!e.target.classList || !e.target.classList.contains('ov-video')) return;
+  var source = e.target.querySelector('source');
+  trackEvent('video_play', { video: source ? source.getAttribute('src') : '' });
+}, true);
 
 // ESC key closes overlay
 document.addEventListener('keydown', function(e) {
