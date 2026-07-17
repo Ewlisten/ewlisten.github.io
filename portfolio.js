@@ -2709,17 +2709,31 @@ function pitClick(e) {
   }
 }
 
+// Robust stage-width measurement (mobile: offsetWidth can read 0 while off-screen)
+function pitStageWidth(el) {
+  if (!el) return 0;
+  return el.offsetWidth
+      || Math.round(el.getBoundingClientRect().width)
+      || (el.parentElement ? el.parentElement.clientWidth : 0)
+      || 0;
+}
+
+function pitResize() {
+  var ss = document.getElementById('pit-scatter-stage');
+  var vs = document.getElementById('pit-vector-stage');
+  var w1 = pitStageWidth(ss), w2 = pitStageWidth(vs);
+  if (PIT.scatter && w1) { PIT.scatter.width = w1; PIT.scatter.height = 320; }
+  if (PIT.vector  && w2) { PIT.vector.width  = w2; PIT.vector.height  = 320; }
+  pitDrawScatter();
+  pitDrawMovement();
+}
+
 function pitInit() {
   PIT.scatter = document.getElementById('pit-scatter-canvas');
   PIT.vector  = document.getElementById('pit-vector-canvas');
   if (!PIT.scatter || !PIT.vector) return;
   PIT.sCtx = PIT.scatter.getContext('2d');
   PIT.vCtx = PIT.vector.getContext('2d');
-
-  var scStage  = document.getElementById('pit-scatter-stage');
-  var vecStage = document.getElementById('pit-vector-stage');
-  if (scStage)  { PIT.scatter.width = scStage.offsetWidth;  PIT.scatter.height = 320; }
-  if (vecStage) { PIT.vector.width  = vecStage.offsetWidth; PIT.vector.height  = 320; }
 
   PIT.scatter.addEventListener('mousemove', pitHover);
   PIT.scatter.addEventListener('mouseleave', function() {
@@ -2730,15 +2744,23 @@ function pitInit() {
   });
   PIT.scatter.addEventListener('click', pitClick);
 
-  window.addEventListener('resize', function() {
-    var ss = document.getElementById('pit-scatter-stage');
-    var vs = document.getElementById('pit-vector-stage');
-    if (ss && PIT.scatter) PIT.scatter.width = ss.offsetWidth;
-    if (vs && PIT.vector)  PIT.vector.width  = vs.offsetWidth;
-    pitDrawScatter(); pitDrawMovement();
-  });
+  window.addEventListener('resize', pitResize);
+
+  // Re-measure + redraw once the lab actually scrolls into view (fixes mobile
+  // where the section is far below the fold and reads 0 width at init time).
+  var stage = document.getElementById('pit-scatter-stage');
+  if (stage && typeof IntersectionObserver !== 'undefined') {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(en) { if (en.isIntersecting) pitResize(); });
+    }, { threshold: 0.05 });
+    io.observe(stage);
+  }
 
   pitLoad(PIT.player);
+  pitResize();
+  // Belt-and-suspenders: a couple of delayed re-measures for slow mobile layout
+  setTimeout(pitResize, 300);
+  setTimeout(pitResize, 900);
 }
 
 
